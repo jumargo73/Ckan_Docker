@@ -1,0 +1,118 @@
+
+networks:
+  ckan-hijo-net:
+    driver: bridge
+
+volumes:
+  pg_data:
+  solr_data:
+  ckan_storage:
+  pip_cache:
+  site_packages:
+
+services:
+
+  db:
+    build:
+      context: postgresql/
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - CKAN_DB_USER
+      - CKAN_DB_PASSWORD
+      - CKAN_DB
+      - DATASTORE_READONLY_USER
+      - DATASTORE_READONLY_PASSWORD
+      - DATASTORE_DB
+    env_file:
+      - .env  
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - ckan-hijo-net
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_PASSWORD}"]    
+
+  datapusher:
+    networks:
+      - ckan-hijo-net
+    image: ckan/ckan-base-datapusher:${DATAPUSHER_VERSION}
+    environment:
+      DATAPUSHER_API_TOKEN: ${DATAPUSHER_API_TOKEN}
+    volumes:
+      - /home/ckan/ckan/lib/default/src/ckan-hijo/datapusher/deployment/datapusher_settings.py:/srv/app/datapusher_settings.py
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO", "/dev/null", "http://datapusher:8800"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+  solr:
+    image: ckan/ckan-solr:2.10-solr9
+    volumes:
+      - solr_data:/var/solr
+    networks:
+      - ckan-hijo-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://solr:8983/solr"]
+      interval: 10s
+      timeout: 5s
+      retries: 5  
+
+  redis:
+    image: redis:7
+    networks:
+      - ckan-hijo-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "-e", "QUIT"]    
+
+  ckan:
+    build:
+      context: .
+      dockerfile: ./ckan/Dockerfile
+    image: ckan:2.11  
+    depends_on:
+      db:
+        condition: service_healthy
+      solr:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    env_file:
+      - .env
+    expose:
+      - "5000" 
+    volumes:
+      - /home/ckan/ckan/lib/default/src/ckan-hijo/ckan/ckan.ini:/srv/app/ckan.ini
+      - /home/ckan/ckan/lib/default/src/ckan-hijo/ckan/src/ckan/ckan/model:/srv/app/src/ckan/ckan/model
+      - /home/ckan/ckan/lib/default/src/ckan-hijo/ckan/src/ckan/ckan/contadores:/srv/app/src/ckan/ckan/contadores
+      - /home/ckan/ckan/lib/default/src/ckan-hijo/ckan/src/ckanext-csvgeojson/ckanext/csvgeojson:/srv/app/src/ckan/ckanext/csvgeojson
+      - /home/ckan/ckan/lib/default/src/ckan-hijo/ckan/setup/csvgeojson_migrated.py:/srv/app/csvgeojson_migrated.py
+      - ckan_storage:/var/lib/ckan
+      - pip_cache:/root/.cache/pip
+      - site_packages:/usr/lib/python3.10/site-packages
+    restart: unless-stopped  
+    networks:
+      - ckan-hijo-net
+    healthcheck:
+      test: ["CMD", "wget", "-qO", "/dev/null", "http://ckan:5000/api/3/action/status_show"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+  nginx:
+    build:
+      context: nginx/
+      dockerfile: Dockerfile
+    volumes:
+      - /home/ckan/ckan/lib/default/src/ckan-hijo/nginx/setup/nginx.conf:/etc/nginx/nginx.conf
+      - /home/ckan/ckan/lib/default/src/ckan-hijo/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "8543:443"
+    depends_on:
+      ckan:
+        condition: service_healthy
+    networks:
+      - ckan-hijo-net

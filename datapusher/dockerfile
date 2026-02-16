@@ -1,0 +1,41 @@
+FROM python:3.10-slim
+
+# Variables de entorno
+ENV PYTHONUNBUFFERED=1 \
+    DATAPUSHER_PORT=8800 \
+    DATAPUSHER_WORKERS=2 \
+    DATAPUSHER_THREADS=2
+
+
+# Crear usuario datapusher
+RUN useradd -m datapusher
+WORKDIR /srv/app/datapusher
+
+# Instalar datapusher desde GitHub (oficial CKAN)
+RUN git clone https://github.com/ckan/datapusher.git .
+
+# Instalar dependencias Python
+RUN pip install --upgrade pip \
+    && pip install -r requirements.txt 
+
+# Permisos
+RUN chown -R datapusher:datapusher /srv/app/datapusher
+USER datapusher
+
+# Exponer puerto
+EXPOSE 8800
+
+# Comando por defecto (uWSGI)
+CMD ["uwsgi", \
+     "--http", "0.0.0.0:8800", \
+     "--uid",  "www-data",\
+     "--guid", "www-data",\
+     "--wsgi-file", "datapusher/wsgi.py", \
+     "--callable", "application", \
+     "--processes", "2", \
+     "--threads", "2", \
+     "--harakiri", "50", \
+     "--max-requests", "5000",\
+     "--vacuum","true",\
+     "--buffer-size","32768",\
+     "--virtualenv","/srv/app"]

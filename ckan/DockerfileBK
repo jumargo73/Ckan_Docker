@@ -1,0 +1,59 @@
+FROM ckan/ckan-base:2.10-py3.10
+
+USER root
+
+ENV APP_DIR=/srv/app
+ENV PATH="${APP_DIR}/bin:$PATH"
+
+# Instalar dependencias del sistema
+RUN apt-get update && apt-get install -y python3-dev libpq-dev python3-pip python3-venv git-core redis-server libmagic1 \
+ && rm -rf /var/lib/apt/lists/*
+
+
+# Crear carpetas
+RUN mkdir -p /srv/app/src
+RUN mkdir -p /srv/app/src/ckan
+RUN python3 -m venv /srv/app/
+
+# Asegurar setuptools en el virtualenv de CKAN (sin recrearlo)
+RUN /srv/app/bin/pip install --upgrade pip setuptools wheel 
+
+RUN /srv/app/bin/pip uninstall -y setuptools typing_extensions geopandas PyMuPDF\
+&& /srv/app/bin/pip install setuptools==65.5.1\
+&& /srv/app/bin/pip install PyMuPDF==1.26.3\
+&& /srv/app/bin/pip install --upgrade typing-extensions PasteDeploy
+
+# Copiar CKAN y extensiones
+COPY ./src/ckan /srv/app/src/ckan
+COPY ./src/ckanext-harvest /srv/app/src/ckanext-harvest
+COPY ./src/ckanext-geoview /srv/app/src/ckanext-geoview
+COPY ./src/ckanext-spatial /srv/app/src/ckanext-spatial
+COPY ./src/ckanext-scheming-master /srv/app/src/ckanext-scheming-master
+COPY ./src/ckanext-csvgeojson /srv/app/src/ckanext-csvgeojson
+
+COPY ./src/ckan/ckan.ini /srv/app/ckan.ini
+
+# Instalar CKAN core
+RUN /srv/app/bin/pip install -r /srv/app/src/ckan/requirements.txt
+RUN /srv/app/bin/pip install -e /srv/app/src/ckan
+
+# Instalar extensiones
+RUN /srv/app/bin/pip install -r /srv/app/src/ckanext-harvest/requirements.txt \
+&& /srv/app/bin/pip install -e /srv/app/src/ckanext-harvest
+RUN /srv/app/bin/pip install -r /srv/app/src/ckanext-spatial/requirements.txt\
+&& /srv/app/bin/pip install -e /srv/app/src/ckanext-spatial
+RUN /srv/app/bin/pip install -e /srv/app/src/ckanext-geoview
+RUN /srv/app/bin/pip install -e /srv/app/src/ckanext-scheming-master
+RUN /srv/app/bin/pip install -r /srv/app/src/ckanext-csvgeojson/requirements.txt \
+&& /srv/app/bin/pip install -e /srv/app/src/ckanext-csvgeojson 
+
+
+# Permisos
+RUN chown -R ckan /srv/app
+
+USER ckan
+WORKDIR /srv/app
+
+CMD ["ckan", "-c", "/srv/app/ckan.ini", "run"]
+
+
