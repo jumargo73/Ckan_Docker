@@ -41,7 +41,7 @@ services:
     environment:
       DATAPUSHER_API_TOKEN: ${DATAPUSHER_API_TOKEN}
     volumes:
-      - /home/ckan/ckan/lib/default/src/ckan-hijo/datapusher/deployment/datapusher_settings.py:/srv/app/datapusher_settings.py
+      - ./datapusher/deployment/datapusher_settings.py:/srv/app/datapusher_settings.py
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-qO", "/dev/null", "http://datapusher:8800"]
@@ -84,11 +84,11 @@ services:
     expose:
       - "5000" 
     volumes:
-      - /home/ckan/ckan/lib/default/src/ckan-hijo/ckan/ckan.ini:/srv/app/ckan.ini
-      - /home/ckan/ckan/lib/default/src/ckan-hijo/ckan/src/ckan/ckan/model:/srv/app/src/ckan/ckan/model
-      - /home/ckan/ckan/lib/default/src/ckan-hijo/ckan/src/ckan/ckan/contadores:/srv/app/src/ckan/ckan/contadores
-      - /home/ckan/ckan/lib/default/src/ckan-hijo/ckan/src/ckanext-csvgeojson/ckanext/csvgeojson:/srv/app/src/ckan/ckanext/csvgeojson
-      - /home/ckan/ckan/lib/default/src/ckan-hijo/ckan/setup/csvgeojson_migrated.py:/srv/app/csvgeojson_migrated.py
+      - ./ckan/ckan.ini:/srv/app/ckan.ini
+      - ./ckan/src/ckan/ckan/model:/srv/app/src/ckan/ckan/model
+      - ./ckan/src/ckan/ckan/contadores:/srv/app/src/ckan/ckan/contadores
+      - ./ckan/src/ckanext-csvgeojson/ckanext/csvgeojson:/srv/app/src/ckan/ckanext/csvgeojson
+      - ./ckan/setup/csvgeojson_migrated.py:/srv/app/csvgeojson_migrated.py
       - ckan_storage:/var/lib/ckan
       - pip_cache:/root/.cache/pip
       - site_packages:/usr/lib/python3.10/site-packages
@@ -107,8 +107,8 @@ services:
       context: nginx/
       dockerfile: Dockerfile
     volumes:
-      - /home/ckan/ckan/lib/default/src/ckan-hijo/nginx/setup/nginx.conf:/etc/nginx/nginx.conf
-      - /home/ckan/ckan/lib/default/src/ckan-hijo/nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/setup/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
     ports:
       - "8543:443"
     depends_on:

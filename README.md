@@ -1,7 +1,12 @@
 #Repositorio de Alojamiento
- sudo mkdir  -p  /usr/lib/ckan/default/src/
 
- cd /usr/lib/ckan/default/src/
+
+sudo mkdir -p ~/ckan/lib//default/
+sudo chmod 777 ~/ckan/lib/default/
+
+sudo chown `whoami` ~/ckan/lib/default/
+
+cd ~/ckan/lib/default/
 
  #se descarga la aplicacion desde el git
  https://github.com/jumargo73/Ckan_Docker.git
@@ -31,11 +36,11 @@ con quit se sale del contenedor
 
 #configuracion de permisos datapusher
 
-- docker exec -it ckan-hijo-ckan-1 ckan -c /srv/app/ckan.ini datastore set-permissions > ds.sql
+- docker exec -it ckan_docker-ckan-1 ckan -c /srv/app/ckan.ini datastore set-permissions > ds.sql
 
-- docker cp ds.sql ckan-hijo-db-1:/ds.sql
+- docker cp ds.sql ckan_docker-db-1:/ds.sql
 
-- docker exec -it ckan-hijo-db-1 psql -U ckan_default -d datastore_default -f /ds.sql
+- docker exec -it ckan_docker-db-1 psql -U ckan_default -d datastore_default -f /ds.sql
 
 
 Validar que todo quedo ok
