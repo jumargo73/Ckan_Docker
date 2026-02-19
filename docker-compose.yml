@@ -2,10 +2,7 @@
 networks:
   ckan-hijo-net:
     name: ckan-hijo-net
-    driver: bridge
-  ckan-shared-net:
-    external: true
-    name: ckan-shared-net 
+    driver: bridge    
 
 volumes:
   pg_data:
@@ -99,8 +96,7 @@ services:
       - site_packages:/usr/lib/python3.10/site-packages
     restart: unless-stopped  
     networks:
-      - ckan-hijo-net
-      - ckan-shared-net 
+      - ckan-hijo-net      
     healthcheck:
       test: ["CMD", "wget", "-qO", "/dev/null", "http://ckan:5000/api/3/action/status_show"]
       interval: 30s
@@ -116,6 +112,7 @@ services:
       - ./nginx/setup/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/conf.d:/etc/nginx/conf.d
     ports:
+      - "8091:80"
       - "8543:443"
     depends_on:
       ckan:

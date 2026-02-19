@@ -27,6 +27,126 @@ class DataJson(SingletonPlugin):
 
         log.info("[DataJson] get_blueprint_geojson ejecutado")
 
+        @bp.route('/dataset/data.json', methods=['GET'])
+        def dataJson():
+
+            #log.info("[DataJson] get_blueprint powerBI ejecutado")
+            context = {
+                'model': model,
+                'session': model.Session,
+                'ignore_auth': True,
+                'user': None
+            }
+
+            data={}
+            try:
+
+                # 1️⃣ Primero obtengo la cantidad total
+                count_result = toolkit.get_action('package_search')(context, {
+                    'rows': 0
+                })
+                registros = count_result['count']
+
+                # 2️⃣ Ahora hago otra llamada trayendo exactamente esa cantidad
+                responses = toolkit.get_action('package_search')(context, {
+                    'rows': registros
+                })
+
+
+
+                package_responses=responses['results']
+
+                log.warning(f"[DataJson] get_blueprint dataJson responses: {package_responses}")
+
+
+                data={
+                        "@context": "https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld",
+                        "@type": "dcat:Catalog", 
+                        "conformsTo": "https://project-open-data.cio.gov/v1.1/schema", 
+                        "describedBy": "https://project-open-data.cio.gov/v1.1/schema/catalog.json",
+                    }
+
+                data['dataset']=[]
+
+                url_site=config.get('ckan.site_url')
+
+
+                count=0
+
+                for package_response in package_responses:
+                        
+
+                    #log.warning(f"[DataJson] get_blueprint powerBI  {package_response['id']} posicion {count}') : {registros}")
+
+                    if package_response.get('type', '').lower() != 'harvest':
+
+                        grupos= package_response.get('groups')
+                        organization=package_response.get('organization') 
+                        tags=package_response.get('tags') 
+                        resources=package_response.get('resources') 
+
+                        if package_response.get('private')==True:
+                            estado="Privado"
+                        else:
+                            estado="Público"
+
+                        data_dataset={
+                            "@type":"Dataset",
+                            "identifier":package_response['id'], 
+                            "landingPage":"{}".format(url_site+'/'+package_response.get('type')+'/'+package_response['id']),  
+                            "title": package_response.get('title'),
+                            "description": package_response.get('notes'),
+                            "dependencia":organization.get('title') if organization else '',
+                            "issued": package_response.get('metadata_created') or '',
+                            "modified": package_response.get('metadata_modified') or '',
+                            "ciudad": package_response.get('ciudad') or '' ,
+                            "departamento":package_response.get('departamento') or '',
+                            "accrualPeriodicity":package_response.get('frecuencia_actualizacion') or '',
+                            "keywords":[tag["display_name"] for tag in tags],
+                            "publisher":{
+                                "@type": "org:Organization",
+                                "name": "{}".format("org:"+ organization.get('title') if organization else ''),
+                            },
+                            "contactPoint":{
+                                "@type": "vcard:Contact", 
+                                "hasEmail": "mailto:datosabiertos@valledelcauca.gov.co", 
+                                "fn":  "Valle Data"
+                            },
+                            "accessLevel":estado,
+                            'license':{}                   
+                        }
+
+
+                        data_dataset['distribution']=[]
+                        data_dataset['theme']=[]
+
+                        if grupos:
+                            data_dataset['theme'].append(grupos)
+
+                        for resource in resources:
+                            data_resource= {
+                                "@type": "dcat:Distribution",
+                                "description":resource.get('description') or '',
+                                "downloadURL":resource.get('url') or '',  
+                                "format":resource.get('format') or '',
+                                "mediaType":resource.get('mediaType') or '',
+                                "title":resource.get('title') or '',
+                                "issued": resource.get('created') or '',
+                                "modified": resource.get('last_modified') or ''
+                            }
+
+                            data_dataset['distribution'].append(data_resource)
+                    data['dataset'].append(data_dataset)
+                return  jsonify(data) 
+                #return Response(json.dumps(data), mimetype="application/json")
+
+            except Exception as e:
+                log.error(f"[DataJson] Error procesando get_blueprint powerBI: {e}")    
+
+
+
+        
+
         @bp.route('/power_BI/data.json', methods=['GET'])
         def powerBI():
 
@@ -115,8 +235,7 @@ class DataJson(SingletonPlugin):
                                 "@type":"Dataset",
                                 "identifier":package_response['id'], 
                                 "landingPage":"{}".format(url_site+'/'+package_response.get('type')+'/'+package_response['id']),  
-                                "nivel":  estado,
-                                "title": package_response.get('title'),
+                                 "title": package_response.get('title'),
                                 "description": package_response.get('notes'),
                                 "dependencia":organization.get('title') if organization else '',
                                 "issued": package_response.get('metadata_created') or '',
@@ -134,7 +253,7 @@ class DataJson(SingletonPlugin):
                                     "hasEmail": "mailto:datosabiertos@valledelcauca.gov.co", 
                                     "fn":  "Valle Data"
                                 },
-                                "accessLevel":"Public",
+                                "accessLevel":estado,
                                 'licencia':{},
                                 "Visualizaciones":consolidado.get('visualizaciones') if consolidado else 0,
                                 "descargar":consolidado.get('descargas') if consolidado else 0,                                   
@@ -228,7 +347,7 @@ class DataJson(SingletonPlugin):
                 #return Response(json.dumps(data), mimetype="application/json")
 
             except Exception as e:
-                log.error(f"[DataJson] Error procesando get_blueprint powerBI: {e}")
+                log.error(f"[DataJson] Error procesando get_blueprint dataset: {e}")
 
             # Siempre devolver success para no interrumpir CKAN
 
