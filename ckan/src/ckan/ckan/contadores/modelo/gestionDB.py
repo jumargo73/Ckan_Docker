@@ -348,7 +348,8 @@ def getPaquetesjsonBI():
             p.id,
             p.frecuencia_actualizacion,
             p.departamento,
-            p.ciudad
+            p.ciudad,
+            r.description
             FROM public.member m inner join public."package" p on m.table_id=p.id and m.capacity<>'organization'
             inner join public.resource r on r.package_id=p.id
             inner join public.group g on m.group_id=g.id 
@@ -386,7 +387,10 @@ def getPaquetesjsonBI():
                     '''
                     resourceDict={
                         "@type": "dcat:Distribution",
-                        "Url":"{}".format(url+dataset[6]+'/'+dataset[4]+'/Resource/'+dataset[11]+'/download/'+dataset[12]),                        
+                        "description":"{}".format(dataset[14]),
+                        "format": "{}".format(dataset[13]),
+                        "mediaType": "{}".format(dataset[14]),
+                        "downloadURL":"{}".format(url+dataset[6]+'/'+dataset[4]+'/Resource/'+dataset[11]+'/download/'+dataset[12]),                        
                         "filas":filas,
                         "columnas":columnas,
                     }
@@ -407,7 +411,7 @@ def getPaquetesjsonBI():
                     dataDict["Vistas"]=""
                     dataDict["Descargas"]=""  
                     dataDict["distribution"]=[]  
-                    dataDict["@type"]="dcat:Dataset"                            
+                    dataDict["@type"]="Dataset"                            
                     dataDict["Nombre"]=dataset[3]
                     dataDict["Descripcion"]=dataset[5]
                     dataDict["Dependencia"]=dataset[0]

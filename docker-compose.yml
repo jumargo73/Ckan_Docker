@@ -1,7 +1,11 @@
 
 networks:
   ckan-hijo-net:
+    name: ckan-hijo-net
     driver: bridge
+  ckan-shared-net:
+    external: true
+    name: ckan-shared-net 
 
 volumes:
   pg_data:
@@ -30,7 +34,7 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
     networks:
-      - ckan-hijo-net
+      - ckan-hijo-net     
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_PASSWORD}"]    
 
@@ -71,7 +75,7 @@ services:
     build:
       context: .
       dockerfile: ./ckan/Dockerfile
-    image: ckan:2.11  
+    image: ckan:2.11
     depends_on:
       db:
         condition: service_healthy
@@ -81,12 +85,13 @@ services:
         condition: service_healthy
     env_file:
       - .env
-    expose:
-      - "5000" 
+    ports:
+      - "5000:5000"
     volumes:
       - ./ckan/ckan.ini:/srv/app/ckan.ini
       - ./ckan/src/ckan/ckan/model:/srv/app/src/ckan/ckan/model
       - ./ckan/src/ckan/ckan/contadores:/srv/app/src/ckan/ckan/contadores
+      - ./ckan/src/ckanext-csvgeojson:/srv/app/src/ckanext-csvgeojson
       - ./ckan/src/ckanext-csvgeojson/ckanext/csvgeojson:/srv/app/src/ckan/ckanext/csvgeojson
       - ./ckan/setup/csvgeojson_migrated.py:/srv/app/csvgeojson_migrated.py
       - ckan_storage:/var/lib/ckan
@@ -95,6 +100,7 @@ services:
     restart: unless-stopped  
     networks:
       - ckan-hijo-net
+      - ckan-shared-net 
     healthcheck:
       test: ["CMD", "wget", "-qO", "/dev/null", "http://ckan:5000/api/3/action/status_show"]
       interval: 30s

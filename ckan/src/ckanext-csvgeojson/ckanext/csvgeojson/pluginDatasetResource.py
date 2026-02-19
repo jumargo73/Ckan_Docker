@@ -746,6 +746,7 @@ class SelloExcelenciaView(SingletonPlugin):
                     owner_org = toolkit.request.form.get('owner_org')
                     fecha_obtencion = toolkit.request.form.get('fecha_obtencion')
                     nivel = toolkit.request.form.get('nivel')
+                    application=None;
                     
                     # 2️⃣ Recibir el archivo
                     archivo = toolkit.request.files.get('upload')
@@ -773,12 +774,17 @@ class SelloExcelenciaView(SingletonPlugin):
                         file_name = nombre_archivo = "{}.{}".format(nombre_limpio,extension)
                         #nombre_archivo = archivo.filename
 
+                        if extension.lower()=='csv':
+                            extension='PDF'
+                            application='application/pdf'
+                            
                         # 1 Crear Recurso
                         resource_dict= {
                             'package_id':package['id'] ,
                             'name':nombre,
                             'url':file_name,  # URL temporal,
                             'format':extension,
+                            "mediaType": application,
                             'description':description
                         }
 

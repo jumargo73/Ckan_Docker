@@ -32,6 +32,11 @@ docker exec -u root -it  ckan-hijo-ckan-1 bash
 ckan db upgrade ejecuta las migraciones de ckan creacion de las tablas basicas
 python  csvgeojson_migrated.py crea tablas necesarias para que funcione las nuevas modalidades
 
+/*Generar Token
+ckan -c /srv/app/ckan.ini user token add datosabiertos datapusher
+
+/*Generar Token
+
 con quit se sale del contenedor
 
 #configuracion de permisos datapusher
@@ -41,6 +46,7 @@ con quit se sale del contenedor
 - docker cp ds.sql ckan_docker-db-1:/ds.sql
 
 - docker exec -it ckan_docker-db-1 psql -U ckan_default -d datastore_default -f /ds.sql
+
 
 
 Validar que todo quedo ok
@@ -58,4 +64,18 @@ Archivos importantes
 .env variables de entorno
 .docker-compose.yml archivo donde se configura los contenedores de la aplicacion
 dockerfile archivo de configuracion del contenedor.
+
+
+/*Crear Usuario Admin de la Aplicacion*/
+
+federacion_api  
+Permisos Admin
+ckan -c /srv/app/ckan.ini sysadmin add federacion_api
+
+Token
+ckan -c /srv/app/ckan.ini user token add federacion_api federacion_api_token
+
+curl -H "Authorization: mi-tokem" \
+     https://mi-midominio/api/3/action/package_search \
+     -d '{"rows": 1000}'
 

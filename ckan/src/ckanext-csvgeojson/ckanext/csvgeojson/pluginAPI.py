@@ -38,7 +38,8 @@ class DataJson(SingletonPlugin):
             context = {
                 'model': model,
                 'session': model.Session,
-                'user': toolkit.g.user or toolkit.config.get('ckan.site_id')
+                'ignore_auth': True,
+                'user': None
             }
 
             
@@ -47,20 +48,29 @@ class DataJson(SingletonPlugin):
             try:
 
                 # 1️⃣ Primero obtengo la cantidad total
-                count_result = toolkit.get_action('package_search')(context, {'rows': 0})
+                count_result = toolkit.get_action('package_search')(context, {
+                    'rows': 0,
+                    'include_private': True,
+                    'fq': '+state:active'
+                })
                 registros = count_result['count']
 
                 # 2️⃣ Ahora hago otra llamada trayendo exactamente esa cantidad
                 responses = toolkit.get_action('package_search')(context, {
-                    'rows': registros
+                    'rows': registros,
+                    'include_private': True,
+                    'fq': '+state:active'
                 })
                 
 
                 package_responses=responses['results']
 
+                #log.warning(f"[DataJson] get_blueprint powerBI context: {context}")
+
                 log.warning(f"[DataJson] get_blueprint powerBI responses: {package_responses}")
 
-                #log.warning(f"[DataJson] get_blueprint powerBI registros: {registros}")
+                #
+                # log.warning(f"[DataJson] get_blueprint powerBI registros: {registros}")
 
                 if package_responses:
                     
@@ -82,7 +92,7 @@ class DataJson(SingletonPlugin):
                     
                     for package_response in package_responses:
 
-                        log.warning(f"[DataJson] get_blueprint powerBI  {package_response['id']} posicion {count}') : {registros}")
+                        #log.warning(f"[DataJson] get_blueprint powerBI  {package_response['id']} posicion {count}') : {registros}")
 
                         if package_response.get('type', '').lower() != 'harvest':
 
@@ -99,32 +109,32 @@ class DataJson(SingletonPlugin):
 
                             consolidado=package_response.get('consolidado')
 
-                            #log.error(f"[DataJson] get_blueprint powerBI organization: {organization}")
+                            #log.warning(f"[DataJson] get_blueprint powerBI organization: {organization}")
 
                             data_dataset={
-                                "@type":"dcat:Dataset",
+                                "@type":"Dataset",
                                 "identifier":package_response['id'], 
                                 "landingPage":"{}".format(url_site+'/'+package_response.get('type')+'/'+package_response['id']),  
                                 "nivel":  estado,
-                                "nombre": package_response.get('title'),
-                                "descripcion": package_response.get('notes'),
+                                "title": package_response.get('title'),
+                                "description": package_response.get('notes'),
                                 "dependencia":organization.get('title') if organization else '',
                                 "issued": package_response.get('metadata_created') or '',
                                 "modified": package_response.get('metadata_modified') or '',
                                 "ciudad": package_response.get('ciudad') or '' ,
                                 "departamento":package_response.get('departamento') or '',
                                 "frecuencia_actualizacion":package_response.get('frecuencia_actualizacion') or '',
-                                "palabraClave":tags,
-                                "editor(a)":{
-                                    "@type": "{}".format("org:"+ organization.get('title') if organization else ''),
-                                    "name": "Gobernacion Valle del Cauca"
+                                "keywords":[tag["display_name"] for tag in tags],
+                                "publisher":{
+                                    "@type": "org:Organization",
+                                    "name": "{}".format("org:"+ organization.get('title') if organization else ''),
                                 },
-                                "puntoContacto":{
+                                "contactPoint":{
                                     "@type": "vcard:Contact", 
-                                    "tieneCorreo": "mailto:datosabiertos@valledelcauca.gov.co", 
-                                    "fn":  {}
+                                    "hasEmail": "mailto:datosabiertos@valledelcauca.gov.co", 
+                                    "fn":  "Valle Data"
                                 },
-                                "nivelAcceso":"Public",
+                                "accessLevel":"Public",
                                 'licencia':{},
                                 "Visualizaciones":consolidado.get('visualizaciones') if consolidado else 0,
                                 "descargar":consolidado.get('descargas') if consolidado else 0,                                   
@@ -133,38 +143,36 @@ class DataJson(SingletonPlugin):
                             data_dataset['distribucion']=[]
                             data_dataset['tema']=[]
 
-
                             if grupos:
                                 data_dataset['tema'].append(grupos)
                            
-                            title=package_response['title']
-
-
-                            #log.warning(f"[DataJson] get_blueprint powerBI package_response['title']: {title}")
-
+                           
                             for resource in resources:
 
                                
                                 contador=resource.get('contador')
                                 estructura=resource.get('estructura')
                                 data_extras=resource.get('data_extra')
-                                log.warning(f"[DataJson] get_blueprint powerBI contador: {contador}")
-                                log.warning(f"[DataJson] get_blueprint powerBI estructura: {estructura}")
-                                log.warning(f"[DataJson] get_blueprint powerBI data_extras: {data_extras}")
+                                #log.warning(f"[DataJson] get_blueprint powerBI contador: {contador}")
+                                #log.warning(f"[DataJson] get_blueprint powerBI estructura: {estructura}")
+                                #log.warning(f"[DataJson] get_blueprint powerBI data_extras: {data_extras}")
 
                                 
 
                                 categoria=data_extras.get('categoria') if data_extras else ''    
-                                log.warning(f"[DataJson] resource {resource['id']} categoria: {categoria}")
+                                #log.warning(f"[DataJson] resource {resource['id']} categoria: {categoria}")
 
 
                                 if categoria:
 
                                     
                                     data_sello={
-                                    "@type": "dcat:Sello",  
-                                    "titulo":resource.get('name') or '',
-                                    "Url":resource.get('url') or '',
+                                    "@type": "dcat:Sello", 
+                                    "description":resource.get('description') or '',
+                                    "downloadURL":resource.get('url') or '',
+                                    "format":resource.get('format') or '',
+                                    "mediaType":resource.get('mediaType') or '',
+                                    "title":resource.get('title') or '',
                                     'filas':estructura.get('filas') if estructura else 0,
                                     'columnas':estructura.get('columnas') if estructura else 0,
                                     "vistas":contador.get('visualizaciones') if contador else 0,
@@ -177,9 +185,9 @@ class DataJson(SingletonPlugin):
                                     
                                     }
 
-                                    log.warning(f"[DataJson] resource {resource['id']} categoria: {categoria} data_sello {data_sello}")
+                                    #log.warning(f"[DataJson] resource {resource['id']} categoria: {categoria} data_sello {data_sello}")
 
-                                    name_sello=resource.get('name')
+                                    #name_sello=resource.get('name')
                                     data['sellos'].append(data_sello)
 
                                 else: 
@@ -188,7 +196,11 @@ class DataJson(SingletonPlugin):
 
                                         data_resource= {
                                             "@type": "dcat:Distribution",
-                                            "url":resource.get('url') or '',  
+                                            "description":resource.get('description') or '',
+                                            "downloadURL":resource.get('url') or '',  
+                                            "format":resource.get('format') or '',
+                                            "mediaType":resource.get('mediaType') or '',
+                                            "title":resource.get('title') or '',
                                             "issued": resource.get('created') or '',
                                             "modified": resource.get('last_modified') or '',                              
                                             "filas":estructura.get('filas') if estructura else 0 ,
@@ -197,16 +209,18 @@ class DataJson(SingletonPlugin):
                                             'descargas':contador.get('descargas') if contador else 0,
                                         }
 
-                                        log.warning(f"[DataJson] resource {resource['id']} categoria: {categoria} data_resource {data_resource}")
-                                        nombre_resource=resource.get('name')
+                                        #log.warning(f"[DataJson] resource {resource['id']} categoria: {categoria} data_resource {data_resource}")
+                                        #nombre_resource=resource.get('name')
                                         data_dataset['distribucion'].append(data_resource)
 
                                
 
                                 #log.warning(f"[DataJson] get_blueprint powerBI resources_response: {resource}")
 
-
+                        #log.warning(f"[DataJson] get_blueprint powerBI data_dataset: {data_dataset}")
                         data['conjuntoDatos'].append(data_dataset)
+
+                        #log.warning(f"[DataJson] get_blueprint powerBI data_dataset: {data_dataset}")
 
                         count+=1
                             
