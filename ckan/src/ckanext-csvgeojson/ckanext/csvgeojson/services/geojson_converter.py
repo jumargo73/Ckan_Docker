@@ -3,10 +3,14 @@ from datetime import datetime
 from shapely.geometry import Point, mapping
 from ckan.plugins.toolkit import get_action
 import logging
+from ckan.common import config
+import os
 
 log = logging.getLogger(__name__)
 
-storage_path = '/var/lib/ckan/resources'
+
+
+
 
 class GeoJSONConverter:
     
@@ -58,6 +62,9 @@ class GeoJSONConverter:
 
         context = {'ignore_auth': True}
 
+        storage_path = config.get("ckan.storage_path")
+        
+        
         # 1. Obtener información del recurso CSV
         resource = get_action('resource_show')(context, {'id': resource_id})
         #log.info("[CSVtoGeoJSONPlugin] convertir_csv_geojson Recurso Encontrado: %s", json.dumps(resource, indent=2, ensure_ascii=False))
@@ -153,10 +160,11 @@ class GeoJSONConverter:
         geojson_res_id = response.get('id')
         #log.warning("[GeoJSONConverter][convertir_csv_geojson] geojson_res_id  = %s", geojson_res_id )  
 
+        resource_path = os.path.join(storage_path, "resources")    
         # CKAN divide el UUID en carpetas de 3 caracteres
         subdir = os.path.join(geojson_res_id[0:3], geojson_res_id[3:6])
         #log.warning("[GeoJSONConverter][convertir_csv_geojson] subdir  = %s", subdir )  
-        dest_dir = os.path.join(storage_path, subdir)
+        dest_dir = os.path.join(resource_path, subdir)
         #log.warning("[GeoJSONConverter][convertir_csv_geojson] dest_dir  = %s", dest_dir )  
         os.makedirs(dest_dir, exist_ok=True)
 
