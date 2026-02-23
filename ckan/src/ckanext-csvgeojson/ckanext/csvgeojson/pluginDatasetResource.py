@@ -53,7 +53,7 @@ class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
     def after_resource_update(self, context, resource):
 
         
-        log.info("[CSVtoGeoJSONPlugin] after_resource_update ejecutado")
+        log.warning("[CSVtoGeoJSONPlugin] after_resource_update ejecutado")
         
         # Procesar solo CSV
         if resource.get('format', '').lower() == 'csv':
@@ -69,10 +69,10 @@ class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
             )
 
             if geojson_resource:
-                #log.info("[CSVtoGeoJSONPlugin] GeoJSON ya existe, será actualizado (ID: %s)", geojson_resource['id'])
+                log.warning("[CSVtoGeoJSONPlugin] GeoJSON ya existe, será actualizado (ID: %s)", geojson_resource['id'])
                 GeoJSONConverter.convertir_csv_geojson(resource['id'], geojson_resource['id'])  # Pasar ID para update
             else:
-                #log.info("[CSVtoGeoJSONPlugin] No hay GeoJSON, creando nuevo")
+                log.warning("[CSVtoGeoJSONPlugin] No hay GeoJSON, creando nuevo")
                 GeoJSONConverter.convertir_csv_geojson(resource['id'])
 
     
