@@ -18,6 +18,7 @@ from ckan.common import request
 from ckan.lib.helpers import flash_error, redirect_to
 from sqlalchemy.orm import joinedload
 from dateutil.relativedelta import relativedelta
+import os
 
 TRUTHY = {'true', 'on', '1', 'si', 'sí'}
 
@@ -873,7 +874,8 @@ class SelloExcelenciaView(SingletonPlugin):
             """
             Crea un recurso placeholder y luego actualiza con extras y datos reales.
             """
-            storage_path = '/var/lib/ckan/default/'
+            storage_path = config.get("ckan.storage_path")
+            
             #package_id = package['id']
             
             #data_dict = dict(toolkit.request.form)
@@ -917,8 +919,9 @@ class SelloExcelenciaView(SingletonPlugin):
            
             # 2 Calcular ruta destino CKAN
             geojson_res_id = resource_id # UUID del recurso
-            subdir = os.path.join('resources',geojson_res_id[0:3], geojson_res_id[3:6]) # Creacion Arbol donde va a qUUID del recurso
-            dest_dir = os.path.join(storage_path,subdir)
+            subdir = os.path.join(geojson_res_id[0:3], geojson_res_id[3:6]) # Creacion Arbol donde va a qUUID del recurso
+            resource_path = os.path.join(storage_path, "resources")    
+            dest_dir = os.path.join(resource_path,subdir)
             os.makedirs(dest_dir, exist_ok=True)
             
 
