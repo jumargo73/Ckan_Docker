@@ -1,0 +1,54 @@
+{% import 'macros/form.html' as form %}
+
+{% block package_metadata_fields %}
+
+  {% block package_metadata_fields_url %}
+    {{ form.input('url', label=_('Source'), id='field-url', placeholder=_('http://example.com/dataset.json'), value=data.url, error=errors.url, classes=['control-medium']) }}
+  {% endblock %}
+
+  {% block package_metadata_fields_version %}
+    {{ form.input('version', label=_('Version'), id='field-version', placeholder=_('1.0'), value=data.version, error=errors.version, classes=['control-medium']) }}
+  {% endblock %}
+
+  {% block package_metadata_author %}
+    {{ form.input('author', label=_('Author'), id='field-author', placeholder=_('Joe Bloggs'), value=data.author, error=errors.author, classes=['control-medium']) }}
+
+    {{ form.input('author_email', label=_('Author Email'), id='field-author-email', placeholder=_('joe@example.com'), value=data.author_email, error=errors.author_email, classes=['control-medium']) }}
+  {% endblock %}
+
+  {% block package_metadata_fields_maintainer %}
+    {{ form.input('maintainer', label=_('Maintainer'), id='field-maintainer', placeholder=_('Joe Bloggs'), value=data.maintainer, error=errors.maintainer, classes=['control-medium']) }}
+
+    {{ form.input('maintainer_email', label=_('Maintainer Email'), id='field-maintainer-email', placeholder=_('joe@example.com'), value=data.maintainer_email, error=errors.maintainer_email, classes=['control-medium']) }}
+  {% endblock %}
+
+  
+  {% block package_Frecuencia_de_Actualización %}
+     {{ form.input('update_frequency', label=_('Frecuencia'), id='update_frequency', placeholder=_('Freciencia'), value=data.update_frequency, error=update_frequency, classes=['control-medium']) }}
+  {% endblock %}
+  <div class="row">
+    <div class="col">
+      {% block package_departamento %}
+        {{ form.input('department', label=_('Departamento'), id='department', placeholder=_('Departamento'), value=data.department, error=department, classes=['control-medium']) }}
+      {% endblock %}
+    </div>
+    <div class="col">
+      {% block package_ciudad %}
+        {{ form.input('city', label=_('Ciudad'), id='city', placeholder=_('Ciudad'), value=data.city, error=city, classes=['control-medium']) }}
+      {% endblock %}    
+    </div>
+  </div>
+
+  {% block package_metadata_fields_custom %}
+    {% block custom_fields %}
+      {% snippet 'snippets/custom_form_fields.html', extras=data.extras, errors=errors, limit=3 %}
+    {% endblock %}
+  {% endblock %}
+
+  
+ 
+
+  {% block dataset_fields %}
+  {% endblock %}
+
+{% endblock %}

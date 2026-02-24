@@ -86,7 +86,7 @@ services:
       - "5000:5000"
     volumes:
       - ./ckan/ckan.ini:/srv/app/ckan.ini
-      - ./ckan/src/ckan/ckan/model:/srv/app/src/ckan/ckan/model
+      - ./ckan/src/ckan/ckan/model/:/srv/app/src/ckan/ckan/model/
       - ./ckan/src/ckan/ckan/contadores:/srv/app/src/ckan/ckan/contadores
       - ./ckan/src/ckanext-csvgeojson:/srv/app/src/ckanext-csvgeojson
       - ./ckan/src/ckanext-csvgeojson/ckanext/csvgeojson:/srv/app/src/ckan/ckanext/csvgeojson

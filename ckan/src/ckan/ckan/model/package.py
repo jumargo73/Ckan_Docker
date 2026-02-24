@@ -64,6 +64,9 @@ package_table = Table('package', meta.metadata,
         Column('author_email', types.UnicodeText, doc='remove_if_not_provided'),
         Column('maintainer', types.UnicodeText, doc='remove_if_not_provided'),
         Column('maintainer_email', types.UnicodeText, doc='remove_if_not_provided'),
+        Column('update_frequency', types.UnicodeText, doc='remove_if_not_provided'),
+        Column('department', types.UnicodeText, doc='remove_if_not_provided'),
+        Column('city', types.UnicodeText, doc='remove_if_not_provided'),
         Column('notes', types.UnicodeText, doc='remove_if_not_provided'),
         Column('license_id', types.UnicodeText, doc='remove_if_not_provided'),
         Column('type', types.UnicodeText, default=u'dataset'),
@@ -101,6 +104,9 @@ class Package(core.StatefulObjectMixin,
     author_email: str
     maintainer: str
     maintainer_email: str
+    update_frequency: str
+    department: str
+    city: str
     notes: str
     licensce_id: str
     type: str
