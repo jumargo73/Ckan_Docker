@@ -6,7 +6,7 @@ import json, logging,os,  mimetypes
 from datetime import datetime, date
 import ckan.logic as logic
 import ckan.model as model
-from model import Session, Resource,Package,PackageExtra,Contador
+from model import Session, Resource,Package,PackageExtra,Contadores
 import fitz  
 from ckan.types import Context 
 from ckan.common import config
@@ -361,8 +361,8 @@ class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
         vistas=0
         descargas=0
 
-        rows = Session.query(Contador).filter(
-                Contador.packageId == package_id
+        rows = Session.query(Contadores).filter(
+                Contadores.package_id == package_id
             ).all()
 
        
@@ -393,16 +393,16 @@ class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
     
         session = model.Session
 
-        rows = session.query(Contador).all()
+        rows = session.query(Contadores).all()
 
         #log.info(f"[CSVtoGeoJSONPlugin] contador_get registro {rows}")
 
         return [
             {
-                "resource_id": row.sourceId,
+                "resource_id": row.source_Id,
                 "visualizaciones": row.contVistas,
                 "descargas": row.contDownload,
-                "package_id": row.packageId,
+                "package_id": row.package_Id,
             }
             for row in rows
         ]   

@@ -1,0 +1,9 @@
+{% set groups = h.get_featured_groups() %}
+
+{% for group in groups %}
+<div class="col-md-3 col-sm-6 d-flex">
+  <div class="card_tematica box_Tematica w-100">
+    {% snippet 'snippets/group_item.html', group=group %}
+  </div>
+</div>  
+{% endfor %}

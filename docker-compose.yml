@@ -86,8 +86,62 @@ services:
       - "5000:5000"
     volumes:
       - ./ckan/ckan.ini:/srv/app/ckan.ini
-      - ./ckan/src/ckan/ckan/model/:/srv/app/src/ckan/ckan/model/
+      - ./ckan/src/ckan/ckan/model/__init__.py:/srv/app/src/ckan/ckan/model/__init__.py
+      - ./ckan/src/ckan/ckan/model/package.py:/srv/app/src/ckan/ckan/model/package.py
+      - ./ckan/src/ckan/ckan/model/contador.py:/srv/app/src/ckan/ckan/model/contador.py
+      - ./ckan/src/ckan/ckan/model/resourceRating.py:/srv/app/src/ckan/ckan/model/resourceRating.py
+      - ./ckan/src/ckan/ckan/logic/schema.py:/srv/app/src/ckan/ckan/logic/schema.py
+      - ./ckan/src/ckan/ckan/lib/helpers.py:/srv/app/src/ckan/ckan/lib/helpers.py
+      - ./ckan/src/ckan/ckan/templates/package/snippets/package_metadata_fields.html:/srv/app/src/ckan/ckan/templates/package/snippets/package_metadata_fields.html
+      - ./ckan/src/ckan/ckan/templates/package/snippets/resources_list.html:/srv/app/src/ckan/ckan/templates/package/snippets/resources_list.html
+      - ./ckan/src/ckan/ckan/templates/package/snippets/additional_info.html:/srv/app/src/ckan/ckan/templates/package/snippets/additional_info.html
+      - ./ckan/src/ckan/ckan/templates/home/layout6.html:/srv/app/src/ckan/ckan/templates/home/layout6.html
+      - ./ckan/src/ckan/ckan/templates/home/snippets/featured_organization.html:/srv/app/src/ckan/ckan/templates/home/snippets/featured_organization.html
+      - ./ckan/src/ckan/ckan/templates/home/snippets/featured_dataset.html:/srv/app/src/ckan/ckan/templates/home/snippets/featured_dataset.html
+      - ./ckan/src/ckan/ckan/templates/snippets/dataset_item.html:/srv/app/src/ckan/ckan/templates/snippets/dataset_item.html
+      - ./ckan/src/ckan/ckan/templates/home/snippets/featured_estadisticas.html:/srv/app/src/ckan/ckan/templates/home/snippets/featured_estadisticas.html
+      - ./ckan/src/ckan/ckan/templates/snippets/new_item.html:/srv/app/src/ckan/ckan/templates/snippets/new_item.html
+      - ./ckan/src/ckan/ckan/templates/home/snippets/featured_noticias.html:/srv/app/src/ckan/ckan/templates/home/snippets/featured_noticias.html
+      - ./ckan/src/ckan/ckan/templates/snippets/new_item1.html:/srv/app/src/ckan/ckan/templates/snippets/new_item1.html
+      - ./ckan/src/ckan/ckan/templates/home/snippets/featured_group.html:/srv/app/src/ckan/ckan/templates/home/snippets/featured_group.html
+      - ./ckan/src/ckan/ckan/templates/snippets/group_item.html:/srv/app/src/ckan/ckan/templates/snippets/group_item.html
+      - ./ckan/src/ckan/ckan/templates/home/snippets/featured_general.html:/srv/app/src/ckan/ckan/templates/home/snippets/featured_general.html
+      - ./ckan/src/ckan/ckan/templates/snippets/general_item.html:/srv/app/src/ckan/ckan/templates/snippets/general_item.html
+      - ./ckan/src/ckan/ckan/templates/home/snippets/stats_layout.html:/srv/app/src/ckan/ckan/templates/home/snippets/stats_layout.html
+      - ./ckan/src/ckan/ckan/templates/home/snippets/search_tematica.html:/srv/app/src/ckan/ckan/templates/home/snippets/search_tematica.html
+      - ./ckan/src/ckan/ckan/templates/home/snippets/stats_layout_contadores.html:/srv/app/src/ckan/ckan/templates/home/snippets/stats_layout_contadores.html      
+      - ./ckan/src/ckan/ckan/templates/snippets/package_item.html:/srv/app/src/ckan/ckan/templates/snippets/package_item.html
+      - ./ckan/src/ckan/ckan/templates/snippets/contador_item.html:/srv/app/src/ckan/ckan/templates/snippets/contador_item.html
+      - ./ckan/src/ckan/ckan/templates/snippets/organization_item.html:/srv/app/src/ckan/ckan/templates/snippets/organization_item.html
+      - ./ckan/src/ckan/ckan/templates/page.html:/srv/app/src/ckan/ckan/templates/page.html
+      - ./ckan/src/ckan/ckan/templates/information_Layout.html:/srv/app/src/ckan/ckan/templates/information_Layout.html
+      - ./ckan/src/ckan/ckan/templates/footer_Layout.html:/srv/app/src/ckan/ckan/templates/footer_Layout.html
+      - ./ckan/src/ckan/ckan/public/base/css/main.css:/srv/app/src/ckan/ckan/public/base/css/main.css
+      - ./ckan/src/ckan/ckan/public/base/images/descarga.png:/srv/app/src/ckan/ckan/public/base/images/descarga.png
+      - ./ckan/src/ckan/ckan/public/base/images/visualizacion.png:/srv/app/src/ckan/ckan/public/base/images/visualizacion.png
+      - ./ckan/src/ckan/ckan/public/base/images/ballena.png:/srv/app/src/ckan/ckan/public/base/images/ballena.png
+      - ./ckan/src/ckan/ckan/public/base/images/azul.png:/srv/app/src/ckan/ckan/public/base/images/azul.png
+      - ./ckan/src/ckan/ckan/public/base/images/logo.png:/srv/app/src/ckan/ckan/public/base/images/logo.png
+      - ./ckan/src/ckan/ckan/public/base/images/Gobernacion_Logo.png:/srv/app/src/ckan/ckan/public/base/images/Gobernacion_Logo.png
+      - ./ckan/src/ckan/ckan/public/base/images/new3.png:/srv/app/src/ckan/ckan/public/base/images/new3.png
+      - ./ckan/src/ckan/ckan/public/base/images/new2.png:/srv/app/src/ckan/ckan/public/base/images/new2.png
+      - ./ckan/src/ckan/ckan/public/base/images/new1.png:/srv/app/src/ckan/ckan/public/base/images/new1.png
+      - ./ckan/src/ckan/ckan/public/base/images/Empresas_Reutilizadoras.PNG:/srv/app/src/ckan/ckan/public/base/images/Empresas_Reutilizadoras.PNG 
+      - ./ckan/src/ckan/ckan/public/base/images/google-form.png:/srv/app/src/ckan/ckan/public/base/images/google-form.png
+      - ./ckan/src/ckan/ckan/public/base/images/iniciativas.PNG:/srv/app/src/ckan/ckan/public/base/images/iniciativas.PNG
+      - ./ckan/src/ckan/ckan/public/base/images/power-bi.png:/srv/app/src/ckan/ckan/public/base/images/power-bi.png
+      - ./ckan/src/ckan/ckan/public/base/images/disponibilidad.PNG:/srv/app/src/ckan/ckan/public/base/images/disponibilidad.PNG 
+      - ./ckan/src/ckan/ckan/public/base/images/icons-post.png:/srv/app/src/ckan/ckan/public/base/images/icons-post.png 
+      - ./ckan/src/ckan/ckan/public/base/images/icons-telefono.png:/srv/app/src/ckan/ckan/public/base/images/icons-telefono.png
+      - ./ckan/src/ckan/ckan/public/base/images/libreta.png:/srv/app/src/ckan/ckan/public/base/images/libreta.png 
+      - ./ckan/src/ckan/ckan/public/base/images/mundo.png:/srv/app/src/ckan/ckan/public/base/images/mundo.png 
+      - ./ckan/src/ckan/ckan/public/base/images/reloj.png:/srv/app/src/ckan/ckan/public/base/images/reloj.png      
+      - ./ckan/src/ckan/ckan/views/resource.py:/srv/app/src/ckan/ckan/views/resource.py
+      - ./ckan/src/ckan/ckan/views/noticias.py:/srv/app/src/ckan/ckan/views/noticias.py 
+      - ./ckan/src/ckan/ckan/views/estadistica.py:/srv/app/src/ckan/ckan/views/estadistica.py  
       - ./ckan/src/ckan/ckan/contadores:/srv/app/src/ckan/ckan/contadores
+      - ./ckan/src/ckan/ckan/templates/estadistica:/srv/app/src/ckan/ckan/templates/estadistica          
+      - ./ckan/src/ckan/ckan/templates/noticias:/srv/app/src/ckan/ckan/templates/noticias
       - ./ckan/src/ckanext-csvgeojson:/srv/app/src/ckanext-csvgeojson
       - ./ckan/src/ckanext-csvgeojson/ckanext/csvgeojson:/srv/app/src/ckan/ckanext/csvgeojson
       - ./ckan/setup/csvgeojson_migrated.py:/srv/app/csvgeojson_migrated.py

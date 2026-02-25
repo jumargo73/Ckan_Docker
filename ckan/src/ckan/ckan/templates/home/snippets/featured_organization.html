@@ -1,0 +1,5 @@
+{% set organizations = h.get_featured_organizations() %}
+{% for organization in organizations %}
+  {% snippet 'snippets/organization_item.html', organization=organization , position=loop.index, show_capacity=show_capacity%}
+{% endfor %}
+

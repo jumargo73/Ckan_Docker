@@ -15,18 +15,18 @@ from ckan.model.types import make_uuid
 DeclarativeBase = declarative_base(metadata=meta.metadata)
 
 
-class Contador(DeclarativeBase,domain_object.DomainObject):
+class Contadores(DeclarativeBase,domain_object.DomainObject):
 
     __tablename__ = 'contadores'
 
-    id_Group = Column(String, primary_key=True, default=make_uuid)
-    packageId = Column(String, nullable=False)
-    sourceId = Column(String, nullable=False)
+    id = Column(Integer, primary_key=True,autoincrement=True)
+    package_Id = Column(String, nullable=False)
+    source_Id = Column(String, nullable=False)
     contVistas = Column(Integer, nullable=False,default=0)
     contDownload = Column(Integer, nullable=False,default=0)
 
     __table_args__ = (
-        UniqueConstraint('sourceId', 'packageId',name='uix_source_package'),
+        UniqueConstraint('source_Id', 'package_Id',name='uix_source_package'),
     )
 
     def __init__(self,  sourceId=None,packageId=None, **kwargs ):

@@ -16,7 +16,7 @@ down_revision = "csv01"
 branch_labels = None
 depends_on = None
 
-table = 'dataset'
+table = 'package'
 
 def upgrade():
     if skip_based_on_legacy_engine_version(op, __name__):

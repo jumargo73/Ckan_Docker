@@ -1,389 +1,500 @@
-2026-02-23 16:56:57,465 INFO  [ckan.cli] Using configuration file /srv/app/ckan.ini
-2026-02-23 16:56:57,465 INFO  [ckan.config.environment] Loading static files from public
-2026-02-23 16:56:58,232 DEBUG [ckan.config.declaration] Normalized REMEMBER_COOKIE_DURATION config option: 31536000
-2026-02-23 16:56:58,232 DEBUG [ckan.config.declaration] Normalized REMEMBER_COOKIE_HTTPONLY config option: True
-2026-02-23 16:56:58,232 DEBUG [ckan.config.declaration] Normalized REMEMBER_COOKIE_REFRESH_EACH_REQUEST config option: False
-2026-02-23 16:56:58,232 DEBUG [ckan.config.declaration] Normalized REMEMBER_COOKIE_SECURE config option: False
-2026-02-23 16:56:58,233 DEBUG [ckan.config.declaration] Normalized WTF_CSRF_CHECK_DEFAULT config option: True
-2026-02-23 16:56:58,233 DEBUG [ckan.config.declaration] Normalized WTF_CSRF_ENABLED config option: True
-2026-02-23 16:56:58,233 DEBUG [ckan.config.declaration] Normalized WTF_CSRF_HEADERS config option: ['X-CSRFToken', 'X-CSRF-Token']
-2026-02-23 16:56:58,233 DEBUG [ckan.config.declaration] Normalized WTF_CSRF_METHODS config option: ['POST', 'PUT', 'PATCH', 'DELETE']
-2026-02-23 16:56:58,233 DEBUG [ckan.config.declaration] Normalized WTF_CSRF_SSL_STRICT config option: True
-2026-02-23 16:56:58,233 DEBUG [ckan.config.declaration] Normalized WTF_CSRF_TIME_LIMIT config option: 3600
-2026-02-23 16:56:58,234 DEBUG [ckan.config.declaration] Normalized WTF_I18N_ENABLED config option: True
-2026-02-23 16:56:58,234 DEBUG [ckan.config.declaration] Normalized api_token.nbytes config option: 32
-2026-02-23 16:56:58,234 DEBUG [ckan.config.declaration] Normalized beaker.session.auto config option: False
-2026-02-23 16:56:58,234 DEBUG [ckan.config.declaration] Normalized beaker.session.cookie_expires config option: False
-2026-02-23 16:56:58,234 DEBUG [ckan.config.declaration] Normalized beaker.session.httponly config option: True
-2026-02-23 16:56:58,235 DEBUG [ckan.config.declaration] Normalized beaker.session.save_accessed_time config option: True
-2026-02-23 16:56:58,235 DEBUG [ckan.config.declaration] Normalized beaker.session.secure config option: False
-2026-02-23 16:56:58,235 DEBUG [ckan.config.declaration] Normalized beaker.session.timeout config option: None
-2026-02-23 16:56:58,235 DEBUG [ckan.config.declaration] Normalized ckan.activity_list_limit config option: 31
-2026-02-23 16:56:58,235 DEBUG [ckan.config.declaration] Normalized ckan.activity_list_limit_max config option: 100
-2026-02-23 16:56:58,236 DEBUG [ckan.config.declaration] Normalized ckan.activity_streams_email_notifications config option: False
-2026-02-23 16:56:58,236 DEBUG [ckan.config.declaration] Normalized ckan.activity_streams_enabled config option: True
-2026-02-23 16:56:58,236 DEBUG [ckan.config.declaration] Normalized ckan.admin_tabs config option: {}
-2026-02-23 16:56:58,236 DEBUG [ckan.config.declaration] Normalized ckan.auth.allow_admin_collaborators config option: False
-2026-02-23 16:56:58,236 DEBUG [ckan.config.declaration] Normalized ckan.auth.allow_collaborators_to_change_owner_org config option: False
-2026-02-23 16:56:58,236 DEBUG [ckan.config.declaration] Normalized ckan.auth.allow_dataset_collaborators config option: False
-2026-02-23 16:56:58,236 DEBUG [ckan.config.declaration] Normalized ckan.auth.anon_create_dataset config option: True
-2026-02-23 16:56:58,237 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_dataset_if_not_in_organization config option: True
-2026-02-23 16:56:58,237 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_default_api_keys config option: False
-2026-02-23 16:56:58,237 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_unowned_dataset config option: True
-2026-02-23 16:56:58,237 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_user_via_api config option: False
-2026-02-23 16:56:58,237 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_user_via_web config option: True
-2026-02-23 16:56:58,237 DEBUG [ckan.config.declaration] Normalized ckan.auth.enable_cookie_auth_in_api config option: True
-2026-02-23 16:56:58,237 DEBUG [ckan.config.declaration] Normalized ckan.auth.public_activity_stream_detail config option: False
-2026-02-23 16:56:58,237 DEBUG [ckan.config.declaration] Normalized ckan.auth.public_user_details config option: True
-2026-02-23 16:56:58,237 DEBUG [ckan.config.declaration] Normalized ckan.auth.reveal_private_datasets config option: True
-2026-02-23 16:56:58,237 DEBUG [ckan.config.declaration] Normalized ckan.auth.roles_that_cascade_to_sub_groups config option: ['admin']
-2026-02-23 16:56:58,237 DEBUG [ckan.config.declaration] Normalized ckan.auth.user_create_groups config option: True
-2026-02-23 16:56:58,237 DEBUG [ckan.config.declaration] Normalized ckan.auth.user_create_organizations config option: True
-2026-02-23 16:56:58,238 DEBUG [ckan.config.declaration] Normalized ckan.auth.user_delete_groups config option: True
-2026-02-23 16:56:58,238 DEBUG [ckan.config.declaration] Normalized ckan.auth.user_delete_organizations config option: True
-2026-02-23 16:56:58,238 DEBUG [ckan.config.declaration] Normalized ckan.cache_enabled config option: False
-2026-02-23 16:56:58,238 DEBUG [ckan.config.declaration] Normalized ckan.cache_expires config option: 0
-2026-02-23 16:56:58,238 DEBUG [ckan.config.declaration] Normalized ckan.cors.origin_allow_all config option: False
-2026-02-23 16:56:58,239 DEBUG [ckan.config.declaration] Normalized ckan.cors.origin_whitelist config option: []
-2026-02-23 16:56:58,239 DEBUG [ckan.config.declaration] Normalized ckan.csrf_protection.ignore_extensions config option: True
-2026-02-23 16:56:58,239 DEBUG [ckan.config.declaration] Normalized ckan.dataset.create_on_ui_requires_resources config option: True
-2026-02-23 16:56:58,239 DEBUG [ckan.config.declaration] Normalized ckan.datasets_per_page config option: 20
-2026-02-23 16:56:58,239 DEBUG [ckan.config.declaration] Normalized ckan.debug_supress_header config option: False
-2026-02-23 16:56:58,239 DEBUG [ckan.config.declaration] Normalized ckan.devserver.multiprocess config option: 1
-2026-02-23 16:56:58,240 DEBUG [ckan.config.declaration] Normalized ckan.devserver.port config option: 5000
-2026-02-23 16:56:58,240 DEBUG [ckan.config.declaration] Normalized ckan.devserver.threaded config option: False
-2026-02-23 16:56:58,240 DEBUG [ckan.config.declaration] Normalized ckan.devserver.watch_patterns config option: []
-2026-02-23 16:56:58,240 DEBUG [ckan.config.declaration] Normalized ckan.extra_resource_fields config option: []
-2026-02-23 16:56:58,240 DEBUG [ckan.config.declaration] Normalized ckan.featured_groups config option: []
-2026-02-23 16:56:58,241 DEBUG [ckan.config.declaration] Normalized ckan.featured_orgs config option: []
-2026-02-23 16:56:58,241 DEBUG [ckan.config.declaration] Normalized ckan.feeds.limit config option: 20
-2026-02-23 16:56:58,241 DEBUG [ckan.config.declaration] Normalized ckan.group_and_organization_list_all_fields_max config option: 25
-2026-02-23 16:56:58,242 DEBUG [ckan.config.declaration] Normalized ckan.group_and_organization_list_max config option: 1000
-2026-02-23 16:56:58,242 DEBUG [ckan.config.declaration] Normalized ckan.hide_activity_from_users config option: ['$(CKAN.site_id)']
-2026-02-23 16:56:58,242 DEBUG [ckan.config.declaration] Normalized ckan.hide_version config option: False
-2026-02-23 16:56:58,242 DEBUG [ckan.config.declaration] Normalized ckan.i18n.extra_locales config option: []
-2026-02-23 16:56:58,242 DEBUG [ckan.config.declaration] Normalized ckan.i18n.rtl_languages config option: ['he', 'ar', 'fa_IR']
-2026-02-23 16:56:58,243 DEBUG [ckan.config.declaration] Normalized ckan.jobs.timeout config option: 180
-2026-02-23 16:56:58,243 DEBUG [ckan.config.declaration] Normalized ckan.locale_order config option: []
-2026-02-23 16:56:58,243 DEBUG [ckan.config.declaration] Normalized ckan.locales_filtered_out config option: []
-2026-02-23 16:56:58,243 DEBUG [ckan.config.declaration] Normalized ckan.locales_offered config option: []
-2026-02-23 16:56:58,243 DEBUG [ckan.config.declaration] Normalized ckan.max_image_size config option: 2
-2026-02-23 16:56:58,243 DEBUG [ckan.config.declaration] Normalized ckan.max_resource_size config option: 100
-2026-02-23 16:56:58,244 DEBUG [ckan.config.declaration] Normalized ckan.plugins config option: ['activity', 'datastore', 'datapusher', 'datatables_view', 'stats', 'text_view', 'image_view', 'geojson_view', 'wmts_view', 'shp_view', 'geo_view', 'PowerBI', 'SelloExcelenciaView_to_resource', 'Odata_Api', 'shp_to_geojson', 'csv_to_geojson_dataset_resource', 'csv_to_geojson_api', 'FixDateFormatPlugin']
-2026-02-23 16:56:58,244 DEBUG [ckan.config.declaration] Normalized ckan.redirect_to_login_if_not_authorized config option: True
-2026-02-23 16:56:58,244 DEBUG [ckan.config.declaration] Normalized ckan.requests.timeout config option: 5
-2026-02-23 16:56:58,244 DEBUG [ckan.config.declaration] Normalized ckan.search.default_include_private config option: True
-2026-02-23 16:56:58,244 DEBUG [ckan.config.declaration] Normalized ckan.search.remove_deleted_packages config option: True
-2026-02-23 16:56:58,245 DEBUG [ckan.config.declaration] Normalized ckan.search.rows_max config option: 1000
-2026-02-23 16:56:58,245 DEBUG [ckan.config.declaration] Normalized ckan.search.solr_allowed_query_parsers config option: []
-2026-02-23 16:56:58,245 DEBUG [ckan.config.declaration] Normalized ckan.search.solr_commit config option: True
-2026-02-23 16:56:58,245 DEBUG [ckan.config.declaration] Normalized ckan.tracking_enabled config option: False
-2026-02-23 16:56:58,245 DEBUG [ckan.config.declaration] Normalized ckan.upload.group.mimetypes config option: ['image/png', 'image/gif', 'image/jpeg']
-2026-02-23 16:56:58,246 DEBUG [ckan.config.declaration] Normalized ckan.upload.group.types config option: ['image']
-2026-02-23 16:56:58,246 DEBUG [ckan.config.declaration] Normalized ckan.upload.user.mimetypes config option: ['image/png', 'image/gif', 'image/jpeg']
-2026-02-23 16:56:58,246 DEBUG [ckan.config.declaration] Normalized ckan.upload.user.types config option: ['image']
-2026-02-23 16:56:58,246 DEBUG [ckan.config.declaration] Normalized ckan.user.last_active_interval config option: 600
-2026-02-23 16:56:58,246 DEBUG [ckan.config.declaration] Normalized ckan.user_list_limit config option: 20
-2026-02-23 16:56:58,247 DEBUG [ckan.config.declaration] Normalized ckan.valid_url_schemes config option: ['http', 'https', 'ftp']
-2026-02-23 16:56:58,247 DEBUG [ckan.config.declaration] Normalized ckan.views.default_views config option: ['image_view', 'datatables_view']
-2026-02-23 16:56:58,248 DEBUG [ckan.config.declaration] Normalized ckan.webassets.use_x_sendfile config option: False
-2026-02-23 16:56:58,248 DEBUG [ckan.config.declaration] Normalized debug config option: False
-2026-02-23 16:56:58,249 DEBUG [ckan.config.declaration] Normalized package_hide_extras config option: []
-2026-02-23 16:56:58,250 DEBUG [ckan.config.declaration] Normalized search.facets config option: ['organization', 'groups', 'tags', 'res_format', 'license_id']
-2026-02-23 16:56:58,250 DEBUG [ckan.config.declaration] Normalized search.facets.default config option: 10
-2026-02-23 16:56:58,250 DEBUG [ckan.config.declaration] Normalized search.facets.limit config option: 50
-2026-02-23 16:56:58,250 DEBUG [ckan.config.declaration] Normalized smtp.starttls config option: True
-2026-02-23 16:56:58,251 DEBUG [ckan.config.declaration] Normalized solr_timeout config option: 60
-2026-02-23 16:56:58,251 DEBUG [ckan.config.declaration] Normalized sqlalchemy.pool_pre_ping config option: True
-2026-02-23 16:56:58,251 DEBUG [ckan.config.declaration] Normalized testing config option: False
-2026-02-23 16:56:58,252 DEBUG [ckan.lib.webassets_tools] Base path /srv/app/src/ckan/ckan/public/base
-2026-02-23 16:56:58,691 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
-2026-02-23 16:56:58,943 DEBUG [ckan.logic] check access OK - get_site_user user=
-2026-02-23 16:56:59,172 DEBUG [ckan.logic] Validator function activity_type_exists from plugin activity was inserted
-2026-02-23 16:56:59,172 DEBUG [ckan.logic] Validator function object_id_validator from plugin activity was inserted
-2026-02-23 16:56:59,834 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] CSVtoGeoJSONDatasetResourcePlugin Cargado con Exito
-2026-02-23 16:56:59,835 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  Cargado con Exito
-2026-02-23 16:56:59,837 INFO  [ckanext.csvgeojson.pluginOdata] [ApiODataPluginView] Cargado con Exito
-2026-02-23 16:57:00,719 INFO  [ckanext.csvgeojson.pluginAPI] [DataJson] DataJson Cargado con Exito
-2026-02-23 16:57:00,732 INFO  [ckanext.csvgeojson.pluginFixDateFormatPlugin] [pluginFixDateFormatPlugin] FixDateFormatPlugin Cargado con Exito
-2026-02-23 16:57:01,109 DEBUG [ckan.config.declaration] Normalized ckan.datapusher.assume_task_stale_after config option: 3600
-2026-02-23 16:57:01,110 DEBUG [ckan.config.declaration] Normalized ckan.datapusher.formats config option: ['csv', 'xls', 'xlsx']
-2026-02-23 16:57:01,110 DEBUG [ckan.config.declaration] Normalized ckan.datatables.page_length_choices config option: ['20', '50', '100', '500', '1000']
-2026-02-23 16:57:01,110 DEBUG [ckan.config.declaration] Normalized ckan.max_resource_size config option: 100
-2026-02-23 16:57:01,111 DEBUG [ckan.config.declaration] Normalized smtp.starttls config option: True
-2026-02-23 16:57:01,111 DEBUG [ckan.lib.webassets_tools] Base path /srv/app/src/ckan/ckan/public/base
-2026-02-23 16:57:01,130 INFO  [ckanext.csvgeojson.pluginZip_Shp_To_Geojson] [Api_Zip_Shp_To_GeojsonView] update_config ejecutado
-2026-02-23 16:57:01,130 INFO  [ckanext.csvgeojson.pluginOdata] [ApiODataPluginView] update_config ejecutado
-2026-02-23 16:57:01,130 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView] update_config ejecutado
-2026-02-23 16:57:01,625 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
-2026-02-23 16:57:01,716 DEBUG [ckan.logic] check access OK - get_site_user user=
-2026-02-23 16:57:01,758 DEBUG [ckan.lib.redis] Using Redis at redis://redis:6379/1
-2026-02-23 16:57:01,762 DEBUG [ckan.logic] Validator function activity_type_exists from plugin activity was inserted
-2026-02-23 16:57:01,763 DEBUG [ckan.logic] Validator function object_id_validator from plugin activity was inserted
-2026-02-23 16:57:01,798 DEBUG [ckan.lib.app_globals] config `ckan.site_title` set to `Gobernación de Valle del Cauca` from config
-2026-02-23 16:57:01,801 DEBUG [ckan.lib.app_globals] config `ckan.site_logo` set to `/base/images/Gobernacion_Logo.png` from config
-2026-02-23 16:57:01,803 DEBUG [ckan.lib.app_globals] config `ckan.site_url` set to `https://hijo.midominio.com:8543` from config
-2026-02-23 16:57:01,806 DEBUG [ckan.lib.app_globals] config `ckan.site_description` set to `Bienveidos a tu plataforma de Datos Abiertos` from config
-2026-02-23 16:57:01,816 DEBUG [ckan.lib.app_globals] config `ckan.theme` set to `css/main` from config
-2026-02-23 16:57:01,818 DEBUG [ckan.lib.app_globals] config `ckan.homepage_style` set to `1` from config
-2026-02-23 16:57:01,826 DEBUG [ckan.lib.app_globals] config `ckan.theme` set to `css/main` from config
-2026-02-23 16:57:01,826 DEBUG [ckan.lib.i18n] Generating JavaScript translations
-2026-02-23 16:57:01,884 DEBUG [ckan.lib.i18n] Generating JS translation for "am"
-2026-02-23 16:57:01,953 DEBUG [ckan.lib.i18n] Generating JS translation for "ar"
-2026-02-23 16:57:02,026 DEBUG [ckan.lib.i18n] Generating JS translation for "bg"
-2026-02-23 16:57:02,100 DEBUG [ckan.lib.i18n] Generating JS translation for "bs"
-2026-02-23 16:57:02,188 DEBUG [ckan.lib.i18n] Generating JS translation for "ca"
-2026-02-23 16:57:02,252 DEBUG [ckan.lib.i18n] Generating JS translation for "cs_CZ"
-2026-02-23 16:57:02,325 DEBUG [ckan.lib.i18n] Generating JS translation for "da_DK"
-2026-02-23 16:57:02,372 DEBUG [ckan.lib.i18n] Generating JS translation for "de"
-2026-02-23 16:57:02,433 DEBUG [ckan.lib.i18n] Generating JS translation for "el"
-2026-02-23 16:57:02,602 DEBUG [ckan.lib.i18n] Generating JS translation for "en_AU"
-2026-02-23 16:57:02,685 DEBUG [ckan.lib.i18n] Generating JS translation for "en_GB"
-2026-02-23 16:57:02,776 DEBUG [ckan.lib.i18n] Generating JS translation for "es"
-2026-02-23 16:57:02,827 DEBUG [ckan.lib.i18n] Generating JS translation for "es_AR"
-2026-02-23 16:57:02,888 DEBUG [ckan.lib.i18n] Generating JS translation for "eu"
-2026-02-23 16:57:02,947 DEBUG [ckan.lib.i18n] Generating JS translation for "fa_IR"
-2026-02-23 16:57:03,015 DEBUG [ckan.lib.i18n] Generating JS translation for "fi"
-2026-02-23 16:57:03,082 DEBUG [ckan.lib.i18n] Generating JS translation for "fr"
-2026-02-23 16:57:03,128 DEBUG [ckan.lib.i18n] Generating JS translation for "gl"
-2026-02-23 16:57:03,178 DEBUG [ckan.lib.i18n] Generating JS translation for "gl_ES"
-2026-02-23 16:57:03,233 DEBUG [ckan.lib.i18n] Generating JS translation for "he"
-2026-02-23 16:57:03,284 DEBUG [ckan.lib.i18n] Generating JS translation for "hr"
-2026-02-23 16:57:03,342 DEBUG [ckan.lib.i18n] Generating JS translation for "hu"
-2026-02-23 16:57:03,493 DEBUG [ckan.lib.i18n] Generating JS translation for "id"
-2026-02-23 16:57:03,547 DEBUG [ckan.lib.i18n] Generating JS translation for "is"
-2026-02-23 16:57:03,594 DEBUG [ckan.lib.i18n] Generating JS translation for "it"
-2026-02-23 16:57:03,637 DEBUG [ckan.lib.i18n] Generating JS translation for "ja"
-2026-02-23 16:57:03,680 DEBUG [ckan.lib.i18n] Generating JS translation for "km"
-2026-02-23 16:57:03,720 DEBUG [ckan.lib.i18n] Generating JS translation for "ko_KR"
-2026-02-23 16:57:03,766 DEBUG [ckan.lib.i18n] Generating JS translation for "lt"
-2026-02-23 16:57:03,816 DEBUG [ckan.lib.i18n] Generating JS translation for "lv"
-2026-02-23 16:57:03,884 DEBUG [ckan.lib.i18n] Generating JS translation for "mk"
-2026-02-23 16:57:03,962 DEBUG [ckan.lib.i18n] Generating JS translation for "mn_MN"
-2026-02-23 16:57:04,010 DEBUG [ckan.lib.i18n] Generating JS translation for "my_MM"
-2026-02-23 16:57:04,069 DEBUG [ckan.lib.i18n] Generating JS translation for "nb_NO"
-2026-02-23 16:57:04,166 DEBUG [ckan.lib.i18n] Generating JS translation for "ne"
-2026-02-23 16:57:04,225 DEBUG [ckan.lib.i18n] Generating JS translation for "nl"
-2026-02-23 16:57:04,277 DEBUG [ckan.lib.i18n] Generating JS translation for "no"
-2026-02-23 16:57:04,469 DEBUG [ckan.lib.i18n] Generating JS translation for "pl"
-2026-02-23 16:57:04,513 DEBUG [ckan.lib.i18n] Generating JS translation for "pt_BR"
-2026-02-23 16:57:04,587 DEBUG [ckan.lib.i18n] Generating JS translation for "pt_PT"
-2026-02-23 16:57:04,666 DEBUG [ckan.lib.i18n] Generating JS translation for "ro"
-2026-02-23 16:57:04,723 DEBUG [ckan.lib.i18n] Generating JS translation for "ru"
-2026-02-23 16:57:04,777 DEBUG [ckan.lib.i18n] Generating JS translation for "sk"
-2026-02-23 16:57:04,824 DEBUG [ckan.lib.i18n] Generating JS translation for "sl"
-2026-02-23 16:57:04,870 DEBUG [ckan.lib.i18n] Generating JS translation for "sq"
-2026-02-23 16:57:04,999 DEBUG [ckan.lib.i18n] Generating JS translation for "sr"
-2026-02-23 16:57:05,095 DEBUG [ckan.lib.i18n] Generating JS translation for "sr_Latn"
-2026-02-23 16:57:05,184 DEBUG [ckan.lib.i18n] Generating JS translation for "sv"
-2026-02-23 16:57:05,267 DEBUG [ckan.lib.i18n] Generating JS translation for "th"
-2026-02-23 16:57:05,339 DEBUG [ckan.lib.i18n] Generating JS translation for "tl"
-2026-02-23 16:57:05,398 DEBUG [ckan.lib.i18n] Generating JS translation for "tr"
-2026-02-23 16:57:05,439 DEBUG [ckan.lib.i18n] Generating JS translation for "uk"
-2026-02-23 16:57:05,628 DEBUG [ckan.lib.i18n] Generating JS translation for "uk_UA"
-2026-02-23 16:57:05,693 DEBUG [ckan.lib.i18n] Generating JS translation for "vi"
-2026-02-23 16:57:05,780 DEBUG [ckan.lib.i18n] Generating JS translation for "zh_Hans_CN"
-2026-02-23 16:57:05,838 DEBUG [ckan.lib.i18n] Generating JS translation for "zh_Hant_TW"
-2026-02-23 16:57:05,885 DEBUG [ckan.lib.i18n] All JS translation are up to date
-2026-02-23 16:57:05,906 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'admin'
-2026-02-23 16:57:05,933 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'api'
-2026-02-23 16:57:05,937 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'dashboard'
-2026-02-23 16:57:05,964 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'feeds'
-2026-02-23 16:57:05,982 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'group'
-2026-02-23 16:57:05,998 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'organization'
-2026-02-23 16:57:06,008 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'home'
-2026-02-23 16:57:06,034 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'prefixed_resource'
-2026-02-23 16:57:06,052 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'user'
-2026-02-23 16:57:06,057 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'util'
-2026-02-23 16:57:06,081 INFO  [ckanext.csvgeojson.pluginAPI] [DataJson] get_blueprint_geojson ejecutado
-2026-02-23 16:57:06,091 INFO  [ckanext.csvgeojson.pluginOdata] [ApiODataPluginView] get_blueprint ejecutado
-2026-02-23 16:57:06,094 INFO  [ckanext.csvgeojson.pluginZip_Shp_To_Geojson] [ApiZipShpToGeojsonView] get_blueprint ejecutado
-2026-02-23 16:57:06,099 WARNI [ckan.config.middleware.flask_app] Extensions are excluded from CSRF protection! We allow extensions to run without CSRF protection but it will be forced future releases. Read the documentation for more information on how to add CSRF protection to your extension.
-2026-02-23 16:57:06,100 INFO  [ckanext.csvgeojson.pluginAPI] [DataJson] get_blueprint_geojson ejecutado
-2026-02-23 16:57:06,100 INFO  [ckanext.csvgeojson.pluginOdata] [ApiODataPluginView] get_blueprint ejecutado
-2026-02-23 16:57:06,100 INFO  [ckanext.csvgeojson.pluginZip_Shp_To_Geojson] [ApiZipShpToGeojsonView] get_blueprint ejecutado
-2026-02-23 16:57:06,217 INFO  [ckan.cli.server] Running CKAN on http://ckan:5000
-2026-02-23 16:57:08,237 INFO  [ckan.cli] Using configuration file /srv/app/ckan.ini
-2026-02-23 16:57:08,237 INFO  [ckan.config.environment] Loading static files from public
-2026-02-23 16:57:08,950 DEBUG [ckan.config.declaration] Normalized REMEMBER_COOKIE_DURATION config option: 31536000
-2026-02-23 16:57:08,950 DEBUG [ckan.config.declaration] Normalized REMEMBER_COOKIE_HTTPONLY config option: True
-2026-02-23 16:57:08,950 DEBUG [ckan.config.declaration] Normalized REMEMBER_COOKIE_REFRESH_EACH_REQUEST config option: False
-2026-02-23 16:57:08,950 DEBUG [ckan.config.declaration] Normalized REMEMBER_COOKIE_SECURE config option: False
-2026-02-23 16:57:08,950 DEBUG [ckan.config.declaration] Normalized WTF_CSRF_CHECK_DEFAULT config option: True
-2026-02-23 16:57:08,950 DEBUG [ckan.config.declaration] Normalized WTF_CSRF_ENABLED config option: True
-2026-02-23 16:57:08,951 DEBUG [ckan.config.declaration] Normalized WTF_CSRF_HEADERS config option: ['X-CSRFToken', 'X-CSRF-Token']
-2026-02-23 16:57:08,951 DEBUG [ckan.config.declaration] Normalized WTF_CSRF_METHODS config option: ['POST', 'PUT', 'PATCH', 'DELETE']
-2026-02-23 16:57:08,951 DEBUG [ckan.config.declaration] Normalized WTF_CSRF_SSL_STRICT config option: True
-2026-02-23 16:57:08,951 DEBUG [ckan.config.declaration] Normalized WTF_CSRF_TIME_LIMIT config option: 3600
-2026-02-23 16:57:08,951 DEBUG [ckan.config.declaration] Normalized WTF_I18N_ENABLED config option: True
-2026-02-23 16:57:08,952 DEBUG [ckan.config.declaration] Normalized api_token.nbytes config option: 32
-2026-02-23 16:57:08,952 DEBUG [ckan.config.declaration] Normalized beaker.session.auto config option: False
-2026-02-23 16:57:08,952 DEBUG [ckan.config.declaration] Normalized beaker.session.cookie_expires config option: False
-2026-02-23 16:57:08,952 DEBUG [ckan.config.declaration] Normalized beaker.session.httponly config option: True
-2026-02-23 16:57:08,952 DEBUG [ckan.config.declaration] Normalized beaker.session.save_accessed_time config option: True
-2026-02-23 16:57:08,952 DEBUG [ckan.config.declaration] Normalized beaker.session.secure config option: False
-2026-02-23 16:57:08,953 DEBUG [ckan.config.declaration] Normalized beaker.session.timeout config option: None
-2026-02-23 16:57:08,953 DEBUG [ckan.config.declaration] Normalized ckan.activity_list_limit config option: 31
-2026-02-23 16:57:08,953 DEBUG [ckan.config.declaration] Normalized ckan.activity_list_limit_max config option: 100
-2026-02-23 16:57:08,953 DEBUG [ckan.config.declaration] Normalized ckan.activity_streams_email_notifications config option: False
-2026-02-23 16:57:08,953 DEBUG [ckan.config.declaration] Normalized ckan.activity_streams_enabled config option: True
-2026-02-23 16:57:08,953 DEBUG [ckan.config.declaration] Normalized ckan.admin_tabs config option: {}
-2026-02-23 16:57:08,954 DEBUG [ckan.config.declaration] Normalized ckan.auth.allow_admin_collaborators config option: False
-2026-02-23 16:57:08,954 DEBUG [ckan.config.declaration] Normalized ckan.auth.allow_collaborators_to_change_owner_org config option: False
-2026-02-23 16:57:08,954 DEBUG [ckan.config.declaration] Normalized ckan.auth.allow_dataset_collaborators config option: False
-2026-02-23 16:57:08,954 DEBUG [ckan.config.declaration] Normalized ckan.auth.anon_create_dataset config option: True
-2026-02-23 16:57:08,954 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_dataset_if_not_in_organization config option: True
-2026-02-23 16:57:08,954 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_default_api_keys config option: False
-2026-02-23 16:57:08,955 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_unowned_dataset config option: True
-2026-02-23 16:57:08,955 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_user_via_api config option: False
-2026-02-23 16:57:08,955 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_user_via_web config option: True
-2026-02-23 16:57:08,955 DEBUG [ckan.config.declaration] Normalized ckan.auth.enable_cookie_auth_in_api config option: True
-2026-02-23 16:57:08,955 DEBUG [ckan.config.declaration] Normalized ckan.auth.public_activity_stream_detail config option: False
-2026-02-23 16:57:08,955 DEBUG [ckan.config.declaration] Normalized ckan.auth.public_user_details config option: True
-2026-02-23 16:57:08,956 DEBUG [ckan.config.declaration] Normalized ckan.auth.reveal_private_datasets config option: True
-2026-02-23 16:57:08,956 DEBUG [ckan.config.declaration] Normalized ckan.auth.roles_that_cascade_to_sub_groups config option: ['admin']
-2026-02-23 16:57:08,957 DEBUG [ckan.config.declaration] Normalized ckan.auth.user_create_groups config option: True
-2026-02-23 16:57:08,957 DEBUG [ckan.config.declaration] Normalized ckan.auth.user_create_organizations config option: True
-2026-02-23 16:57:08,958 DEBUG [ckan.config.declaration] Normalized ckan.auth.user_delete_groups config option: True
-2026-02-23 16:57:08,958 DEBUG [ckan.config.declaration] Normalized ckan.auth.user_delete_organizations config option: True
-2026-02-23 16:57:08,959 DEBUG [ckan.config.declaration] Normalized ckan.cache_enabled config option: False
-2026-02-23 16:57:08,959 DEBUG [ckan.config.declaration] Normalized ckan.cache_expires config option: 0
-2026-02-23 16:57:08,959 DEBUG [ckan.config.declaration] Normalized ckan.cors.origin_allow_all config option: False
-2026-02-23 16:57:08,959 DEBUG [ckan.config.declaration] Normalized ckan.cors.origin_whitelist config option: []
-2026-02-23 16:57:08,959 DEBUG [ckan.config.declaration] Normalized ckan.csrf_protection.ignore_extensions config option: True
-2026-02-23 16:57:08,960 DEBUG [ckan.config.declaration] Normalized ckan.dataset.create_on_ui_requires_resources config option: True
-2026-02-23 16:57:08,960 DEBUG [ckan.config.declaration] Normalized ckan.datasets_per_page config option: 20
-2026-02-23 16:57:08,960 DEBUG [ckan.config.declaration] Normalized ckan.debug_supress_header config option: False
-2026-02-23 16:57:08,960 DEBUG [ckan.config.declaration] Normalized ckan.devserver.multiprocess config option: 1
-2026-02-23 16:57:08,960 DEBUG [ckan.config.declaration] Normalized ckan.devserver.port config option: 5000
-2026-02-23 16:57:08,960 DEBUG [ckan.config.declaration] Normalized ckan.devserver.threaded config option: False
-2026-02-23 16:57:08,961 DEBUG [ckan.config.declaration] Normalized ckan.devserver.watch_patterns config option: []
-2026-02-23 16:57:08,961 DEBUG [ckan.config.declaration] Normalized ckan.extra_resource_fields config option: []
-2026-02-23 16:57:08,961 DEBUG [ckan.config.declaration] Normalized ckan.featured_groups config option: []
-2026-02-23 16:57:08,961 DEBUG [ckan.config.declaration] Normalized ckan.featured_orgs config option: []
-2026-02-23 16:57:08,961 DEBUG [ckan.config.declaration] Normalized ckan.feeds.limit config option: 20
-2026-02-23 16:57:08,962 DEBUG [ckan.config.declaration] Normalized ckan.group_and_organization_list_all_fields_max config option: 25
-2026-02-23 16:57:08,962 DEBUG [ckan.config.declaration] Normalized ckan.group_and_organization_list_max config option: 1000
-2026-02-23 16:57:08,962 DEBUG [ckan.config.declaration] Normalized ckan.hide_activity_from_users config option: ['$(CKAN.site_id)']
-2026-02-23 16:57:08,962 DEBUG [ckan.config.declaration] Normalized ckan.hide_version config option: False
-2026-02-23 16:57:08,962 DEBUG [ckan.config.declaration] Normalized ckan.i18n.extra_locales config option: []
-2026-02-23 16:57:08,962 DEBUG [ckan.config.declaration] Normalized ckan.i18n.rtl_languages config option: ['he', 'ar', 'fa_IR']
-2026-02-23 16:57:08,963 DEBUG [ckan.config.declaration] Normalized ckan.jobs.timeout config option: 180
-2026-02-23 16:57:08,963 DEBUG [ckan.config.declaration] Normalized ckan.locale_order config option: []
-2026-02-23 16:57:08,963 DEBUG [ckan.config.declaration] Normalized ckan.locales_filtered_out config option: []
-2026-02-23 16:57:08,963 DEBUG [ckan.config.declaration] Normalized ckan.locales_offered config option: []
-2026-02-23 16:57:08,963 DEBUG [ckan.config.declaration] Normalized ckan.max_image_size config option: 2
-2026-02-23 16:57:08,963 DEBUG [ckan.config.declaration] Normalized ckan.max_resource_size config option: 100
-2026-02-23 16:57:08,964 DEBUG [ckan.config.declaration] Normalized ckan.plugins config option: ['activity', 'datastore', 'datapusher', 'datatables_view', 'stats', 'text_view', 'image_view', 'geojson_view', 'wmts_view', 'shp_view', 'geo_view', 'PowerBI', 'SelloExcelenciaView_to_resource', 'Odata_Api', 'shp_to_geojson', 'csv_to_geojson_dataset_resource', 'csv_to_geojson_api', 'FixDateFormatPlugin']
-2026-02-23 16:57:08,964 DEBUG [ckan.config.declaration] Normalized ckan.redirect_to_login_if_not_authorized config option: True
-2026-02-23 16:57:08,964 DEBUG [ckan.config.declaration] Normalized ckan.requests.timeout config option: 5
-2026-02-23 16:57:08,964 DEBUG [ckan.config.declaration] Normalized ckan.search.default_include_private config option: True
-2026-02-23 16:57:08,964 DEBUG [ckan.config.declaration] Normalized ckan.search.remove_deleted_packages config option: True
-2026-02-23 16:57:08,964 DEBUG [ckan.config.declaration] Normalized ckan.search.rows_max config option: 1000
-2026-02-23 16:57:08,965 DEBUG [ckan.config.declaration] Normalized ckan.search.solr_allowed_query_parsers config option: []
-2026-02-23 16:57:08,965 DEBUG [ckan.config.declaration] Normalized ckan.search.solr_commit config option: True
-2026-02-23 16:57:08,965 DEBUG [ckan.config.declaration] Normalized ckan.tracking_enabled config option: False
-2026-02-23 16:57:08,965 DEBUG [ckan.config.declaration] Normalized ckan.upload.group.mimetypes config option: ['image/png', 'image/gif', 'image/jpeg']
-2026-02-23 16:57:08,965 DEBUG [ckan.config.declaration] Normalized ckan.upload.group.types config option: ['image']
-2026-02-23 16:57:08,966 DEBUG [ckan.config.declaration] Normalized ckan.upload.user.mimetypes config option: ['image/png', 'image/gif', 'image/jpeg']
-2026-02-23 16:57:08,966 DEBUG [ckan.config.declaration] Normalized ckan.upload.user.types config option: ['image']
-2026-02-23 16:57:08,966 DEBUG [ckan.config.declaration] Normalized ckan.user.last_active_interval config option: 600
-2026-02-23 16:57:08,966 DEBUG [ckan.config.declaration] Normalized ckan.user_list_limit config option: 20
-2026-02-23 16:57:08,966 DEBUG [ckan.config.declaration] Normalized ckan.valid_url_schemes config option: ['http', 'https', 'ftp']
-2026-02-23 16:57:08,966 DEBUG [ckan.config.declaration] Normalized ckan.views.default_views config option: ['image_view', 'datatables_view']
-2026-02-23 16:57:08,967 DEBUG [ckan.config.declaration] Normalized ckan.webassets.use_x_sendfile config option: False
-2026-02-23 16:57:08,967 DEBUG [ckan.config.declaration] Normalized debug config option: False
-2026-02-23 16:57:08,967 DEBUG [ckan.config.declaration] Normalized package_hide_extras config option: []
-2026-02-23 16:57:08,967 DEBUG [ckan.config.declaration] Normalized search.facets config option: ['organization', 'groups', 'tags', 'res_format', 'license_id']
-2026-02-23 16:57:08,967 DEBUG [ckan.config.declaration] Normalized search.facets.default config option: 10
-2026-02-23 16:57:08,968 DEBUG [ckan.config.declaration] Normalized search.facets.limit config option: 50
-2026-02-23 16:57:08,968 DEBUG [ckan.config.declaration] Normalized smtp.starttls config option: True
-2026-02-23 16:57:08,968 DEBUG [ckan.config.declaration] Normalized solr_timeout config option: 60
-2026-02-23 16:57:08,968 DEBUG [ckan.config.declaration] Normalized sqlalchemy.pool_pre_ping config option: True
-2026-02-23 16:57:08,968 DEBUG [ckan.config.declaration] Normalized testing config option: False
-2026-02-23 16:57:08,969 DEBUG [ckan.lib.webassets_tools] Base path /srv/app/src/ckan/ckan/public/base
-2026-02-23 16:57:09,081 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
-2026-02-23 16:57:09,220 DEBUG [ckan.logic] check access OK - get_site_user user=
-2026-02-23 16:57:09,346 DEBUG [ckan.logic] Validator function activity_type_exists from plugin activity was inserted
-2026-02-23 16:57:09,346 DEBUG [ckan.logic] Validator function object_id_validator from plugin activity was inserted
-2026-02-23 16:57:10,012 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] CSVtoGeoJSONDatasetResourcePlugin Cargado con Exito
-2026-02-23 16:57:10,012 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  Cargado con Exito
-2026-02-23 16:57:10,014 INFO  [ckanext.csvgeojson.pluginOdata] [ApiODataPluginView] Cargado con Exito
-2026-02-23 16:57:10,633 INFO  [ckanext.csvgeojson.pluginAPI] [DataJson] DataJson Cargado con Exito
-2026-02-23 16:57:10,641 INFO  [ckanext.csvgeojson.pluginFixDateFormatPlugin] [pluginFixDateFormatPlugin] FixDateFormatPlugin Cargado con Exito
-2026-02-23 16:57:11,078 DEBUG [ckan.config.declaration] Normalized ckan.datapusher.assume_task_stale_after config option: 3600
-2026-02-23 16:57:11,079 DEBUG [ckan.config.declaration] Normalized ckan.datapusher.formats config option: ['csv', 'xls', 'xlsx']
-2026-02-23 16:57:11,080 DEBUG [ckan.config.declaration] Normalized ckan.datatables.page_length_choices config option: ['20', '50', '100', '500', '1000']
-2026-02-23 16:57:11,080 DEBUG [ckan.config.declaration] Normalized ckan.max_resource_size config option: 100
-2026-02-23 16:57:11,081 DEBUG [ckan.config.declaration] Normalized smtp.starttls config option: True
-2026-02-23 16:57:11,082 DEBUG [ckan.lib.webassets_tools] Base path /srv/app/src/ckan/ckan/public/base
-2026-02-23 16:57:11,102 INFO  [ckanext.csvgeojson.pluginZip_Shp_To_Geojson] [Api_Zip_Shp_To_GeojsonView] update_config ejecutado
-2026-02-23 16:57:11,102 INFO  [ckanext.csvgeojson.pluginOdata] [ApiODataPluginView] update_config ejecutado
-2026-02-23 16:57:11,102 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView] update_config ejecutado
-2026-02-23 16:57:11,599 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
-2026-02-23 16:57:11,701 DEBUG [ckan.logic] check access OK - get_site_user user=
-2026-02-23 16:57:11,739 DEBUG [ckan.lib.redis] Using Redis at redis://redis:6379/1
-2026-02-23 16:57:11,743 DEBUG [ckan.logic] Validator function activity_type_exists from plugin activity was inserted
-2026-02-23 16:57:11,743 DEBUG [ckan.logic] Validator function object_id_validator from plugin activity was inserted
-2026-02-23 16:57:11,779 DEBUG [ckan.lib.app_globals] config `ckan.site_title` set to `Gobernación de Valle del Cauca` from config
-2026-02-23 16:57:11,782 DEBUG [ckan.lib.app_globals] config `ckan.site_logo` set to `/base/images/Gobernacion_Logo.png` from config
-2026-02-23 16:57:11,784 DEBUG [ckan.lib.app_globals] config `ckan.site_url` set to `https://hijo.midominio.com:8543` from config
-2026-02-23 16:57:11,787 DEBUG [ckan.lib.app_globals] config `ckan.site_description` set to `Bienveidos a tu plataforma de Datos Abiertos` from config
-2026-02-23 16:57:11,796 DEBUG [ckan.lib.app_globals] config `ckan.theme` set to `css/main` from config
-2026-02-23 16:57:11,799 DEBUG [ckan.lib.app_globals] config `ckan.homepage_style` set to `1` from config
-2026-02-23 16:57:11,806 DEBUG [ckan.lib.app_globals] config `ckan.theme` set to `css/main` from config
-2026-02-23 16:57:11,806 DEBUG [ckan.lib.i18n] Generating JavaScript translations
-2026-02-23 16:57:11,855 DEBUG [ckan.lib.i18n] All JS translation are up to date
-2026-02-23 16:57:11,864 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'admin'
-2026-02-23 16:57:11,889 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'api'
-2026-02-23 16:57:11,894 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'dashboard'
-2026-02-23 16:57:11,916 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'feeds'
-2026-02-23 16:57:11,933 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'group'
-2026-02-23 16:57:11,947 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'organization'
-2026-02-23 16:57:11,956 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'home'
-2026-02-23 16:57:11,976 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'prefixed_resource'
-2026-02-23 16:57:12,001 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'user'
-2026-02-23 16:57:12,003 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'util'
-2026-02-23 16:57:12,027 INFO  [ckanext.csvgeojson.pluginAPI] [DataJson] get_blueprint_geojson ejecutado
-2026-02-23 16:57:12,034 INFO  [ckanext.csvgeojson.pluginOdata] [ApiODataPluginView] get_blueprint ejecutado
-2026-02-23 16:57:12,035 INFO  [ckanext.csvgeojson.pluginZip_Shp_To_Geojson] [ApiZipShpToGeojsonView] get_blueprint ejecutado
-2026-02-23 16:57:12,038 WARNI [ckan.config.middleware.flask_app] Extensions are excluded from CSRF protection! We allow extensions to run without CSRF protection but it will be forced future releases. Read the documentation for more information on how to add CSRF protection to your extension.
-2026-02-23 16:57:12,040 INFO  [ckanext.csvgeojson.pluginAPI] [DataJson] get_blueprint_geojson ejecutado
-2026-02-23 16:57:12,041 INFO  [ckanext.csvgeojson.pluginOdata] [ApiODataPluginView] get_blueprint ejecutado
-2026-02-23 16:57:12,041 INFO  [ckanext.csvgeojson.pluginZip_Shp_To_Geojson] [ApiZipShpToGeojsonView] get_blueprint ejecutado
-2026-02-23 16:57:12,178 INFO  [ckan.cli.server] Running CKAN on http://ckan:5000
-2026-02-23 16:57:14,207 DEBUG [ckan.views.api] Request data extracted: {}
-2026-02-23 16:57:14,212 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__', wd=375, mask=IN_CREATE|IN_ISDIR, cookie=0, name=__pycache__>
-2026-02-23 16:57:14,213 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/__init__.cpython-310.pyc.131547532081584', wd=3981, mask=IN_CREATE, cookie=0, name=__init__.cpython-310.pyc.131547532081584>
-2026-02-23 16:57:14,214 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/__init__.cpython-310.pyc.131547532081584', wd=3981, mask=IN_CREATE, cookie=0, name=__init__.cpython-310.pyc.131547532081584>
-2026-02-23 16:57:14,215 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/__init__.cpython-310.pyc.131547532081584', wd=3981, mask=IN_MODIFY, cookie=0, name=__init__.cpython-310.pyc.131547532081584>
-2026-02-23 16:57:14,217 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/__init__.cpython-310.pyc.131547532081584', wd=3981, mask=IN_CLOSE_WRITE, cookie=0, name=__init__.cpython-310.pyc.131547532081584>
-2026-02-23 16:57:14,218 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/__init__.cpython-310.pyc.131547532081584', wd=3981, mask=IN_MOVED_FROM, cookie=7927, name=__init__.cpython-310.pyc.131547532081584>
-2026-02-23 16:57:14,218 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/__init__.cpython-310.pyc', wd=3981, mask=IN_MOVED_TO, cookie=7927, name=__init__.cpython-310.pyc>
-2026-02-23 16:57:14,229 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/get.cpython-310.pyc.131547509439536', wd=3981, mask=IN_CREATE, cookie=0, name=get.cpython-310.pyc.131547509439536>
-2026-02-23 16:57:14,229 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/get.cpython-310.pyc.131547509439536', wd=3981, mask=IN_MODIFY, cookie=0, name=get.cpython-310.pyc.131547509439536>
-2026-02-23 16:57:14,231 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/get.cpython-310.pyc.131547509439536', wd=3981, mask=IN_CLOSE_WRITE, cookie=0, name=get.cpython-310.pyc.131547509439536>
-2026-02-23 16:57:14,231 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/get.cpython-310.pyc.131547509439536', wd=3981, mask=IN_MOVED_FROM, cookie=7929, name=get.cpython-310.pyc.131547509439536>
-2026-02-23 16:57:14,232 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/get.cpython-310.pyc', wd=3981, mask=IN_MOVED_TO, cookie=7929, name=get.cpython-310.pyc>
-2026-02-23 16:57:14,240 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/create.cpython-310.pyc.131547509439408', wd=3981, mask=IN_CREATE, cookie=0, name=create.cpython-310.pyc.131547509439408>
-2026-02-23 16:57:14,242 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/create.cpython-310.pyc.131547509439408', wd=3981, mask=IN_MODIFY, cookie=0, name=create.cpython-310.pyc.131547509439408>
-2026-02-23 16:57:14,244 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/create.cpython-310.pyc.131547509439408', wd=3981, mask=IN_CLOSE_WRITE, cookie=0, name=create.cpython-310.pyc.131547509439408>
-2026-02-23 16:57:14,245 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/create.cpython-310.pyc.131547509439408', wd=3981, mask=IN_MOVED_FROM, cookie=7931, name=create.cpython-310.pyc.131547509439408>
-2026-02-23 16:57:14,246 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/create.cpython-310.pyc', wd=3981, mask=IN_MOVED_TO, cookie=7931, name=create.cpython-310.pyc>
-2026-02-23 16:57:14,252 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/update.cpython-310.pyc.131547509858224', wd=3981, mask=IN_CREATE, cookie=0, name=update.cpython-310.pyc.131547509858224>
-2026-02-23 16:57:14,256 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/update.cpython-310.pyc.131547509858224', wd=3981, mask=IN_MODIFY, cookie=0, name=update.cpython-310.pyc.131547509858224>
-2026-02-23 16:57:14,258 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/update.cpython-310.pyc.131547509858224', wd=3981, mask=IN_CLOSE_WRITE, cookie=0, name=update.cpython-310.pyc.131547509858224>
-2026-02-23 16:57:14,261 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/update.cpython-310.pyc.131547509858224', wd=3981, mask=IN_MOVED_FROM, cookie=7933, name=update.cpython-310.pyc.131547509858224>
-2026-02-23 16:57:14,262 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/update.cpython-310.pyc', wd=3981, mask=IN_MOVED_TO, cookie=7933, name=update.cpython-310.pyc>
-2026-02-23 16:57:14,266 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/delete.cpython-310.pyc.131547509858224', wd=3981, mask=IN_CREATE, cookie=0, name=delete.cpython-310.pyc.131547509858224>
-2026-02-23 16:57:14,266 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/delete.cpython-310.pyc.131547509858224', wd=3981, mask=IN_MODIFY, cookie=0, name=delete.cpython-310.pyc.131547509858224>
-2026-02-23 16:57:14,268 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/delete.cpython-310.pyc.131547509858224', wd=3981, mask=IN_CLOSE_WRITE, cookie=0, name=delete.cpython-310.pyc.131547509858224>
-2026-02-23 16:57:14,269 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/delete.cpython-310.pyc.131547509858224', wd=3981, mask=IN_MOVED_FROM, cookie=7935, name=delete.cpython-310.pyc.131547509858224>
-2026-02-23 16:57:14,270 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/delete.cpython-310.pyc', wd=3981, mask=IN_MOVED_TO, cookie=7935, name=delete.cpython-310.pyc>
-2026-02-23 16:57:14,274 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/patch.cpython-310.pyc.131547509858736', wd=3981, mask=IN_CREATE, cookie=0, name=patch.cpython-310.pyc.131547509858736>
-2026-02-23 16:57:14,275 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/patch.cpython-310.pyc.131547509858736', wd=3981, mask=IN_MODIFY, cookie=0, name=patch.cpython-310.pyc.131547509858736>
-2026-02-23 16:57:14,276 DEBUG [ckan.logic] check access OK - status_show user=
-2026-02-23 16:57:14,277 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/patch.cpython-310.pyc.131547509858736', wd=3981, mask=IN_CLOSE_WRITE, cookie=0, name=patch.cpython-310.pyc.131547509858736>
-2026-02-23 16:57:14,278 INFO  [ckan.config.middleware.flask_app]  200 /api/3/action/status_show render time 0.088 seconds
-2026-02-23 16:57:14,279 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/patch.cpython-310.pyc.131547509858736', wd=3981, mask=IN_MOVED_FROM, cookie=7937, name=patch.cpython-310.pyc.131547509858736>
-2026-02-23 16:57:14,281 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/patch.cpython-310.pyc', wd=3981, mask=IN_MOVED_TO, cookie=7937, name=patch.cpython-310.pyc>
+2026-02-25 19:37:02,305 DEBUG [ckan.config.declaration] Normalized ckan.activity_streams_enabled config option: True
+2026-02-25 19:37:02,305 DEBUG [ckan.config.declaration] Normalized ckan.admin_tabs config option: {}
+2026-02-25 19:37:02,305 DEBUG [ckan.config.declaration] Normalized ckan.auth.allow_admin_collaborators config option: False
+2026-02-25 19:37:02,305 DEBUG [ckan.config.declaration] Normalized ckan.auth.allow_collaborators_to_change_owner_org config option: False
+2026-02-25 19:37:02,305 DEBUG [ckan.config.declaration] Normalized ckan.auth.allow_dataset_collaborators config option: False
+2026-02-25 19:37:02,306 DEBUG [ckan.config.declaration] Normalized ckan.auth.anon_create_dataset config option: True
+2026-02-25 19:37:02,306 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_dataset_if_not_in_organization config option: True
+2026-02-25 19:37:02,306 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_default_api_keys config option: False
+2026-02-25 19:37:02,306 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_unowned_dataset config option: True
+2026-02-25 19:37:02,306 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_user_via_api config option: False
+2026-02-25 19:37:02,306 DEBUG [ckan.config.declaration] Normalized ckan.auth.create_user_via_web config option: True
+2026-02-25 19:37:02,306 DEBUG [ckan.config.declaration] Normalized ckan.auth.enable_cookie_auth_in_api config option: True
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.auth.public_activity_stream_detail config option: False
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.auth.public_user_details config option: True
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.auth.reveal_private_datasets config option: True
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.auth.roles_that_cascade_to_sub_groups config option: ['admin']
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.auth.user_create_groups config option: True
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.auth.user_create_organizations config option: True
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.auth.user_delete_groups config option: True
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.auth.user_delete_organizations config option: True
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.cache_enabled config option: False
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.cache_expires config option: 0
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.cors.origin_allow_all config option: False
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.cors.origin_whitelist config option: []
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.csrf_protection.ignore_extensions config option: True
+2026-02-25 19:37:02,307 DEBUG [ckan.config.declaration] Normalized ckan.dataset.create_on_ui_requires_resources config option: True
+2026-02-25 19:37:02,308 DEBUG [ckan.config.declaration] Normalized ckan.datasets_per_page config option: 20
+2026-02-25 19:37:02,308 DEBUG [ckan.config.declaration] Normalized ckan.debug_supress_header config option: False
+2026-02-25 19:37:02,308 DEBUG [ckan.config.declaration] Normalized ckan.devserver.multiprocess config option: 1
+2026-02-25 19:37:02,308 DEBUG [ckan.config.declaration] Normalized ckan.devserver.port config option: 5000
+2026-02-25 19:37:02,308 DEBUG [ckan.config.declaration] Normalized ckan.devserver.threaded config option: False
+2026-02-25 19:37:02,309 DEBUG [ckan.config.declaration] Normalized ckan.devserver.watch_patterns config option: []
+2026-02-25 19:37:02,309 DEBUG [ckan.config.declaration] Normalized ckan.extra_resource_fields config option: []
+2026-02-25 19:37:02,309 DEBUG [ckan.config.declaration] Normalized ckan.featured_groups config option: []
+2026-02-25 19:37:02,309 DEBUG [ckan.config.declaration] Normalized ckan.featured_orgs config option: []
+2026-02-25 19:37:02,310 DEBUG [ckan.config.declaration] Normalized ckan.feeds.limit config option: 20
+2026-02-25 19:37:02,310 DEBUG [ckan.config.declaration] Normalized ckan.group_and_organization_list_all_fields_max config option: 25
+2026-02-25 19:37:02,310 DEBUG [ckan.config.declaration] Normalized ckan.group_and_organization_list_max config option: 1000
+2026-02-25 19:37:02,310 DEBUG [ckan.config.declaration] Normalized ckan.hide_activity_from_users config option: ['$(CKAN.site_id)']
+2026-02-25 19:37:02,310 DEBUG [ckan.config.declaration] Normalized ckan.hide_version config option: False
+2026-02-25 19:37:02,310 DEBUG [ckan.config.declaration] Normalized ckan.i18n.extra_locales config option: []
+2026-02-25 19:37:02,310 DEBUG [ckan.config.declaration] Normalized ckan.i18n.rtl_languages config option: ['he', 'ar', 'fa_IR']
+2026-02-25 19:37:02,311 DEBUG [ckan.config.declaration] Normalized ckan.jobs.timeout config option: 180
+2026-02-25 19:37:02,311 DEBUG [ckan.config.declaration] Normalized ckan.locale_order config option: []
+2026-02-25 19:37:02,311 DEBUG [ckan.config.declaration] Normalized ckan.locales_filtered_out config option: []
+2026-02-25 19:37:02,311 DEBUG [ckan.config.declaration] Normalized ckan.locales_offered config option: []
+2026-02-25 19:37:02,311 DEBUG [ckan.config.declaration] Normalized ckan.max_image_size config option: 2
+2026-02-25 19:37:02,311 DEBUG [ckan.config.declaration] Normalized ckan.max_resource_size config option: 100
+2026-02-25 19:37:02,311 DEBUG [ckan.config.declaration] Normalized ckan.plugins config option: ['activity', 'datastore', 'datapusher', 'datatables_view', 'stats', 'text_view', 'image_view', 'geojson_view', 'wmts_view', 'shp_view', 'geo_view', 'PowerBI', 'SelloExcelenciaView_to_resource', 'Odata_Api', 'shp_to_geojson', 'csv_to_geojson_dataset_resource', 'csv_to_geojson_api', 'FixDateFormatPlugin']
+2026-02-25 19:37:02,311 DEBUG [ckan.config.declaration] Normalized ckan.redirect_to_login_if_not_authorized config option: True
+2026-02-25 19:37:02,311 DEBUG [ckan.config.declaration] Normalized ckan.requests.timeout config option: 5
+2026-02-25 19:37:02,311 DEBUG [ckan.config.declaration] Normalized ckan.search.default_include_private config option: True
+2026-02-25 19:37:02,311 DEBUG [ckan.config.declaration] Normalized ckan.search.remove_deleted_packages config option: True
+2026-02-25 19:37:02,311 DEBUG [ckan.config.declaration] Normalized ckan.search.rows_max config option: 1000
+2026-02-25 19:37:02,311 DEBUG [ckan.config.declaration] Normalized ckan.search.solr_allowed_query_parsers config option: []
+2026-02-25 19:37:02,312 DEBUG [ckan.config.declaration] Normalized ckan.search.solr_commit config option: True
+2026-02-25 19:37:02,312 DEBUG [ckan.config.declaration] Normalized ckan.tracking_enabled config option: False
+2026-02-25 19:37:02,312 DEBUG [ckan.config.declaration] Normalized ckan.upload.group.mimetypes config option: ['image/png', 'image/gif', 'image/jpeg']
+2026-02-25 19:37:02,312 DEBUG [ckan.config.declaration] Normalized ckan.upload.group.types config option: ['image']
+2026-02-25 19:37:02,313 DEBUG [ckan.config.declaration] Normalized ckan.upload.user.mimetypes config option: ['image/png', 'image/gif', 'image/jpeg']
+2026-02-25 19:37:02,313 DEBUG [ckan.config.declaration] Normalized ckan.upload.user.types config option: ['image']
+2026-02-25 19:37:02,313 DEBUG [ckan.config.declaration] Normalized ckan.user.last_active_interval config option: 600
+2026-02-25 19:37:02,313 DEBUG [ckan.config.declaration] Normalized ckan.user_list_limit config option: 20
+2026-02-25 19:37:02,313 DEBUG [ckan.config.declaration] Normalized ckan.valid_url_schemes config option: ['http', 'https', 'ftp']
+2026-02-25 19:37:02,314 DEBUG [ckan.config.declaration] Normalized ckan.views.default_views config option: ['image_view', 'datatables_view']
+2026-02-25 19:37:02,314 DEBUG [ckan.config.declaration] Normalized ckan.webassets.use_x_sendfile config option: False
+2026-02-25 19:37:02,315 DEBUG [ckan.config.declaration] Normalized debug config option: False
+2026-02-25 19:37:02,315 DEBUG [ckan.config.declaration] Normalized package_hide_extras config option: []
+2026-02-25 19:37:02,315 DEBUG [ckan.config.declaration] Normalized search.facets config option: ['organization', 'groups', 'tags', 'res_format', 'license_id']
+2026-02-25 19:37:02,316 DEBUG [ckan.config.declaration] Normalized search.facets.default config option: 10
+2026-02-25 19:37:02,316 DEBUG [ckan.config.declaration] Normalized search.facets.limit config option: 50
+2026-02-25 19:37:02,316 DEBUG [ckan.config.declaration] Normalized smtp.starttls config option: True
+2026-02-25 19:37:02,317 DEBUG [ckan.config.declaration] Normalized solr_timeout config option: 60
+2026-02-25 19:37:02,317 DEBUG [ckan.config.declaration] Normalized sqlalchemy.pool_pre_ping config option: True
+2026-02-25 19:37:02,317 DEBUG [ckan.config.declaration] Normalized testing config option: False
+2026-02-25 19:37:02,317 DEBUG [ckan.lib.webassets_tools] Base path /srv/app/src/ckan/ckan/public/base
+2026-02-25 19:37:02,433 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
+2026-02-25 19:37:02,514 DEBUG [ckan.logic] check access OK - get_site_user user=
+2026-02-25 19:37:02,598 DEBUG [ckan.logic] Validator function activity_type_exists from plugin activity was inserted
+2026-02-25 19:37:02,598 DEBUG [ckan.logic] Validator function object_id_validator from plugin activity was inserted
+2026-02-25 19:37:02,995 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] CSVtoGeoJSONDatasetResourcePlugin Cargado con Exito
+2026-02-25 19:37:02,995 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  Cargado con Exito
+2026-02-25 19:37:02,996 INFO  [ckanext.csvgeojson.pluginOdata] [ApiODataPluginView] Cargado con Exito
+2026-02-25 19:37:03,478 INFO  [ckanext.csvgeojson.pluginAPI] [DataJson] DataJson Cargado con Exito
+2026-02-25 19:37:03,484 INFO  [ckanext.csvgeojson.pluginFixDateFormatPlugin] [pluginFixDateFormatPlugin] FixDateFormatPlugin Cargado con Exito
+2026-02-25 19:37:03,845 DEBUG [ckan.config.declaration] Normalized ckan.datapusher.assume_task_stale_after config option: 3600
+2026-02-25 19:37:03,846 DEBUG [ckan.config.declaration] Normalized ckan.datapusher.formats config option: ['csv', 'xls', 'xlsx']
+2026-02-25 19:37:03,846 DEBUG [ckan.config.declaration] Normalized ckan.datatables.page_length_choices config option: ['20', '50', '100', '500', '1000']
+2026-02-25 19:37:03,847 DEBUG [ckan.config.declaration] Normalized ckan.max_resource_size config option: 100
+2026-02-25 19:37:03,847 DEBUG [ckan.config.declaration] Normalized smtp.starttls config option: True
+2026-02-25 19:37:03,848 DEBUG [ckan.lib.webassets_tools] Base path /srv/app/src/ckan/ckan/public/base
+2026-02-25 19:37:03,879 INFO  [ckanext.csvgeojson.pluginZip_Shp_To_Geojson] [Api_Zip_Shp_To_GeojsonView] update_config ejecutado
+2026-02-25 19:37:03,879 INFO  [ckanext.csvgeojson.pluginOdata] [ApiODataPluginView] update_config ejecutado
+2026-02-25 19:37:03,879 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView] update_config ejecutado
+2026-02-25 19:37:04,420 INFO  [ckan.config.environment] Loading templates from /srv/app/src/ckan/ckan/templates
+2026-02-25 19:37:04,552 DEBUG [ckan.logic] check access OK - get_site_user user=
+2026-02-25 19:37:04,606 DEBUG [ckan.lib.redis] Using Redis at redis://redis:6379/1
+2026-02-25 19:37:04,610 DEBUG [ckan.logic] Validator function activity_type_exists from plugin activity was inserted
+2026-02-25 19:37:04,610 DEBUG [ckan.logic] Validator function object_id_validator from plugin activity was inserted
+2026-02-25 19:37:04,640 DEBUG [ckan.lib.app_globals] config `ckan.site_title` set to `Gobernación de Valle del Cauca` from config
+2026-02-25 19:37:04,643 DEBUG [ckan.lib.app_globals] config `ckan.site_logo` set to `/base/images/Gobernacion_Logo.png` from config
+2026-02-25 19:37:04,646 DEBUG [ckan.lib.app_globals] config `ckan.site_url` set to `https://hijo.midominio.com:8543` from config
+2026-02-25 19:37:04,648 DEBUG [ckan.lib.app_globals] config `ckan.site_description` set to `Bienveidos a tu plataforma de Datos Abiertos` from config
+2026-02-25 19:37:04,657 DEBUG [ckan.lib.app_globals] config `ckan.theme` set to `css/main` from config
+2026-02-25 19:37:04,660 DEBUG [ckan.lib.app_globals] config `ckan.homepage_style` set to `6` from config
+2026-02-25 19:37:04,666 DEBUG [ckan.lib.app_globals] config `ckan.theme` set to `css/main` from config
+2026-02-25 19:37:04,666 DEBUG [ckan.lib.i18n] Generating JavaScript translations
+2026-02-25 19:37:04,711 DEBUG [ckan.lib.i18n] All JS translation are up to date
+2026-02-25 19:37:04,719 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'admin'
+2026-02-25 19:37:04,741 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'api'
+2026-02-25 19:37:04,745 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'dashboard'
+2026-02-25 19:37:04,754 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'estadistica'
+2026-02-25 19:37:04,773 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'feeds'
+2026-02-25 19:37:04,788 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'group'
+2026-02-25 19:37:04,801 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'organization'
+2026-02-25 19:37:04,807 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'home'
+2026-02-25 19:37:04,813 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'estadistica'
+2026-02-25 19:37:04,830 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'prefixed_resource'
+2026-02-25 19:37:04,854 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'user'
+2026-02-25 19:37:04,857 DEBUG [ckan.config.middleware.flask_app] Registered core blueprint: 'util'
+2026-02-25 19:37:04,896 INFO  [ckanext.csvgeojson.pluginAPI] [DataJson] get_blueprint_geojson ejecutado
+2026-02-25 19:37:04,905 INFO  [ckanext.csvgeojson.pluginOdata] [ApiODataPluginView] get_blueprint ejecutado
+2026-02-25 19:37:04,907 INFO  [ckanext.csvgeojson.pluginZip_Shp_To_Geojson] [ApiZipShpToGeojsonView] get_blueprint ejecutado
+2026-02-25 19:37:04,912 WARNI [ckan.config.middleware.flask_app] Extensions are excluded from CSRF protection! We allow extensions to run without CSRF protection but it will be forced future releases. Read the documentation for more information on how to add CSRF protection to your extension.
+2026-02-25 19:37:04,914 INFO  [ckanext.csvgeojson.pluginAPI] [DataJson] get_blueprint_geojson ejecutado
+2026-02-25 19:37:04,915 INFO  [ckanext.csvgeojson.pluginOdata] [ApiODataPluginView] get_blueprint ejecutado
+2026-02-25 19:37:04,915 INFO  [ckanext.csvgeojson.pluginZip_Shp_To_Geojson] [ApiZipShpToGeojsonView] get_blueprint ejecutado
+2026-02-25 19:37:05,031 INFO  [ckan.cli.server] Running CKAN on http://ckan:5000
+2026-02-25 19:37:06,120 DEBUG [ckan.views.api] Request data extracted: {}
+2026-02-25 19:37:06,125 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__', wd=377, mask=IN_CREATE|IN_ISDIR, cookie=0, name=__pycache__>
+2026-02-25 19:37:06,125 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/__init__.cpython-310.pyc.133077658467120', wd=3983, mask=IN_CREATE, cookie=0, name=__init__.cpython-310.pyc.133077658467120>
+2026-02-25 19:37:06,126 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/__init__.cpython-310.pyc.133077658467120', wd=3983, mask=IN_MODIFY, cookie=0, name=__init__.cpython-310.pyc.133077658467120>
+2026-02-25 19:37:06,127 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/__init__.cpython-310.pyc.133077658467120', wd=3983, mask=IN_CLOSE_WRITE, cookie=0, name=__init__.cpython-310.pyc.133077658467120>
+2026-02-25 19:37:06,129 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/__init__.cpython-310.pyc.133077658467120', wd=3983, mask=IN_MOVED_FROM, cookie=67506, name=__init__.cpython-310.pyc.133077658467120>
+2026-02-25 19:37:06,131 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/__init__.cpython-310.pyc', wd=3983, mask=IN_MOVED_TO, cookie=67506, name=__init__.cpython-310.pyc>
+2026-02-25 19:37:06,142 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/get.cpython-310.pyc.133077657409712', wd=3983, mask=IN_CREATE, cookie=0, name=get.cpython-310.pyc.133077657409712>
+2026-02-25 19:37:06,143 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/get.cpython-310.pyc.133077657409712', wd=3983, mask=IN_MODIFY, cookie=0, name=get.cpython-310.pyc.133077657409712>
+2026-02-25 19:37:06,143 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/get.cpython-310.pyc.133077657409712', wd=3983, mask=IN_CLOSE_WRITE, cookie=0, name=get.cpython-310.pyc.133077657409712>
+2026-02-25 19:37:06,146 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/get.cpython-310.pyc.133077657409712', wd=3983, mask=IN_MOVED_FROM, cookie=67508, name=get.cpython-310.pyc.133077657409712>
+2026-02-25 19:37:06,147 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/get.cpython-310.pyc', wd=3983, mask=IN_MOVED_TO, cookie=67508, name=get.cpython-310.pyc>
+2026-02-25 19:37:06,151 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/create.cpython-310.pyc.133077648670384', wd=3983, mask=IN_CREATE, cookie=0, name=create.cpython-310.pyc.133077648670384>
+2026-02-25 19:37:06,152 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/create.cpython-310.pyc.133077648670384', wd=3983, mask=IN_MODIFY, cookie=0, name=create.cpython-310.pyc.133077648670384>
+2026-02-25 19:37:06,152 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/create.cpython-310.pyc.133077648670384', wd=3983, mask=IN_CLOSE_WRITE, cookie=0, name=create.cpython-310.pyc.133077648670384>
+2026-02-25 19:37:06,152 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/create.cpython-310.pyc.133077648670384', wd=3983, mask=IN_MOVED_FROM, cookie=67510, name=create.cpython-310.pyc.133077648670384>
+2026-02-25 19:37:06,152 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/create.cpython-310.pyc', wd=3983, mask=IN_MOVED_TO, cookie=67510, name=create.cpython-310.pyc>
+2026-02-25 19:37:06,160 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/update.cpython-310.pyc.133077648670384', wd=3983, mask=IN_CREATE, cookie=0, name=update.cpython-310.pyc.133077648670384>
+2026-02-25 19:37:06,160 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/update.cpython-310.pyc.133077648670384', wd=3983, mask=IN_MODIFY, cookie=0, name=update.cpython-310.pyc.133077648670384>
+2026-02-25 19:37:06,161 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/update.cpython-310.pyc.133077648670384', wd=3983, mask=IN_CLOSE_WRITE, cookie=0, name=update.cpython-310.pyc.133077648670384>
+2026-02-25 19:37:06,162 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/update.cpython-310.pyc.133077648670384', wd=3983, mask=IN_MOVED_FROM, cookie=67512, name=update.cpython-310.pyc.133077648670384>
+2026-02-25 19:37:06,162 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/update.cpython-310.pyc', wd=3983, mask=IN_MOVED_TO, cookie=67512, name=update.cpython-310.pyc>
+2026-02-25 19:37:06,166 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/delete.cpython-310.pyc.133077648667568', wd=3983, mask=IN_CREATE, cookie=0, name=delete.cpython-310.pyc.133077648667568>
+2026-02-25 19:37:06,168 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/delete.cpython-310.pyc.133077648667568', wd=3983, mask=IN_MODIFY, cookie=0, name=delete.cpython-310.pyc.133077648667568>
+2026-02-25 19:37:06,168 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/delete.cpython-310.pyc.133077648667568', wd=3983, mask=IN_CLOSE_WRITE, cookie=0, name=delete.cpython-310.pyc.133077648667568>
+2026-02-25 19:37:06,169 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/delete.cpython-310.pyc.133077648667568', wd=3983, mask=IN_MOVED_FROM, cookie=67514, name=delete.cpython-310.pyc.133077648667568>
+2026-02-25 19:37:06,170 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/delete.cpython-310.pyc', wd=3983, mask=IN_MOVED_TO, cookie=67514, name=delete.cpython-310.pyc>
+2026-02-25 19:37:06,170 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/patch.cpython-310.pyc.133077648668336', wd=3983, mask=IN_CREATE, cookie=0, name=patch.cpython-310.pyc.133077648668336>
+2026-02-25 19:37:06,171 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/patch.cpython-310.pyc.133077648668336', wd=3983, mask=IN_MODIFY, cookie=0, name=patch.cpython-310.pyc.133077648668336>
+2026-02-25 19:37:06,173 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/patch.cpython-310.pyc.133077648668336', wd=3983, mask=IN_CLOSE_WRITE, cookie=0, name=patch.cpython-310.pyc.133077648668336>
+2026-02-25 19:37:06,174 DEBUG [ckan.logic] check access OK - status_show user=
+2026-02-25 19:37:06,175 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/patch.cpython-310.pyc.133077648668336', wd=3983, mask=IN_MOVED_FROM, cookie=67516, name=patch.cpython-310.pyc.133077648668336>
+2026-02-25 19:37:06,176 INFO  [ckan.config.middleware.flask_app]  200 /api/3/action/status_show render time 0.071 seconds
+2026-02-25 19:37:06,176 DEBUG [watchdog.observers.inotify_buffer] in-event <InotifyEvent: src_path=b'/srv/app/src/ckan/ckan/logic/auth/__pycache__/patch.cpython-310.pyc', wd=3983, mask=IN_MOVED_TO, cookie=67516, name=patch.cpython-310.pyc>
+2026-02-25 19:37:39,577 DEBUG [ckan.views.api] Request data extracted: {}
+2026-02-25 19:37:39,578 DEBUG [ckan.logic] check access OK - status_show user=
+2026-02-25 19:37:39,579 INFO  [ckan.config.middleware.flask_app]  200 /api/3/action/status_show render time 0.014 seconds
+2026-02-25 19:37:56,950 DEBUG [ckan.logic] check access OK - site_read user=datosabiertos
+2026-02-25 19:37:56,951 DEBUG [ckan.logic] check access OK - package_search user=datosabiertos
+2026-02-25 19:37:56,953 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] before_dataset_search ejecutado
+2026-02-25 19:37:56,960 DEBUG [ckan.logic] check access OK - organization_list_for_user user=b415e662-aef8-4b7f-92bc-30d4d0f54e33
+2026-02-25 19:37:57,012 DEBUG [ckan.lib.search.query] Package query: {'facet.field': ['organization', 'groups', 'tags', 'res_format', 'license_id'], 'fq': ['+capacity:public capacity:"public" +state:(active)', '+site_id:"default"', '+permission_labels:("public" OR "creator-b415e662-aef8-4b7f-92bc-30d4d0f54e33" OR "member-eec6dc7e-71bc-460b-89ed-48c1abd16c7e")'], 'q': '*:*', 'rows': 5, 'sort': 'view_recent desc', 'start': 0, 'df': 'text', 'fl': 'id validated_data_dict', 'facet': 'true', 'facet.limit': 50, 'facet.mincount': 1, 'wt': 'json', 'q.op': 'AND'}
+2026-02-25 19:37:57,301 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] after_dataset_search ejecutado
+2026-02-25 19:37:57,308 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] get_consolidado_contador ejecutado
+2026-02-25 19:37:57,308 ERROR [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] Error after_dataset_search: type object 'Contadores' has no attribute 'package_id'
+2026-02-25 19:37:57,309 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:57,466 DEBUG [ckan.logic] check access OK - user_show user=datosabiertos
+2026-02-25 19:37:57,491 DEBUG [ckan.logic] check access OK - dashboard_new_activities_count user=datosabiertos
+2026-02-25 19:37:57,491 DEBUG [ckan.logic] check access OK - dashboard_activity_list user=datosabiertos
+/srv/app/src/ckan/ckanext/activity/model/activity.py:713: SAWarning: TypeDecorator JsonDictType() will not produce a cache key because the ``cache_ok`` attribute is not set to True.  This can have significant performance implications including some performance degradations in comparison to prior SQLAlchemy versions.  Set this attribute to True if this type object's state is safe to use in a cache key, or False to disable this warning. (Background on this error at: https://sqlalche.me/e/14/cprf)
+  results = q.all()
+2026-02-25 19:37:57,616 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:57,642 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:57,657 DEBUG [ckan.logic] check access OK - package_search user=datosabiertos
+2026-02-25 19:37:57,658 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] before_dataset_search ejecutado
+2026-02-25 19:37:57,675 DEBUG [ckan.logic] check access OK - organization_list_for_user user=b415e662-aef8-4b7f-92bc-30d4d0f54e33
+2026-02-25 19:37:57,710 DEBUG [ckan.lib.search.query] Package query: {'rows': 2, 'df': 'text', 'sort': 'score desc, metadata_modified desc', 'fl': 'id validated_data_dict', 'fq': ['+capacity:public  +state:(active)', '+site_id:"default"', '+permission_labels:("public" OR "creator-b415e662-aef8-4b7f-92bc-30d4d0f54e33" OR "member-eec6dc7e-71bc-460b-89ed-48c1abd16c7e")'], 'q': '*:*', 'facet': 'true', 'facet.limit': 50, 'facet.mincount': 1, 'wt': 'json', 'q.op': 'AND'}
+2026-02-25 19:37:57,760 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] after_dataset_search ejecutado
+2026-02-25 19:37:57,762 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] get_consolidado_contador ejecutado
+2026-02-25 19:37:57,762 ERROR [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] Error after_dataset_search: type object 'Contadores' has no attribute 'package_id'
+2026-02-25 19:37:57,766 DEBUG [ckan.logic] check access OK - group_list user=datosabiertos
+2026-02-25 19:37:57,773 DEBUG [ckan.logic] check access OK - organization_list user=datosabiertos
+2026-02-25 19:37:57,777 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:57,787 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:57,807 DEBUG [ckan.logic] check access OK - package_search user=datosabiertos
+2026-02-25 19:37:57,808 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] before_dataset_search ejecutado
+2026-02-25 19:37:57,814 DEBUG [ckan.logic] check access OK - organization_list_for_user user=b415e662-aef8-4b7f-92bc-30d4d0f54e33
+2026-02-25 19:37:57,833 DEBUG [ckan.lib.search.query] Package query: {'rows': 2, 'df': 'text', 'sort': 'score desc, metadata_modified desc', 'fl': 'id validated_data_dict', 'fq': ['+capacity:public  +state:(active)', '+site_id:"default"', '+permission_labels:("public" OR "creator-b415e662-aef8-4b7f-92bc-30d4d0f54e33" OR "member-eec6dc7e-71bc-460b-89ed-48c1abd16c7e")'], 'q': '*:*', 'facet': 'true', 'facet.limit': 50, 'facet.mincount': 1, 'wt': 'json', 'q.op': 'AND'}
+2026-02-25 19:37:57,857 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] after_dataset_search ejecutado
+2026-02-25 19:37:57,859 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] get_consolidado_contador ejecutado
+2026-02-25 19:37:57,860 ERROR [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] Error after_dataset_search: type object 'Contadores' has no attribute 'package_id'
+2026-02-25 19:37:57,865 DEBUG [ckan.logic] check access OK - group_list user=datosabiertos
+2026-02-25 19:37:57,872 DEBUG [ckan.logic] check access OK - organization_list user=datosabiertos
+2026-02-25 19:37:57,890 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:57,897 DEBUG [ckan.logic] check access OK - group_list user=datosabiertos
+2026-02-25 19:37:57,909 DEBUG [ckan.logic] check access OK - group_show user=datosabiertos
+2026-02-25 19:37:57,920 DEBUG [ckan.logic] check access OK - package_search user=datosabiertos
+2026-02-25 19:37:57,921 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] before_dataset_search ejecutado
+2026-02-25 19:37:57,926 DEBUG [ckan.logic] check access OK - organization_list_for_user user=b415e662-aef8-4b7f-92bc-30d4d0f54e33
+2026-02-25 19:37:57,950 DEBUG [ckan.lib.search.query] Package query: {'facet': 'false', 'fq': ['+capacity:public +groups:"salud" +state:(active)', '+site_id:"default"', '+permission_labels:("public" OR "creator-b415e662-aef8-4b7f-92bc-30d4d0f54e33" OR "member-eec6dc7e-71bc-460b-89ed-48c1abd16c7e")'], 'rows': 0, 'df': 'text', 'sort': 'score desc, metadata_modified desc', 'fl': 'id validated_data_dict', 'q': '*:*', 'facet.limit': 50, 'facet.mincount': 1, 'wt': 'json', 'q.op': 'AND'}
+2026-02-25 19:37:57,968 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] after_dataset_search ejecutado
+2026-02-25 19:37:57,979 DEBUG [ckan.lib.search.query] Package query: {'q': '*:*', 'fl': 'groups', 'facet.field': ['groups', 'owner_org'], 'facet.limit': -1, 'rows': 2, 'fq': ['+site_id:"default"', '+state:active'], 'facet': 'true', 'facet.mincount': 1, 'wt': 'json', 'df': 'text', 'q.op': 'AND'}
+2026-02-25 19:37:58,008 DEBUG [ckan.logic] check access OK - group_follower_count user=datosabiertos
+2026-02-25 19:37:58,031 DEBUG [ckan.logic] check access OK - group_show user=datosabiertos
+2026-02-25 19:37:58,034 DEBUG [ckan.logic] check access OK - package_search user=datosabiertos
+2026-02-25 19:37:58,035 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] before_dataset_search ejecutado
+2026-02-25 19:37:58,040 DEBUG [ckan.logic] check access OK - organization_list_for_user user=b415e662-aef8-4b7f-92bc-30d4d0f54e33
+2026-02-25 19:37:58,059 DEBUG [ckan.lib.search.query] Package query: {'facet': 'false', 'fq': ['+capacity:public +groups:"tecnologia" +state:(active)', '+site_id:"default"', '+permission_labels:("public" OR "creator-b415e662-aef8-4b7f-92bc-30d4d0f54e33" OR "member-eec6dc7e-71bc-460b-89ed-48c1abd16c7e")'], 'rows': 0, 'df': 'text', 'sort': 'score desc, metadata_modified desc', 'fl': 'id validated_data_dict', 'q': '*:*', 'facet.limit': 50, 'facet.mincount': 1, 'wt': 'json', 'q.op': 'AND'}
+2026-02-25 19:37:58,080 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] after_dataset_search ejecutado
+2026-02-25 19:37:58,087 DEBUG [ckan.lib.search.query] Package query: {'q': '*:*', 'fl': 'groups', 'facet.field': ['groups', 'owner_org'], 'facet.limit': -1, 'rows': 2, 'fq': ['+site_id:"default"', '+state:active'], 'facet': 'true', 'facet.mincount': 1, 'wt': 'json', 'df': 'text', 'q.op': 'AND'}
+2026-02-25 19:37:58,104 DEBUG [ckan.logic] check access OK - group_follower_count user=datosabiertos
+2026-02-25 19:37:58,113 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,120 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,121 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,125 DEBUG [ckan.logic] check access OK - package_search user=datosabiertos
+2026-02-25 19:37:58,125 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] before_dataset_search ejecutado
+2026-02-25 19:37:58,125 DEBUG [ckan.lib.search.query] Package query: {'rows': 4, 'sort': 'metadata_created desc', 'df': 'text', 'fl': 'id validated_data_dict', 'fq': ['+capacity:public  +state:(active)', '+site_id:"default"'], 'q': '*:*', 'facet': 'true', 'facet.limit': 50, 'facet.mincount': 1, 'wt': 'json', 'q.op': 'AND'}
+2026-02-25 19:37:58,140 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] after_dataset_search ejecutado
+2026-02-25 19:37:58,141 INFO  [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] get_consolidado_contador ejecutado
+2026-02-25 19:37:58,142 ERROR [ckanext.csvgeojson.pluginDatasetResource] [CSVtoGeoJSONPlugin] Error after_dataset_search: type object 'Contadores' has no attribute 'package_id'
+2026-02-25 19:37:58,142 WARNI [ckan.lib.helpers] [helplers][get_featured_dataset] dataset=[{'author': '', 'author_email': '', 'creator_user_id': 'b415e662-aef8-4b7f-92bc-30d4d0f54e33', 'id': 'f3f07ab9-fc00-4f1a-97ea-3843a1576aa5', 'isopen': False, 'license_id': '', 'license_title': '', 'maintainer': '', 'maintainer_email': '', 'metadata_created': '2026-02-23T13:04:15.399257', 'metadata_modified': '2026-02-23T19:27:16.606278', 'name': 'apropiacion-tic-del-valle-del-cauca-new', 'notes': 'Este conjunto de datos recopila información sobre la participación ciudadana en procesos de apropiación de Tecnologías de la Información y las Comunicaciones (TIC), a través de programas financiados por la convocatoria DigiCampus (personas beneficiadas) y cursos cortos ofrecidos por la Secretaría de Tecnologías de la Información y las Comunicaciones (SETIC) del Valle del Cauca.', 'num_resources': 2, 'num_tags': 0, 'organization': {'id': 'eec6dc7e-71bc-460b-89ed-48c1abd16c7e', 'name': 'gobernacion-valle-del-cauca', 'title': 'Gobernacion Valle del Cauca', 'type': 'organization', 'description': '', 'image_url': '', 'created': '2026-02-18T12:46:35.255486', 'is_organization': True, 'approval_status': 'approved', 'state': 'active'}, 'owner_org': 'eec6dc7e-71bc-460b-89ed-48c1abd16c7e', 'private': False, 'state': 'active', 'title': 'Apropiación TIC del Valle del Cauca', 'type': 'dataset', 'url': '', 'version': '', 'resources': [{'cache_last_updated': None, 'cache_url': None, 'created': '2026-02-23T15:33:51.406863', 'datastore_active': True, 'description': '', 'format': 'CSV', 'hash': '', 'id': '78015f1d-e3f7-4556-90ad-53ae75eff3cd', 'last_modified': '2026-02-23T15:33:51.353851', 'metadata_modified': '2026-02-23T15:33:51.775011', 'mimetype': 'text/csv', 'mimetype_inner': None, 'name': 'apropiacion-tic-valle-del-cauca-2024 (1).csv', 'package_id': 'f3f07ab9-fc00-4f1a-97ea-3843a1576aa5', 'position': 0, 'resource_type': None, 'size': 767644, 'state': 'active', 'url': 'https://hijo.midominio.com:8543/dataset/f3f07ab9-fc00-4f1a-97ea-3843a1576aa5/resource/78015f1d-e3f7-4556-90ad-53ae75eff3cd/download/apropiacion-tic-valle-del-cauca-2024-1.csv', 'url_type': 'upload'}, {'cache_last_updated': None, 'cache_url': None, 'created': '2026-02-23T19:27:14.204947', 'datastore_active': False, 'description': 'Recurso generado automáticamente desde CSV', 'format': 'GeoJSON', 'hash': '', 'id': '6a12a508-59bf-48a0-9ffd-e0f401112a29', 'last_modified': '2026-02-23T19:27:14.094957', 'metadata_modified': '2026-02-23T19:27:16.632661', 'mimetype': 'application/geo+json', 'mimetype_inner': None, 'name': 'apropiacion-tic-valle-del-cauca-2024 (1) (GeoJSON)', 'package_id': 'f3f07ab9-fc00-4f1a-97ea-3843a1576aa5', 'position': 1, 'resource_type': None, 'size': 60312, 'state': 'active', 'url': 'https://hijo.midominio.com:8543/dataset/f3f07ab9-fc00-4f1a-97ea-3843a1576aa5/resource/6a12a508-59bf-48a0-9ffd-e0f401112a29/download/apropiacion-tic-valle-del-cauca-2024_1.geojson', 'url_type': 'upload'}], 'tags': [], 'extras': [], 'groups': [], 'relationships_as_subject': [], 'relationships_as_object': []}, {'author': '', 'author_email': '', 'city': 'Cali', 'creator_user_id': 'b415e662-aef8-4b7f-92bc-30d4d0f54e33', 'department': 'Valle del Cauca', 'id': '48eb148f-1742-4f08-a6a4-e95186a26972', 'isopen': False, 'license_id': '', 'license_title': '', 'maintainer': '', 'maintainer_email': 'julianmarcelog@gmail.com', 'metadata_created': '2026-02-18T13:09:09.439499', 'metadata_modified': '2026-02-24T20:01:36.700281', 'name': 'estadistica-de-salud', 'notes': '', 'num_resources': 1, 'num_tags': 0, 'organization': {'id': 'eec6dc7e-71bc-460b-89ed-48c1abd16c7e', 'name': 'gobernacion-valle-del-cauca', 'title': 'Gobernacion Valle del Cauca', 'type': 'organization', 'description': '', 'image_url': '', 'created': '2026-02-18T12:46:35.255486', 'is_organization': True, 'approval_status': 'approved', 'state': 'active'}, 'owner_org': 'eec6dc7e-71bc-460b-89ed-48c1abd16c7e', 'private': False, 'state': 'active', 'title': 'Estadística de Salud', 'type': 'dataset', 'update_frequency': 'Anual', 'url': '', 'version': '', 'groups': [{'description': '', 'display_name': 'Salud', 'id': 'f1638299-1399-43d9-9010-e994f7140e8d', 'image_display_url': '', 'name': 'salud', 'title': 'Salud'}], 'resources': [{'cache_last_updated': None, 'cache_url': None, 'created': '2026-02-18T13:09:28.477958', 'datastore_active': True, 'description': '', 'format': 'CSV', 'hash': '', 'id': '15dca554-a777-490a-a005-0bbf79a1ac0e', 'last_modified': '2026-02-18T13:09:28.352956', 'metadata_modified': '2026-02-18T13:09:28.934028', 'mimetype': 'text/csv', 'mimetype_inner': None, 'name': 'zonas_wi_fi_departamento_del_valle_del_cauca (4).csv', 'package_id': '48eb148f-1742-4f08-a6a4-e95186a26972', 'position': 0, 'resource_type': None, 'size': 20795, 'state': 'active', 'url': 'https://hijo.midominio.com:8543/dataset/48eb148f-1742-4f08-a6a4-e95186a26972/resource/15dca554-a777-490a-a005-0bbf79a1ac0e/download/zonas_wi_fi_departamento_del_valle_del_cauca-4.csv', 'url_type': 'upload'}], 'tags': [], 'extras': [], 'relationships_as_subject': [], 'relationships_as_object': []}]
+2026-02-25 19:37:58,142 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,184 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,190 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,221 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,222 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,229 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,243 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,245 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,248 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,252 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,255 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,257 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,260 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,264 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,278 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,280 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,301 ERROR [ckan.config.middleware.flask_app] footer_Layout.html
+Traceback (most recent call last):
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/srv/app/src/ckan/ckan/config/middleware/../../views/home.py", line 93, in index
+    return base.render(u'home/index.html', extra_vars=extra_vars)
+  File "/srv/app/src/ckan/ckan/lib/base.py", line 107, in render
+    return flask_render_template(template_name, **extra_vars)
+  File "/srv/app/lib/python3.10/site-packages/flask/templating.py", line 147, in render_template
+    return _render(
+  File "/srv/app/lib/python3.10/site-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/srv/app/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/srv/app/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/srv/app/src/ckan/ckan/templates/home/index.html", line 2, in top-level template code
+    {% set homepage_style = ( g.homepage_style or '1' ) %}
+  File "/srv/app/src/ckan/ckanext/activity/templates/page.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/srv/app/src/ckan/ckanext/activity/templates/base.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckanext-geoview/ckanext/geoview/templates/base.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckan/ckan/templates/base.html", line 108, in top-level template code
+    {%- block page %}{% endblock -%}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 142, in block 'page'
+    {%- block footer %}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 143, in block 'footer'
+    {% include "footer_Layout.html" %}
+  File "/srv/app/src/ckan/ckan/lib/jinja_extensions.py", line 226, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: footer_Layout.html
+2026-02-25 19:37:58,316 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,336 DEBUG [ckan.logic] check access OK - user_show user=datosabiertos
+2026-02-25 19:37:58,341 DEBUG [ckan.logic] check access OK - dashboard_new_activities_count user=datosabiertos
+2026-02-25 19:37:58,342 DEBUG [ckan.logic] check access OK - dashboard_activity_list user=datosabiertos
+2026-02-25 19:37:58,389 ERROR [ckan.config.middleware.flask_app] Exception on / [GET]
+Traceback (most recent call last):
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/srv/app/src/ckan/ckan/config/middleware/../../views/home.py", line 93, in index
+    return base.render(u'home/index.html', extra_vars=extra_vars)
+  File "/srv/app/src/ckan/ckan/lib/base.py", line 107, in render
+    return flask_render_template(template_name, **extra_vars)
+  File "/srv/app/lib/python3.10/site-packages/flask/templating.py", line 147, in render_template
+    return _render(
+  File "/srv/app/lib/python3.10/site-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/srv/app/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/srv/app/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/srv/app/src/ckan/ckan/templates/home/index.html", line 2, in top-level template code
+    {% set homepage_style = ( g.homepage_style or '1' ) %}
+  File "/srv/app/src/ckan/ckanext/activity/templates/page.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/srv/app/src/ckan/ckanext/activity/templates/base.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckanext-geoview/ckanext/geoview/templates/base.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckan/ckan/templates/base.html", line 108, in top-level template code
+    {%- block page %}{% endblock -%}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 142, in block 'page'
+    {%- block footer %}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 143, in block 'footer'
+    {% include "footer_Layout.html" %}
+  File "/srv/app/src/ckan/ckan/lib/jinja_extensions.py", line 226, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: footer_Layout.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 1393, in handle_user_exception
+    return self.ensure_sync(handler)(e)
+  File "/srv/app/src/ckan/ckan/config/middleware/flask_app.py", line 634, in error_handler
+    return base.render(u'error_document_template.html', extra_vars), 500
+  File "/srv/app/src/ckan/ckan/lib/base.py", line 107, in render
+    return flask_render_template(template_name, **extra_vars)
+  File "/srv/app/lib/python3.10/site-packages/flask/templating.py", line 147, in render_template
+    return _render(
+  File "/srv/app/lib/python3.10/site-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/srv/app/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/srv/app/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/srv/app/src/ckan/ckan/templates/error_document_template.html", line 1, in top-level template code
+    {% extends "page.html" %}
+  File "/srv/app/src/ckan/ckanext/activity/templates/page.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/srv/app/src/ckan/ckanext/activity/templates/base.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckanext-geoview/ckanext/geoview/templates/base.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckan/ckan/templates/base.html", line 108, in top-level template code
+    {%- block page %}{% endblock -%}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 142, in block 'page'
+    {%- block footer %}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 143, in block 'footer'
+    {% include "footer_Layout.html" %}
+  File "/srv/app/src/ckan/ckan/lib/jinja_extensions.py", line 226, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: footer_Layout.html
+2026-02-25 19:37:58,397 INFO  [ckan.config.middleware.flask_app] 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2026-02-25 19:37:58,397 INFO  [ckanext.csvgeojson.pluginDatasetResource] [SelloExcelenciaView]  injenject_sello_extras Ejecutado
+2026-02-25 19:37:58,401 DEBUG [ckan.logic] check access OK - user_show user=datosabiertos
+2026-02-25 19:37:58,406 DEBUG [ckan.logic] check access OK - dashboard_new_activities_count user=datosabiertos
+2026-02-25 19:37:58,406 DEBUG [ckan.logic] check access OK - dashboard_activity_list user=datosabiertos
+2026-02-25 19:37:58,541 ERROR [werkzeug] Error on request:
+Traceback (most recent call last):
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/srv/app/src/ckan/ckan/views/home.py", line 93, in index
+    return base.render(u'home/index.html', extra_vars=extra_vars)
+  File "/srv/app/src/ckan/ckan/lib/base.py", line 107, in render
+    return flask_render_template(template_name, **extra_vars)
+  File "/srv/app/lib/python3.10/site-packages/flask/templating.py", line 147, in render_template
+    return _render(
+  File "/srv/app/lib/python3.10/site-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/srv/app/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/srv/app/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/srv/app/src/ckan/ckan/templates/home/index.html", line 2, in top-level template code
+    {% set homepage_style = ( g.homepage_style or '1' ) %}
+  File "/srv/app/src/ckan/ckanext/activity/templates/page.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/srv/app/src/ckan/ckanext/activity/templates/base.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckanext-geoview/ckanext/geoview/templates/base.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckan/ckan/templates/base.html", line 108, in top-level template code
+    {%- block page %}{% endblock -%}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 142, in block 'page'
+    {%- block footer %}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 143, in block 'footer'
+    {% include "footer_Layout.html" %}
+  File "/srv/app/src/ckan/ckan/lib/jinja_extensions.py", line 226, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: footer_Layout.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 1393, in handle_user_exception
+    return self.ensure_sync(handler)(e)
+  File "/srv/app/src/ckan/ckan/config/middleware/flask_app.py", line 634, in error_handler
+    return base.render(u'error_document_template.html', extra_vars), 500
+  File "/srv/app/src/ckan/ckan/lib/base.py", line 107, in render
+    return flask_render_template(template_name, **extra_vars)
+  File "/srv/app/lib/python3.10/site-packages/flask/templating.py", line 147, in render_template
+    return _render(
+  File "/srv/app/lib/python3.10/site-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/srv/app/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/srv/app/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/srv/app/src/ckan/ckan/templates/error_document_template.html", line 1, in top-level template code
+    {% extends "page.html" %}
+  File "/srv/app/src/ckan/ckanext/activity/templates/page.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/srv/app/src/ckan/ckanext/activity/templates/base.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckanext-geoview/ckanext/geoview/templates/base.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckan/ckan/templates/base.html", line 108, in top-level template code
+    {%- block page %}{% endblock -%}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 142, in block 'page'
+    {%- block footer %}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 143, in block 'footer'
+    {% include "footer_Layout.html" %}
+  File "/srv/app/src/ckan/ckan/lib/jinja_extensions.py", line 226, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: footer_Layout.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/srv/app/lib/python3.10/site-packages/werkzeug/serving.py", line 324, in run_wsgi
+    execute(self.server.app)
+  File "/srv/app/lib/python3.10/site-packages/werkzeug/serving.py", line 313, in execute
+    application_iter = app(environ, start_response)
+  File "/srv/app/src/ckan/ckan/config/middleware/flask_app.py", line 81, in __call__
+    return self.app(environ, start_response)
+  File "/srv/app/src/ckan/ckan/config/middleware/common_middleware.py", line 87, in __call__
+    return self.app(environ, start_response)
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/srv/app/lib/python3.10/site-packages/beaker/middleware.py", line 156, in __call__
+    return self.wrap_app(environ, session_start_response)
+  File "/srv/app/src/ckan/ckan/config/middleware/common_middleware.py", line 31, in __call__
+    return self.app(environ, start_response)
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/srv/app/lib/python3.10/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/srv/app/src/ckan/ckan/config/middleware/flask_app.py", line 629, in error_handler
+    return base.render(
+  File "/srv/app/src/ckan/ckan/lib/base.py", line 107, in render
+    return flask_render_template(template_name, **extra_vars)
+  File "/srv/app/lib/python3.10/site-packages/flask/templating.py", line 147, in render_template
+    return _render(
+  File "/srv/app/lib/python3.10/site-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/srv/app/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/srv/app/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/srv/app/src/ckan/ckan/templates/error_document_template.html", line 1, in top-level template code
+    {% extends "page.html" %}
+  File "/srv/app/src/ckan/ckanext/activity/templates/page.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/srv/app/src/ckan/ckanext/activity/templates/base.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckanext-geoview/ckanext/geoview/templates/base.html", line 1, in top-level template code
+    {% ckan_extends %}
+  File "/srv/app/src/ckan/ckan/templates/base.html", line 108, in top-level template code
+    {%- block page %}{% endblock -%}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 142, in block 'page'
+    {%- block footer %}
+  File "/srv/app/src/ckan/ckan/templates/page.html", line 143, in block 'footer'
+    {% include "footer_Layout.html" %}
+  File "/srv/app/src/ckan/ckan/lib/jinja_extensions.py", line 226, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: footer_Layout.html

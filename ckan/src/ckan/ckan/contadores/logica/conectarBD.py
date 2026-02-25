@@ -1,4 +1,3 @@
-from tkinter import messagebox
 import psycopg2
 
 
@@ -10,10 +9,10 @@ def getConeccion():
                             password = "car2986"#,
                             #port = 5432
                             )
-        #messagebox.showinfo(message=conn, title="conn")
+       
         return conn
     except (Exception, psycopg2.DatabaseError) as error:
-        #messagebox.showinfo(message=error, title="error")
+        
         print(error)
         return None
     finally:
@@ -30,17 +29,17 @@ def getConeccion_datastore():
                             password = "car2986"#,
                             #port = 5432
                             )
-        #messagebox.showinfo(message=conn, title="conn")
+       
         return conn
     except (Exception, psycopg2.DatabaseError) as error:
-        #messagebox.showinfo(message=error, title="error")
+        
         print(error)
         return None
     finally:
         pass
         #if conn is not None:
-         #conn.close()
-         #print('Database connection closed.')
+        #conn.close()
+        #print('Database connection closed.')
 
 
 def connectar():

@@ -2,7 +2,6 @@ import json
 from nis import cat
 import uuid
 import psycopg2
-from tkinter import messagebox
 from os import system 
 #import urllib2
 #import urllib
@@ -15,7 +14,7 @@ import requests
 from ckan.contadores.logica.conectarBD import connectar,connectar_datastore
 import ckan.lib.uploader as uploader
 from decimal import Decimal
-from paste.deploy import appconfig
+
 
 #from ckan.logic.action.get import get_UrL
 
@@ -55,7 +54,7 @@ def crearTableContador(conn):
         cur.close()
         conn.close()
     except (Exception, psycopg2.DatabaseError) as error:
-        messagebox.showinfo(message=error, title="error")
+       
         print(error)        
     finally:
         pass
@@ -74,12 +73,11 @@ def eliminarContador(id,conn):
         conn.commit()
         cur.close()
         conn.close()
-        #messagebox.showinfo(message=sql, title="del sql")
+        
 
     except (Exception, psycopg2.DatabaseError) as error:
-       
-       messagebox.showinfo(message=error, title="error get_Consolidado_contador_grupo")
-       print(error)        
+        print(error)  
+      
     finally:
         pass
         #if conn is not None:
@@ -103,7 +101,7 @@ def get_Consolidado_contador_grupo(data,conn):
             FROM public.contadores
             WHERE "sourceId"='{}'
             """.format(data["sourceId"])
-        #messagebox.showinfo(message=sql, title="sql_get_Consolidado_contador_grupo") 
+        
         cur.execute(sql)
         rows = cur.fetchall()
         conn.commit()
@@ -125,10 +123,10 @@ def get_Consolidado_contador_grupo(data,conn):
         descargas = int(resultado[1]) if resultado[1] is not None else 0       
 
         print(f"get_Consolidado_contador_grupo' {data}'")        
-        #messagebox.showinfo(message=data, title="data_ReturnDB")             
+                 
         return data    
     except (Exception, psycopg2.DatabaseError) as error:
-        #messagebox.showinfo(message=error, title="error get_Consolidado_contador_grupo")
+       
         print(error)        
     finally:
         pass
@@ -150,27 +148,27 @@ def get_contador_descargas(data,conn):
         Retorna la informacion del dict enviado añadiendo los datos pedidos en la consulta
     """
     try:
-        #messagebox.showinfo(message="get_contador_descargas", title="contadores") 
+       
         existe=0
         cur=conn.cursor()
         sql="SELECT * FROM public.contadores where {}='{}' and {}='{}'".format('"packageId"',data['packageId'],'"sourceId"',data['sourceId'])
-        #messagebox.showinfo(message=sql, title="get_contador_descargas") 
+       
         cur.execute(sql)
         rows = cur.fetchall()
         conn.commit()
         cur.close()
         #conn.close()
-        #messagebox.showinfo(message=rows[0], title="rows[0]")
+    
         for row in rows:
             data["contadorId"]=row[0] 
             data["packageId"]=row[1]            
             data["contVistas"]=row[2]
             data["contDownload"]=row[3]
             data["sourceId"]=row[4]
-        #messagebox.showinfo(message=data, title="data")
+       
         return data
     except (Exception, psycopg2.DatabaseError) as error:
-        messagebox.showinfo(message=error, title="error")
+        
         print(error)        
     finally:
         pass
@@ -194,10 +192,10 @@ def existe_el_contador_dataset(data,conn,context):
     try:
         registros={}
         isCreate=0
-        #messagebox.showinfo(message=context, title="context existe_el_contador_dataset")
+     
         cur=conn.cursor() 
         sql="SELECT count(*) registros FROM public.contadores where {}='{}' and {}='{}';".format('"packageId"',data['packageId'],'"sourceId"',data['sourceId'])
-        #messagebox.showinfo(message=sql, title="existe_el_contador_dataset") 
+    
         cur.execute(sql)
         rows = cur.fetchall()
         conn.commit()
@@ -206,16 +204,16 @@ def existe_el_contador_dataset(data,conn,context):
         for row in rows:
             registros["registros"]=row[0]
         registro=registros["registros"]
-        #messagebox.showinfo(message=registros, title="Registros regresados de la consulta")
+       
         if (registro==0):
             insertarContadorBD(data,conn,context)
             data['isCreate']=True
-            #messagebox.showinfo(message= isCreate, title= "isCreate")
+          
             return data 
             
         else:
             data['isCreate']=False
-            #messagebox.showinfo(message= isCreate, title= "isCreate")
+          
             data=get_contador_descargas(data,conn)
             if  context.startswith('Down'):
                 data["contDownload"]+=1
@@ -223,10 +221,10 @@ def existe_el_contador_dataset(data,conn,context):
                 data["contVistas"]+=1
             else:
                 pass
-        #messagebox.showinfo(message=data, title="data desde existe_el_contador_dataset registros!=0")
+       
         return data                
     except (Exception, psycopg2.DatabaseError) as error:
-        messagebox.showinfo(message=error, title="error_existe_el_contador_dataset")
+       
         print(error)        
     finally:
         pass
@@ -245,7 +243,7 @@ def insertarContadorBD(records,conn,context):
         data["packageId"]=records['packageId']            
         data["sourceId"]=records['sourceId']
         data['isCreate']=True
-        #messagebox.showinfo(message="else", title="No existe el grupo")
+    
         if (context.startswith('Down')):
             sql="insert into public.contadores values ('{}','{}',{},{},'{}');".format(id_Group,records['packageId'],0,1,records['sourceId'])
             data["contVistas"]=0
@@ -258,14 +256,14 @@ def insertarContadorBD(records,conn,context):
             sql="insert into public.contadores values ('{}','{}',{},{},'{}');".format(id_Group,records['packageId'],0,0,records['sourceId'])
             data["contVistas"]=0
             data["contDownload"]=0
-        #messagebox.showinfo(message=sql, title="insertarContadorBD")
+      
         cur.execute(sql)
         conn.commit()
         cur.close()
         return data
         #conn.close()
     except (Exception, psycopg2.DatabaseError) as error:
-        messagebox.showinfo(message=error, title="error")
+     
         print(error)        
     finally:
         pass
@@ -281,15 +279,15 @@ def actualizarContadorBD(records,conn):
 
         records['isCreate']=False
         cur=conn.cursor()
-        #messagebox.showinfo(message="else", title="No existe el grupo")
+     
         sql="UPDATE public.contadores SET {}='{}', {}='{}' WHERE {}='{}' and {}='{}';".format('"contVistas"',records['contVistas'],'"contDownload"',records['contDownload'],'"packageId"',records['packageId'],'"sourceId"',records['sourceId'])              
-        #messagebox.showinfo(message=sql, title="actualizarContadorBD")
+      
         cur.execute(sql)
         conn.commit()
         cur.close()
         conn.close()
     except (Exception, psycopg2.DatabaseError) as error:
-        messagebox.showinfo(message=error, title="error")
+      
         print(error)        
     finally:
         pass
@@ -358,19 +356,16 @@ def getPaquetesjsonBI():
             and p.state='active' and r.state='active' 
             and m.table_name='package' 
         """
-        #messagebox.showinfo(message=sql, title=" sql getPaquetesjson")
+       
         cur.execute(sql)
         rows = cur.fetchall()
         conn.commit()               
         ciclo=0        
         for dataset in rows:
             ciclo+=1
-            #messagebox.showinfo(message=ciclo, title=" sql dataset[3]")
+       
             tematicaName=dataset[2]
-            #messagebox.showinfo(message=dataset[2], title=" sql dataset[3]")
-            #messagebox.showinfo(message=tematicaName, title=" sql tematicaName")      
-            #messagebox.showinfo(message=dataset[3], title=" sql dataset[10]")
-            #messagebox.showinfo(message=packageName, title=" sql packageName")      
+               
             if((dataset[2]==tematicaName) and (dataset[3]==packageName)):
                     tematicaName=dataset[2]
                     packageName=dataset[3]
@@ -394,7 +389,7 @@ def getPaquetesjsonBI():
                         "filas":filas,
                         "columnas":columnas,
                     }
-                    #messagebox.showinfo(message=data, title=" sql data ciclo2") 
+                  
             elif((dataset[2]==tematicaName) and (dataset[3]!=packageName)):
                     
                     tematicaName=dataset[2]
@@ -440,9 +435,9 @@ def getPaquetesjsonBI():
                         "columnas":columnas,
                     }
                     dataDict["distribution"].append(resourceDict)                    
-                    #messagebox.showinfo(message=dataDict, title=" sql data ciclo1") 
+                
                     data["dataset"].append(dataDict)
-                    #messagebox.showinfo(message=data, title=" sql data ciclo1") 
+                 
             else:
                 pass
         
@@ -451,7 +446,7 @@ def getPaquetesjsonBI():
         
         
     except (Exception, psycopg2.DatabaseError) as error:
-        #messagebox.showinfo(message=error, title="error")
+     
         print(error)        
     finally:
         pass
@@ -538,7 +533,7 @@ def getPaquetesjson():
             and p.state='active' and r.state='active' 
             and m.table_name='package' 
         """
-        #messagebox.showinfo(message=sql, title=" sql getPaquetesjson")
+     
         cur.execute(sql)
         rows = cur.fetchall()
         conn.commit()
@@ -548,12 +543,9 @@ def getPaquetesjson():
               
         for dataset in rows:
             ciclo+=1
-            #messagebox.showinfo(message=ciclo, title=" sql dataset[3]")
+         
             tematicaName=dataset[2]
-            #messagebox.showinfo(message=dataset[2], title=" sql dataset[3]")
-            #messagebox.showinfo(message=tematicaName, title=" sql tematicaName")      
-            #messagebox.showinfo(message=dataset[3], title=" sql dataset[10]")
-            #messagebox.showinfo(message=packageName, title=" sql packageName")      
+           
             if((dataset[2]==tematicaName) and (dataset[3]==packageName)):
                     tematicaName=dataset[2]
                     packageName=dataset[3]                    
@@ -565,7 +557,7 @@ def getPaquetesjson():
                         "accessURL":"{}".format(url+'/'+dataset[6]+'/'+dataset[4]+'/resource/'+dataset[11]+'/download/'+dataset[12]),
                         }
                     dataDict["distribution"].append(resourceDict)
-                    #messagebox.showinfo(message=data, title=" sql data ciclo2") 
+                 
             elif((dataset[2]==tematicaName) and (dataset[3]!=packageName)):
                     
                     tematicaName=dataset[2]
@@ -635,12 +627,12 @@ def getPaquetesjson():
                     dataDict["ciudad"]=dataset[18]
                     
                     
-                    #messagebox.showinfo(message=dataDict, title=" sql data ciclo1") 
+                   
                     data["dataset"].append(dataDict)
-                    #messagebox.showinfo(message=data, title=" sql data ciclo1") 
+                   
             else:
                 pass
-        #messagebox.showinfo(message=data, title="data") 
+     
 
         #url_new="/usr/lib/ckan/default/src/ckan/ckan/public/base/json/data.json"
         #url_new="/home/ckan/ckan/lib/default/src/ckan/ckan/public/base/json/data.json"
@@ -652,7 +644,7 @@ def getPaquetesjson():
             json.dump(data, file, ensure_ascii=False, indent=2,default=convertir_fechas)'''
 
         #archivo=open(url_new, "r") 
-        #messagebox.showinfo(message=archivo, title="archivo") 
+      
         #response_dict=json.load(archivo)  # will be { "firstname": "John", "lastname": "Doe", "age": 35 }
         return data #response_dict
         
@@ -680,7 +672,7 @@ def getTags(id):
         from public.package_tag pt inner join public.tag t on t.id=pt.tag_id
         where package_id='{}'
         """.format(id)
-        #messagebox.showinfo(message=sql, title="sql getTags")
+      
         cur.execute(sql)
         rows = cur.fetchall()
         conn.commit()
@@ -690,11 +682,11 @@ def getTags(id):
             if row and isinstance(row[0], str) and row[0].strip():
                 tags.append(row[0].strip())
         
-        #messagebox.showinfo(message=tags, title="tags getTags")
+       
         return tags
 
     except (Exception, psycopg2.DatabaseError) as error:
-        messagebox.showinfo(message=error, title="error")
+      
         print(error)        
     finally:
         pass
@@ -721,7 +713,7 @@ def getRow_Column(resource_id):
         if exists:
             
             sql='SELECT * FROM public."{}";'.format(resource_id)
-            #messagebox.showinfo(message=sql, title="sql_getRow_Column")
+          
             print(sql)
             cur.execute(sql)
             filas = cur.fetchall()
@@ -731,9 +723,9 @@ def getRow_Column(resource_id):
 
             if filas:
                 num_filas=int(len(filas)) if len(filas) is not None else 0 
-                #messagebox.showinfo(message=num_filas, title="num_filas")
+              
                 num_columnas=int(len(filas[0]) if len(filas[0])is not None else 0 )
-                #messagebox.showinfo(message=num_columnas, title="num_columnas")
+              
             else:
                 num_filas=0  
                 num_columnas=0
@@ -754,7 +746,7 @@ def getRow_Column(resource_id):
                 return num_columnas, num_filas
                 
     except (Exception, psycopg2.DatabaseError) as error:
-        #messagebox.showinfo(message=error, title="error")
+      
         print(error)        
     finally:
         pass
@@ -766,7 +758,7 @@ def getDataset():
     conn=connectar()
     cur=conn.cursor()
     sql="""
-             SELECT DISTINCT
+            SELECT DISTINCT
             p.title,
             p.name,
             p.id,
@@ -775,12 +767,12 @@ def getDataset():
             p.license_id,
             p.metadata_created,
             p.metadata_modified,
-			co."sourceId"             
+			co.source_Id             
             FROM public.member m inner join public."package" p on m.table_id=p.id and m.capacity<>'organization'
             inner join public.resource r on r.package_id=p.id
             inner join public.group g on m.group_id=g.id 
             inner join public.group go on go.id=p.owner_org
-            inner join public.contadores co on co."packageId"=p.id              
+            inner join public.contadores co on co.package_Id=p.id              
             where m.state='active' and g.state='active'
             and p.state='active' and r.state='active' 
             and m.table_name='package' 
@@ -796,12 +788,11 @@ def getDataset():
     data["package"]=[]
     con=0
     for dataset in rows:
-        #messagebox.showinfo(message=dataset[8], title="resouce_id")
+       
        
         #columnas,filas=getRow_Column(dataset[8])
 
-        #messagebox.showinfo(message=filas, title="filas")
-        #messagebox.showinfo(message=columnas, title="columnas")
+      
         dataDict={}        
         dataDict["title"]=dataset[0]
         dataDict["name"]=dataset[1]
