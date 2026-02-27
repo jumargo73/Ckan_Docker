@@ -1,3 +1,12 @@
+@charset "UTF-8";
+
+:root {
+  --bg-hero-azul:	url("../../base/images/azul.png");
+	--bg-hero-ballena:	url("../../base/images/ballena.png");
+	--bg-hero-simbolo:	url("../../base/images/logo.png");
+	--bg-hero-mobile:	url("../../base/images/ballena.png");
+	--bg-hero-logo:	url("../../base/images/logo.png");
+}
 
 .container_tematica,
 .container_tematica-fluid,
@@ -14,8 +23,7 @@
 
 @media (min-width: 576px) {
   .container_tematica-sm, .container_tematica {
-    max-width: 576px;
-   
+    max-width: 576px;   
   }
 
 
@@ -23,64 +31,77 @@
 }
 @media (min-width: 768px) {
   .container_tematica-md, .container_tematica-sm, .container_tematica {
-    max-width: 768px;
-   
+    max-width: 768px;   
   }
  
 
 }
 @media (min-width: 992px) {
   .container_tematica-lg, .container_tematica-md, .container_tematica-sm, .container_tematica {
-    max-width: 992px;
-   
+    max-width: 992px;   
   }
 
 }
 @media (min-width: 1200px) {
   .container_tematica-xl, .container_tematica-lg, .container_tematica-md, .container_tematica-sm, .container_tematica{
-    max-width: 1170px;
-    
+    max-width: 1170px;    
   }
-  
- 
-  
+
+  .homepage .hero {
+    background-image: var(--bg-hero-ballena),var(--bg-hero-simbolo),var(--bg-hero-azul);
+    background-size: 35% auto,auto 90%,100% auto;
+    background-repeat:no-repeat;
+    background-color: #00081d;
+    background-position:left bottom ,right center,center;  
+  }
 }
+
 @media (min-width: 1400px) {
   .container_tematica-xxl, .container_tematica-xl, .container_tematica-lg, .container_tematica-md, .container_tematica-sm, .container_tematica {
-    max-width: 1370px;
-    
+    max-width: 1370px;    
   }
-
-
-
 }
 
 
 @media (min-width: 1500px) {
   .container_tematica-xxl, .container_tematica-xl, .container_tematica-lg, .container_tematica-md, .container_tematica-sm, .container_tematica {
-    max-width:  1370px;
-  
+    max-width:  1370px;  
   }
  
 }
 
 @media (min-width: 1600px) {
   .container_tematica-xxl, .container_tematica-xl, .container_tematica-lg, .container_tematica-md, .container_tematica-sm, .container_tematica {
-    max-width:  1370px;
-    
+    max-width:  1370px;    
   }
-  
 
- 
+  .col-md-3_tematica{
+    width: 19.5rem; 
+  }
 
+  .homepage .hero {
+  background-image: var(--bg-hero-ballena),var(--bg-hero-simbolo),var(--bg-hero-azul);
+  background-size: 28% auto,auto 90%,100% auto;
+  background-repeat:no-repeat;
+  background-color: #00081d;
+  background-position:left bottom 2rem,right center,center;
+
+}
+
+.hero {
+  height:22rem;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
 }
 
 @media (min-width: 1800px) {
   .container_tematica-xxl, .container_tematica-xl, .container_tematica-lg, .container_tematica-md, .container_tematica-sm, .container_tematica {
     max-width:  1370px;
-  }
-
-  
+  }  
 }
 
 @media (min-width: 2000px) {
@@ -89,7 +110,6 @@
   }
 
 
- 
 }
 
 
@@ -124,12 +144,6 @@
   position: relative;
 }
 
-@media(min-width:1600){
-  .col-md-3_tematica{
-    width: 19.5rem; 
-  }
-
-}
 
 .card_tematica {
   position: relative;
@@ -262,8 +276,6 @@
   word-break:keep-all;
   word-wrap: break-word;
   margin-left: 7.5rem;
- 
-
 
  }
 
@@ -323,44 +335,6 @@
 }
 
 
-
-
-
-@media (min-width:1200px){
-
-  .homepage .hero {
-  background-image: var(--bg-hero-ballena),var(--bg-hero-simbolo),var(--bg-hero-azul);
-  background-size: 35% auto,auto 90%,100% auto;
-  background-repeat:no-repeat;
-  background-color: #00081d;
-  background-position:left bottom ,right center,center;  
-}
-}
-
-
-@media (min-width:1600px){
-
-  .homepage .hero {
-  background-image: var(--bg-hero-ballena),var(--bg-hero-simbolo),var(--bg-hero-azul);
-  background-size: 28% auto,auto 90%,100% auto;
-  background-repeat:no-repeat;
-  background-color: #00081d;
-  background-position:left bottom 2rem,right center,center; 
-
-}
-
-.hero {
-  height:22rem;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  align-content: center;
-  text-align: center;
-}
-}
-
-
-
 .container_hero,
 .container_hero-fluid,
 .container_hero-xxl,
@@ -378,8 +352,6 @@
   align-content: center;
 
   }
-
-
 
 
   @media (max-width: 576px) {
@@ -454,6 +426,7 @@
    
 
   }
+
   @media (min-width: 768px) {
     .container_hero-md, .container_hero-sm, .container_hero {
       --bs-gutter-x: 1.5rem;
