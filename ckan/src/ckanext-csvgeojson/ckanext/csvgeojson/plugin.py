@@ -3,10 +3,32 @@ from ckan.plugins.toolkit import get_action,check_access, ValidationError,c
 from flask import Blueprint, request, jsonify
 import logging
 import ckan.model as model
+import os
 
 from ckanext.csvgeojson.services.geojson_converter import GeoJSONConverter  
 
 log = logging.getLogger(__name__)
+
+import ckan.plugins as p
+import ckan.plugins.toolkit as toolkit
+
+class CSVtoGeoJSON(p.SingletonPlugin):
+   
+    p.implements(p.IConfigurer, inherit=True)    
+    
+    def update_config(self, config):
+
+        log.info("[CSVtoGeoJSON][update_config] ejecutado")
+      
+        # Método oficial CKAN
+        toolkit.add_template_directory(config, 'templates')
+        toolkit.add_public_directory(config, 'public')
+        toolkit.add_resource('public','ckanext-csvgeojson')
+
+        self.proxy_enabled = "resource_proxy" in toolkit.config.get(
+            "ckan.plugins", ""
+        )
+
 
 class CSVtoGeoJSONApiPlugin(SingletonPlugin):
     

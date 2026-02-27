@@ -1,0 +1,89 @@
+{#
+Displays a sidebar module with information for given package
+
+pkg    - The package dict that owns the resources.
+
+Example:
+
+  {% snippet "package/snippets/info.html", pkg=pkg %}
+
+#}
+{% block package_info %}
+  {% if pkg %}
+    <section class="module module-narrow">
+      <div class="module context-info">
+        <div class="module-content">
+          {% block package_info_inner %}
+            {% block heading %}
+              <h1 class="heading">{{ h.dataset_display_name(pkg) }}</h1>
+            {% endblock %}
+            {% block Calificacion %}
+            <div class="card card-rating-widget">
+              <div class="header">
+                  <h3>Califica este Conjunto</h3>
+                </div>
+
+                <div class="body">
+                  <div id="rating-widget"
+                      data-module="resource-rating"
+                      data-resource-id="{{ pkg.id }}">
+
+                    <div class="average-rating">
+                      <strong>Calificación:</strong>
+                      <span id="avg-stars" class="stars">
+                      <span class="star fas fa-star filled" data-value="1"></span>
+                      <span class="star fas fa-star filled" data-value="2"></span>
+                      <span class="star fas fa-star filled" data-value="3"></span>
+                      <span class="star fas fa-star filled" data-value="4"></span>
+                      <span class="star fas fa-star filled" data-value="5"></span></span>
+                      (<span id="avg-score">0.0</span>)
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <div class="md-3">
+                          <div class="user-rating">
+                            <strong>Tu calificación:</strong>
+                            <span id="user-stars" class="stars">
+                            <span class="star far fa-star" data-value="1"></span>
+                            <span class="star far fa-star" data-value="2"></span>
+                            <span class="star far fa-star" data-value="3"></span>
+                            <span class="star far fa-star" data-value="4"></span>
+                            <span class="star far fa-star" data-value="5"></span></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row mt-2">
+                      <div class="col">
+                        <small id="user-label">(sin calificación)</small>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            {% endblock %}  
+            {% block nums %}
+              {% set num_followers = h.follow_count('dataset', pkg.id) %}
+              <div class="nums">
+                <dl>
+                  <dt>{{ _('Followers') }}</dt>
+                  <dd data-module="followers-counter" data-module-id="{{ pkg.id }}" data-module-num_followers="{{ num_followers }}">{{ h.SI_number_span(num_followers) }}</dd>
+                </dl>
+              </div>
+            {% endblock %}
+            {% block follow_button %}
+              {% if not hide_follow_button %}
+                <div class="follow_button">
+                  {{ h.follow_button('dataset', pkg.id) }}
+                </div>
+              {% endif %}
+            {% endblock %}
+          {% endblock %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+{% endblock %}

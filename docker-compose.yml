@@ -95,6 +95,7 @@ services:
       - ./ckan/src/ckan/ckan/templates/package/snippets/package_metadata_fields.html:/srv/app/src/ckan/ckan/templates/package/snippets/package_metadata_fields.html
       - ./ckan/src/ckan/ckan/templates/package/snippets/resources_list.html:/srv/app/src/ckan/ckan/templates/package/snippets/resources_list.html
       - ./ckan/src/ckan/ckan/templates/package/snippets/additional_info.html:/srv/app/src/ckan/ckan/templates/package/snippets/additional_info.html
+      - ./ckan/src/ckan/ckan/templates/package/snippets/info.html:/srv/app/src/ckan/ckan/templates/package/snippets/info.html
       - ./ckan/src/ckan/ckan/templates/home/layout6.html:/srv/app/src/ckan/ckan/templates/home/layout6.html
       - ./ckan/src/ckan/ckan/templates/home/snippets/featured_organization.html:/srv/app/src/ckan/ckan/templates/home/snippets/featured_organization.html
       - ./ckan/src/ckan/ckan/templates/home/snippets/featured_dataset.html:/srv/app/src/ckan/ckan/templates/home/snippets/featured_dataset.html
@@ -116,7 +117,6 @@ services:
       - ./ckan/src/ckan/ckan/templates/page.html:/srv/app/src/ckan/ckan/templates/page.html
       - ./ckan/src/ckan/ckan/templates/information_Layout.html:/srv/app/src/ckan/ckan/templates/information_Layout.html
       - ./ckan/src/ckan/ckan/templates/footer_Layout.html:/srv/app/src/ckan/ckan/templates/footer_Layout.html
-      - ./ckan/src/ckan/ckan/public/base/css/main.css:/srv/app/src/ckan/ckan/public/base/css/main.css
       - ./ckan/src/ckan/ckan/public/base/images/descarga.png:/srv/app/src/ckan/ckan/public/base/images/descarga.png
       - ./ckan/src/ckan/ckan/public/base/images/visualizacion.png:/srv/app/src/ckan/ckan/public/base/images/visualizacion.png
       - ./ckan/src/ckan/ckan/public/base/images/ballena.png:/srv/app/src/ckan/ckan/public/base/images/ballena.png

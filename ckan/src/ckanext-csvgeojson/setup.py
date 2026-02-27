@@ -3,18 +3,19 @@ from setuptools import setup, find_packages
 setup(
     name='ckanext-csvgeojson',
     version='0.1',
-    description='Convierte CSV con coordenadas a GeoJSON para CKAN',
+    description='Extension Para Diferentes Funciones',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
     entry_points='''
         [ckan.plugins]
-        csv_to_geojson_api=ckanext.csvgeojson.plugin:CSVtoGeoJSONApiPlugin
-        csv_to_geojson_dataset_resource=ckanext.csvgeojson.pluginDatasetResource:CSVtoGeoJSONDatasetResourcePlugin
-        SelloExcelenciaView_to_resource=ckanext.csvgeojson.pluginDatasetResource:SelloExcelenciaView
+        CSVtoGeoJSON=ckanext.csvgeojson.plugin:CSVtoGeoJSON
+        CsvGeoJsonApi=ckanext.csvgeojson.plugin:CSVtoGeoJSONApiPlugin
+        CsvGeoJsonPlugin=ckanext.csvgeojson.CSVtoGeoJSON:CSVtoGeoJSONPlugin
+        SelloExcelenciaView=ckanext.csvgeojson.sello:SelloExcelenciaView
         Odata_Api=ckanext.csvgeojson.pluginOdata:ApiODataPluginView
-        shp_to_geojson=ckanext.csvgeojson.pluginZip_Shp_To_Geojson:ApiZipShpToGeojsonView    
+        ShpGeoJsonPlugin=ckanext.csvgeojson.pluginZip_Shp:ApiZipShpToGeojsonView    
         FixDateFormatPlugin=ckanext.csvgeojson.pluginFixDateFormatPlugin:FixDateFormatPlugin
-        PowerBI=ckanext.csvgeojson.pluginAPI:DataJson
+        DataJSon=ckanext.csvgeojson.pluginAPI:DataJson
     ''',
 )

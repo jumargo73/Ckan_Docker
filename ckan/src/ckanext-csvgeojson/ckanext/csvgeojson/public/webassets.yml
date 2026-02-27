@@ -1,0 +1,9 @@
+csvgeojson.js:
+  output: ckanext-csvgeojson/%(version)s_csvgeojson.js
+  contents:
+    - js/csvgeojson.js
+
+csvgeojson.css:
+  output: ckanext-csvgeojson/%(version)s_csvgeojson.css
+  contents:
+    - css/csvgeojson.css

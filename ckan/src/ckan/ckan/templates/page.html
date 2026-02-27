@@ -147,9 +147,17 @@
 
 {%- block scripts %}
   {% asset 'base/main' %}
-  {% asset 'base/ckan' %}
+  {% asset 'base/ckan' %}   
   {% if g.tracking_enabled %}
     {% asset 'base/tracking' %}
   {% endif %}
   {{ super() }}
+  {% asset 'ckanext-csvgeojson/csvgeojson.js' %}  
 {% endblock -%}
+
+{% block styles %}
+  {{ super() }}
+  {% asset 'ckanext-csvgeojson/csvgeojson.css' %}
+{% endblock %}
+
+

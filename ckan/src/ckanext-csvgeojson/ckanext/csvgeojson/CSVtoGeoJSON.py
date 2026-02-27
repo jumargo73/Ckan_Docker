@@ -20,11 +20,10 @@ from sqlalchemy.orm import joinedload
 from dateutil.relativedelta import relativedelta
 import os
 
-TRUTHY = {'true', 'on', '1', 'si', 'sí'}
 
 log = logging.getLogger(__name__)
 
-class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
+class CSVtoGeoJSONPlugin(SingletonPlugin):
     implements(IResourceController)
     implements(IPackageController)
     implements(IResourceController)
@@ -407,4 +406,3 @@ class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
             for row in rows
         ]   
        
-    
