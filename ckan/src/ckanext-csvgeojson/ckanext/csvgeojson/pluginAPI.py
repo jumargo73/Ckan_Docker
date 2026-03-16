@@ -8,6 +8,7 @@ from ckan.model.resource import Resource  # ✅ Correcto import
 from flask import Blueprint, jsonify, redirect, request, Response
 
 import logging, json, subprocess, os
+from datetime import datetime
 
 
 log = logging.getLogger(__name__)
@@ -25,12 +26,12 @@ class DataJson(SingletonPlugin):
 
         bp = Blueprint('data_json', __name__)
 
-        log.info("[DataJson] get_blueprint_geojson ejecutado")
+        log.info("[DataJson][get_blueprint][data_json] ejecutado")
 
         @bp.route('/api/3/action/data.json', methods=['GET'])
         def dataJson():
 
-            #log.info("[DataJson] get_blueprint powerBI ejecutado")
+            log.info("[data_json][dataJson] ejecutado")
             context = {
                 'model': model,
                 'session': model.Session,
@@ -153,8 +154,7 @@ class DataJson(SingletonPlugin):
             """
             EndPoint para Tableros
             """
-
-            #log.info("[DataJson] get_blueprint powerBI ejecutado")
+            log.info("[data_json][powerBI] ejecutado")
             context = {
                 'model': model,
                 'session': model.Session,
@@ -187,7 +187,7 @@ class DataJson(SingletonPlugin):
 
                 #log.warning(f"[DataJson] get_blueprint powerBI context: {context}")
 
-                log.warning(f"[DataJson] get_blueprint powerBI responses: {package_responses}")
+                #log.warning(f"[PluginApi][powerBI] responses: {package_responses}")
 
                 #
                 # log.warning(f"[DataJson] get_blueprint powerBI registros: {registros}")
@@ -221,6 +221,29 @@ class DataJson(SingletonPlugin):
                             tags=package_response.get('tags') 
                             resources=package_response.get('resources') 
 
+                            log.warning(f"[PluginApi][powerBI] resources: {resources}")
+
+                            # Filtrar solo CSV con datastore activo
+                            csv_resources = [
+                                r for r in resources
+                                if r.get("format", "").lower() == "csv"
+                                and r.get("datastore_active")
+                            ]
+
+                            log.warning(f"[PluginApi][powerBI] csv_resources: {csv_resources}")
+
+                            if not csv_resources:
+                                continue
+
+
+                            # Obtener el más reciente
+                            latest_resource = max(
+                                csv_resources,
+                                key=lambda r: datetime.fromisoformat(r["created"])
+                            )        
+                            
+                            log.warning(f"[PluginApi][powerBI] latest_resource: {latest_resource}")
+
                             estado=None    
                             if package_response.get('private')==True:
                                 estado="Privado"
@@ -235,7 +258,7 @@ class DataJson(SingletonPlugin):
                                 "@type":"Dataset",
                                 "identifier":package_response['id'], 
                                 "landingPage":"{}".format(url_site+'/'+package_response.get('type')+'/'+package_response['id']),  
-                                 "title": package_response.get('title'),
+                                "title": package_response.get('title'),
                                 "description": package_response.get('notes'),
                                 "dependencia":organization.get('title') if organization else '',
                                 "issued": package_response.get('metadata_created') or '',
@@ -262,79 +285,39 @@ class DataJson(SingletonPlugin):
                             data_dataset['distribucion']=[]
                             data_dataset['tema']=[]
 
+                            contador=latest_resource.get('contador') 
+                            #log.warning(f"[PliginApi][powerBI] contador: {contador}")
+                            estructura=latest_resource.get('estructura') 
+                            #log.warning(f"[PliginApi][powerBI] estructura: {estructura}")
+                            data_extras=latest_resource.get('data_extra')    
+                            #log.warning(f"[PliginApi][powerBI] data_extras: {data_extras}")
+
+                            data_resource= {
+                                "@type": "dcat:Distribution",
+                                "description":latest_resource['description'] or '',
+                                "downloadURL":latest_resource['url'] or '',  
+                                "format":latest_resource['format'] or '',
+                                "mediaType":latest_resource['mimetype'] or '',
+                                #"title":latest_resource['title'] or '',
+                                "issued": latest_resource['created'] or '',
+                                "modified": latest_resource['last_modified'] or '',                              
+                                "filas":estructura['filas'] if estructura else 0 ,
+                                "columnas":estructura['columnas'] if estructura else 0 ,
+                                "vistas":contador['visualizaciones'] if contador else 0,
+                                'descargas':contador['descargas'] if contador else 0,
+                            }
+
+
                             if grupos:
                                 data_dataset['tema'].append(grupos)
                            
                            
-                            for resource in resources:
-
-                               
-                                contador=resource.get('contador')
-                                estructura=resource.get('estructura')
-                                data_extras=resource.get('data_extra')
-                                #log.warning(f"[DataJson] get_blueprint powerBI contador: {contador}")
-                                #log.warning(f"[DataJson] get_blueprint powerBI estructura: {estructura}")
-                                #log.warning(f"[DataJson] get_blueprint powerBI data_extras: {data_extras}")
-
-                                
-
-                                categoria=data_extras.get('categoria') if data_extras else ''    
-                                #log.warning(f"[DataJson] resource {resource['id']} categoria: {categoria}")
-
-
-                                if categoria:
-
-                                    
-                                    data_sello={
-                                    "@type": "dcat:Sello", 
-                                    "description":resource.get('description') or '',
-                                    "downloadURL":resource.get('url') or '',
-                                    "format":resource.get('format') or '',
-                                    "mediaType":resource.get('mediaType') or '',
-                                    "title":resource.get('title') or '',
-                                    'filas':estructura.get('filas') if estructura else 0,
-                                    'columnas':estructura.get('columnas') if estructura else 0,
-                                    "vistas":contador.get('visualizaciones') if contador else 0,
-                                    'descargas':contador.get('descargas') if contador else 0,
-                                    'categoria':data_extras.get('categoria') if data_extras else '',
-                                    'fecha_obtencion':data_extras.get('fecha_obtencion') if data_extras else '',
-                                    'fecha_vencimiento':data_extras.get('fecha_vencimiento') if data_extras else '',
-                                    'dependiencia':data_extras.get('dependiencia') if data_extras else '',
-                                    'nivel':data_extras.get('nivel') if data_extras else '',
-                                    
-                                    }
-
-                                    #log.warning(f"[DataJson] resource {resource['id']} categoria: {categoria} data_sello {data_sello}")
-
-                                    #name_sello=resource.get('name')
-                                    data['sellos'].append(data_sello)
-
-                                else: 
-
-                                    if resource.get('format')=='CSV' and str(resource.get("datastore_active", "")).lower() == "true" and str(resource.get("type", "")).lower() != "sello_excelencia":
-
-                                        data_resource= {
-                                            "@type": "dcat:Distribution",
-                                            "description":resource.get('description') or '',
-                                            "downloadURL":resource.get('url') or '',  
-                                            "format":resource.get('format') or '',
-                                            "mediaType":resource.get('mediaType') or '',
-                                            "title":resource.get('title') or '',
-                                            "issued": resource.get('created') or '',
-                                            "modified": resource.get('last_modified') or '',                              
-                                            "filas":estructura.get('filas') if estructura else 0 ,
-                                            "columnas":estructura.get('columnas') if estructura else 0 ,
-                                            "vistas":contador.get('visualizaciones') if contador else 0,
-                                            'descargas':contador.get('descargas') if contador else 0,
-                                        }
-
-                                        #log.warning(f"[DataJson] resource {resource['id']} categoria: {categoria} data_resource {data_resource}")
                                         #nombre_resource=resource.get('name')
-                                        data_dataset['distribucion'].append(data_resource)
+                            data_dataset['distribucion'].append(data_resource)
 
                                
 
-                                #log.warning(f"[DataJson] get_blueprint powerBI resources_response: {resource}")
+                            #log.warning(f"[DataJson] get_blueprint powerBI resources_response: {resource}")
 
                         #log.warning(f"[DataJson] get_blueprint powerBI data_dataset: {data_dataset}")
                         data['conjuntoDatos'].append(data_dataset)
@@ -347,7 +330,7 @@ class DataJson(SingletonPlugin):
                 #return Response(json.dumps(data), mimetype="application/json")
 
             except Exception as e:
-                log.error(f"[DataJson] Error procesando get_blueprint dataset: {e}")
+                log.error(f"[PluginApi][powerBI] Error procesando powerBI {e}")
 
             # Siempre devolver success para no interrumpir CKAN
 

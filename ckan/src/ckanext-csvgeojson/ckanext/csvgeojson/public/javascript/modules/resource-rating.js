@@ -1,9 +1,11 @@
 this.ckan.module('resource-rating', function ($) {
   return {
 
+    options: {},
     initialize: function () {
-
-      console.log("resource-rating iniciado");
+      
+      console.log('resource-rating iniciado');
+      console.log(this.options.resourceId);
 
       const self = this;
 
@@ -66,11 +68,14 @@ this.ckan.module('resource-rating', function ($) {
           }),
           success: function (data) {
             const result = data.result;
+            console.log(data);       // 👈 agrega esto
+            console.log(data.result);
 
             renderStars(self.$('#avg-stars'), result.average || 0);
             self.$('#avg-score').text((result.average || 0).toFixed(1));
 
-            currentUserRating = result.user_rating || 0;
+            currentUserRating = result.user-rating || 0;
+            console.log(currentUserRating); 
             renderStars(self.$('#user-stars'), currentUserRating);
 
             if (currentUserRating) {
@@ -121,4 +126,9 @@ this.ckan.module('resource-rating', function ($) {
       fetchRatings();
     }
   };
+});
+
+
+$(document).ready(function () {
+  ckan.module.initialize();
 });

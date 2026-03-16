@@ -6,7 +6,8 @@ import json, logging,os,  mimetypes
 from datetime import datetime, date
 import ckan.logic as logic
 import ckan.model as model
-from model import Session, Resource,Package,PackageExtra,Contadores
+from model import Session, Resource,Package,PackageExtra
+from ckanext.csvgeojson.model.contador import Contador
 import fitz  
 from ckan.types import Context 
 from ckan.common import config
@@ -14,7 +15,6 @@ from typing import Any
 import pprint, re                    
 import ckan.lib.helpers as h
 from ckan.common import request
-from ckan.lib.helpers import flash_error, redirect_to
 from sqlalchemy.orm import joinedload
 from dateutil.relativedelta import relativedelta
 import os
@@ -27,7 +27,7 @@ class SelloExcelenciaView(SingletonPlugin):
     implements(IBlueprint)
    
     
-    log.info("[SelloExcelenciaView]  Cargado con Exito")    
+    log.info("[sello][SelloExcelenciaView] Cargado con Exito")    
     
     def get_blueprint(self):    
         
@@ -138,7 +138,7 @@ class SelloExcelenciaView(SingletonPlugin):
         def sello_edit(id):
 
             
-            log.info("[SelloExcelenciaView] sello_edit Ejecutado") 
+            log.info("[SelloExcelenciaView][sello_edit] Ejecutado") 
            
             # 🔹 Log completo de la lista sellos
             #log.info("[SelloExcelenciaView] sello_edit id: %s", id)
@@ -199,6 +199,8 @@ class SelloExcelenciaView(SingletonPlugin):
 
         @sello_bp.route('/sello/update/<id>', methods=['POST'])   
         def update_sello_resource(id):
+
+            log.info("[SelloExcelenciaView][update_sello_resource] Ejecutado") 
 
             context = {'model': model, 'session': model.Session, 'user': toolkit.c.user}
             # 1️⃣ Recibir los textos
@@ -272,7 +274,7 @@ class SelloExcelenciaView(SingletonPlugin):
         @sello_bp.route('/sello/delete/<id>', methods=['POST'])
         def sello_delete(id):
 
-            log.info("[SelloExcelenciaView]  sello_delete ejecutado")
+            log.info("[SelloExcelenciaView][sello_delete] ejecutado")
 
             context = {
                 "model": model,
@@ -299,7 +301,7 @@ class SelloExcelenciaView(SingletonPlugin):
     
             try:
                 
-                log.info("[SelloExcelenciaView]  new_sello_resource ejecutado")
+                log.info("[SelloExcelenciaView][new_sello_resource] ejecutado")
                 
                 # Obtener el dataset
                 package = toolkit.get_action('package_show')(
@@ -398,7 +400,7 @@ class SelloExcelenciaView(SingletonPlugin):
         @sello_bp.app_context_processor
         def inject_sello_extras():
 
-            log.info("[SelloExcelenciaView]  injenject_sello_extras Ejecutado")
+            log.info("[SelloExcelenciaView][injenject_sello_extras]   Ejecutado")
            
             if request.endpoint == 'dataset.edit':
                 try:

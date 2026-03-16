@@ -21,14 +21,14 @@ class ApiZipShpToGeojsonView(SingletonPlugin):
     implements(IBlueprint)
 
     def update_config(self, config):
-        log.info("[Api_Zip_Shp_To_GeojsonView] update_config ejecutado")
+        log.info("[Api_Zip_Shp_To_GeojsonView][update_config]  ejecutado")
 
     
     def get_blueprint(self):
 
         ckan_shp_geojson_bp = Blueprint("Shp_GeoJson", __name__)
 
-        log.info("[ApiZipShpToGeojsonView] get_blueprint ejecutado") 
+        log.info("[ApiZipShpToGeojsonView][get_blueprint][Shp_GeoJson] ejecutado") 
 
         @ckan_shp_geojson_bp.route("/ckan/shp_to_geojson")
         def shp_to_geojson():
@@ -49,7 +49,7 @@ class ApiZipShpToGeojsonView(SingletonPlugin):
         @ckan_shp_geojson_bp.route("/ckan/shp_to_geojson/convert",methods=['POST'])
         def convert_shp_geojson():
 
-            log.info("[ApiZipShpToGeojsonView] convert_shp_geojson ejecutado") 
+            log.info("[ApiZipShpToGeojsonView][convert_shp_geojson]  ejecutado") 
             
             archivo = toolkit.request.files.get('upload')  
             package_id=toolkit.request.form.get('dataset_org') 

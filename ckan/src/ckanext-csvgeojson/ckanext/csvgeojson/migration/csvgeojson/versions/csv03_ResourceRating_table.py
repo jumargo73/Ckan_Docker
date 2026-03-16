@@ -1,4 +1,4 @@
-"""create csvgeojson tables
+"""create ResourceRating tables
 
 Revision ID: 3b4894672727
 Revises:
@@ -25,9 +25,8 @@ def upgrade():
             "ResourceRating",
             sa.Column("id", sa.Integer, primary_key=True),
             sa.Column("package_Id", sa.UnicodeText, sa.ForeignKey('package.id',ondelete='CASCADE')),
-            sa.Column("source_Id", sa.UnicodeText, sa.ForeignKey('resource.id',ondelete='CASCADE')),
-            sa.Column("calificate", sa.Integer, default=0),
-            sa.Column("user", sa.UnicodeText),            
+            sa.Column("ratings", sa.Integer, default=0),
+            sa.Column("user_id", sa.UnicodeText),            
             sa.Column("created", sa.DateTime, default=sa.func.now()           
             ),
         )

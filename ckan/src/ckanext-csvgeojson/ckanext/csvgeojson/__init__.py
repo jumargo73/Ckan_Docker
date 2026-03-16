@@ -16,6 +16,7 @@ __all__ = [
     "ApiZipShpToGeojsonView",
     "FixDateFormatPlugin",
     "DataJson",
-    "CSVtoGeoJSON"
+    "CSVtoGeoJSON",
+    "Contador"
     ]
 

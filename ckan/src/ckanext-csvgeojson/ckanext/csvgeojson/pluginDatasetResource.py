@@ -1,21 +1,20 @@
 from ckan.plugins import SingletonPlugin, IDatasetForm, implements, IPackageController, IResourceController
-from ckan.plugins import toolkit
 from ckan.plugins.interfaces import IResourceView, IConfigurer, IBlueprint
+from ckan.plugins.toolkit import get_action,request,config,g,check_access, ValidationError,c
 from flask import Blueprint,request
 import json, logging,os,  mimetypes
 from datetime import datetime, date
 import ckan.logic as logic
 import ckan.model as model
-from model import Session, Resource,Package,PackageExtra,Contadores
+from model import Session, Resource,Package,PackageExtra
+from ckanext.csvgeojson.model.contador import Contador
 import fitz  
 from ckan.types import Context 
-from ckan.common import config
 from typing import Any
 import pprint, re                    
 from ckanext.csvgeojson.services.geojson_converter import GeoJSONConverter
 import ckan.lib.helpers as h
 from ckan.common import request
-from ckan.lib.helpers import flash_error, redirect_to
 from sqlalchemy.orm import joinedload
 from dateutil.relativedelta import relativedelta
 import os
@@ -27,7 +26,7 @@ log = logging.getLogger(__name__)
 class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
     implements(IResourceController)
     implements(IPackageController)
-    implements(IResourceController)
+ 
 
    
     
@@ -60,7 +59,7 @@ class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
         if resource.get('format', '').lower() == 'csv':
 
             # Obtener dataset completo
-            package = toolkit.get_action('package_show')(context, {'id': resource['package_id']})
+            package =   get_action('package_show')(context, {'id': resource['package_id']})
             
             
             # Buscar recurso GeoJSON ya existente en el paquete
@@ -88,7 +87,7 @@ class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
 
         
         # Leer el valor del checkbox desde el formulario
-        val = toolkit.request.form.get('sello_excelencia') or pkg_dict.get('sello_excelencia')
+        val =  request.form.get('sello_excelencia') or pkg_dict.get('sello_excelencia')
 
         
         # Determinar si está marcado
@@ -101,7 +100,7 @@ class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
         if not pkg_id:
             return
 
-        pkg = toolkit.get_action('package_show')({'user': context.get('user')}, {'id': pkg_id})
+        pkg =   get_action('package_show')({'user': context.get('user')}, {'id': pkg_id})
         extras = pkg.get('extras', [])
 
         # Quitar valor previo si existe
@@ -113,7 +112,7 @@ class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
 
         # ⚠️ Pasar bandera para que el evento no se dispare otra vez
         new_context = dict(context, skip_sello_excelencia=True)
-        toolkit.get_action('package_patch')(new_context, {'id': pkg_id, 'extras': extras})
+        get_action('package_patch')(new_context, {'id': pkg_id, 'extras': extras})
 
         #log.info("[CSVtoGeoJSONPlugin] after_dataset_update Dataset Marcado con Exito")          
         
@@ -159,20 +158,25 @@ class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
         return search_params  
 
     def after_dataset_search(self,search_results: dict[str, Any], search_params: dict[str, Any]):
-        log.info("[CSVtoGeoJSONPlugin] after_dataset_search ejecutado")
+        log.info("[CSVtoGeoJSONPlugin][after_dataset_search] ejecutado")
         try:
+
+            contadores=[]
+            
             # 1️⃣ Obtener contadores desde tu acción
-            #contador_action = toolkit.get_action('contador_get')
+            #contador_action = toolkit get_action('contador_get')
             context = {
                 'model': model,
                 'session': model.Session,
-                'user': toolkit.g.user or toolkit.config.get('ckan.site_id')
+                'user':  g.user or  config.get('ckan.site_id')
             }
+
+            log.info(f"[CSVtoGeoJSONPlugin][after_dataset_search] context {context}")
             
             contadores = self.contador_get()
             
             
-            #log.info(f"[CSVtoGeoJSONPlugin] after_dataset_search contadores {contadores}")
+            log.info(f"[CSVtoGeoJSONPlugin][after_dataset_search] contadores {contadores}")
 
             # 2️⃣ Optimizar acceso mapeando por resource_id
             contador_map = {c['resource_id']: c for c in contadores}
@@ -314,7 +318,7 @@ class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
     def get_filas_columnas(self,id,context):
         try:
             #log.info("[CSVtoGeoJSONPlugin] get_filas_columnas ejecutado")
-            datastore_response = toolkit.get_action('datastore_search')(context,{'id': id})
+            datastore_response =  get_action('datastore_search')(context,{'id': id})
             if datastore_response:
                 columnas = len(datastore_response.get("fields", []))
                 filas = datastore_response.get("total", 0)  
@@ -361,23 +365,23 @@ class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
         vistas=0
         descargas=0
 
-        rows = Session.query(Contadores).filter(
-                Contadores.package_id == package_id
+        rows = Session.query(Contador).filter(
+                Contador.package_Id == package_id
             ).all()
 
        
         for row in rows:
             vistas+=row.contVistas
             descargas+=row.contDownload
-            log.info(f"[CSVtoGeoJSONPlugin] get_consolidado_contador vistas {vistas} descargas {descargas}")
+            log.info(f"[CSVtoGeoJSONPlugin][get_consolidado_contador] vistas {vistas} descargas {descargas}")
 
         
-        log.info(f"[CSVtoGeoJSONPlugin] get_consolidado_contador registro {rows}")
+        log.info(f"[CSVtoGeoJSONPlugin][get_consolidado_contador] registro {rows}")
 
         return{
                 "visualizaciones": vistas if vistas else 0,
                 "descargas": descargas if descargas else 0,
-                "package_id": row.packageId,
+                "package_id": package_id,
             }
           
 
@@ -393,9 +397,9 @@ class CSVtoGeoJSONDatasetResourcePlugin(SingletonPlugin):
     
         session = model.Session
 
-        rows = session.query(Contadores).all()
+        rows = session.query(Contador).all()
 
-        #log.info(f"[CSVtoGeoJSONPlugin] contador_get registro {rows}")
+        log.info(f"[CSVtoGeoJSONPlugin][contador_get] registro {rows}")
 
         return [
             {

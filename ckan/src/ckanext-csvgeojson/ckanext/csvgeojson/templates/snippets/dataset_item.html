@@ -22,17 +22,7 @@
                   <p>Ultima Actualizacion {{ dataset.metadata_modified }}</p>                          
             {% endblock %}           
         </div>
-      </div>
-      {% block resource_item_contador %}
-      <div class="card-footer card-footer-dataset">
-        <div class="card-text card-text-dataset-contador">
-          {% set contadores = h.get_contadores(dataset.sourceId) %}    
-            {% for contador in contadores %}
-              {% snippet 'snippets/contador_item.html', contador=contador , position=loop.index, show_capacity=show_capacity%}
-          {% endfor %}
-        </div> 
       </div>      
-      {% endblock %}
     {% endblock %}  
  
 {% endblock %}

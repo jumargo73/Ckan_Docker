@@ -1,4 +1,4 @@
-FROM ckan/ckan-base:2.10-py3.10
+FROM ckan/ckan-base:2.11
 
 USER root
 
@@ -38,7 +38,11 @@ RUN apt-get update && apt-get install -y python3-dev libpq-dev python3-pip pytho
 WORKDIR /srv/app/src 
 
 # Asegurar setuptools en el virtualenv de CKAN (sin recrearlo)
-RUN /srv/app/bin/pip install --upgrade pip setuptools wheel 
+#RUN /srv/app/bin/pip install --upgrade pip wheel setuptools==65.5.1 Flask==2.3.3 Werkzeug==2.2.3
+RUN /srv/app/bin/pip install -r ckan/requirements.txt
+RUN /srv/app/bin/pip install --upgrade pip wheel setuptools==65.5.1 Werkzeug==2.2.3
+RUN /srv/app/bin/pip install Flask==2.3.3 
+
 
 
 # Clonar extensiones
@@ -53,17 +57,12 @@ COPY ./ckan/src/ckanext-csvgeojson /srv/app/src/ckanext-csvgeojson
 COPY ./ckan/src/ckanext-csvgeojson/ckanext/csvgeojson /srv/app/src/ckan/ckanext/csvgeojson
 #RUN git clone https://github.com/ckan/ckanext-envvars.git
 
-# Asegurar setuptools en el virtualenv de CKAN (sin recrearlo)
-RUN /srv/app/bin/pip install --upgrade pip setuptools==65.5.1
-
-
-# Instalar requirements de harvest
-RUN /srv/app/bin/pip install -r ckan/requirements.txt
 #RUN /srv/app/bin/pip install -r ckanext-harvest/requirements.txt
 RUN /srv/app/bin/pip install -r ckanext-envvars/dev-requirements.txt
 RUN /srv/app/bin/pip install -r ckanext-spatial/requirements.txt
 RUN /srv/app/bin/pip install -r ckanext-scheming/test-requirements.txt
 RUN /srv/app/bin/pip install -r ckanext-csvgeojson/requirements.txt
+
 
 
 # Instalar extensiones en modo editable

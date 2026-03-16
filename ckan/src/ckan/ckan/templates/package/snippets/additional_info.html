@@ -83,7 +83,7 @@
             <th scope="row" class="dataset-label">{{ _("Frecuencia") }}</th>
 
             <td class="dataset-details">
-                {{ pkg_dict.update_frequency }}
+                {{ h.dataset_frecuencia(pkg_dict) }}
             </td>
           </tr>          
         {% endif %}
@@ -92,7 +92,7 @@
           <th scope="row" class="dataset-label">{{ _("Departamento") }}</th>
 
           <td class="dataset-details">
-              {{ pkg_dict.department }}
+              {{ h.dataset_departamento(pkg_dict) }}
           </td>
         </tr>
         {% endif %}
@@ -101,7 +101,7 @@
           <th scope="row" class="dataset-label">{{ _("Ciudad") }}</th>
 
           <td class="dataset-details">
-              {{ pkg_dict.city }}
+              {{ {{ h.dataset_ciudad(pkg_dict) }}}}
           </td>
         </tr>
         {% endif %}

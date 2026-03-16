@@ -10,7 +10,6 @@ from werkzeug.wrappers.response import Response as WerkzeugResponse
 import flask
 from flask.views import MethodView
 
-from ckan.contadores.main.contador import actualizar_insertarRegistro
 import ckan.lib.base as base
 import ckan.lib.datapreview as lib_datapreview
 from ckan.lib.helpers import helper_functions as h
@@ -57,6 +56,7 @@ resource = Blueprint(
     url_prefix=u'/dataset/<id>/resource',
     url_defaults={u'package_type': u'dataset'}
 )
+
 prefixed_resource = Blueprint(
     u'resource',
     __name__,

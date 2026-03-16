@@ -26,7 +26,7 @@ class FixDateFormatPlugin(SingletonPlugin):
 
     def after_resource_update(self, context, resource):
 
-        log.info("[pluginFixDateFormatPlugin] after_update ejecutado") 
+        log.info("[pluginFixDateFormatPlugin][after_resource_update] ejecutado") 
         connection = context['model'].Session.connection()
         query = sa.text("""
             UPDATE resource_view

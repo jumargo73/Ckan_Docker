@@ -5,7 +5,7 @@ import ckan.lib.helpers as h
 from ckanapi import RemoteCKAN
 from configparser import ConfigParser
 from ckan.common import config
-from ckan.plugins import toolkit
+#from ckan.plugins import toolkit
 from ckanapi.errors import NotFound
 import time
 import certifi, requests
@@ -20,7 +20,7 @@ log = logging.getLogger(__name__)
 
 def get_ckan_config():
 
-    log.info("[convert_job] get_ckan_config ejecutado")
+    log.info("[convert_job][get_ckan_config] ejecutado")
     
     
     # Ruta a tu production.ini

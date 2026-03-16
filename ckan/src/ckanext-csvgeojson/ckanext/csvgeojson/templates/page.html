@@ -1,0 +1,18 @@
+{% ckan_extends %}
+ 
+    {% block footer %}
+      {% include "information_Layout.html" %}    
+      {% include "footer_Layout.html" %}
+    {% endblock %}
+  
+
+    {% block scripts %}
+        {{ super() }}
+      {% asset 'ckanext-csvgeojson/resource-rating.js' %}  
+    {% endblock -%}
+
+
+  {% block styles %}
+    {{ super() }}
+    {% asset 'ckanext-csvgeojson/csvgeojson.css' %}
+  {% endblock %}

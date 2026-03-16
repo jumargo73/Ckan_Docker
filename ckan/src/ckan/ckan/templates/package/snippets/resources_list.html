@@ -13,20 +13,7 @@
 <section id="dataset-resources" class="resources">
 
   {% block resource_list %}
-    {% if resources %}
-      <div>
-        <div class="row justify-content-center">
-          <div class="card-footer card-footer-dataset">
-            <div class="card-text card-text-dataset-contador">
-              {% set contadores = h.obtener_contador_package(pkg['id']) %}   
-              {% for contador in contadores %}
-              {% snippet 'snippets/contador_item.html', contador=contador , position=loop.index, show_capacity=show_capacity%}
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
+    {% if resources %}      
       <ul class="{% block resource_list_class %}resource-list{% endblock %}">
         {% block resource_list_inner %}
           {% set can_edit = can_edit or h.check_access('package_update', {'id':pkg.id }) %}          
@@ -36,7 +23,7 @@
         {% endblock %}
       </ul>
     {% else %}
-      {% block resource_list_empty %}
+    {% block resource_list_empty %}
         {% if h.check_access('resource_create', {'package_id': pkg['id']}) %}
           {% trans url=h.url_for(pkg.type ~ '_resource.new', id=pkg.name) %}
           <p class="empty">This dataset has no data, <a href="{{ url }}">why not add some?</a></p>

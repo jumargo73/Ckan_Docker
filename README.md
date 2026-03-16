@@ -25,15 +25,42 @@ cd ~/ckan/lib/default/
  #configuraciones Adicionales
  #migraciones de Ckan 
 
-Se abre el contenedor de la aplicacion
+Creamos la BD de ckan_default y datastore_default
+docker exec -u root -it ckan_docker-db-1 bash
+psql -U postgres 
+     CREATE USER ckan_default WITH PASSWORD 'car2986';
+     CREATE DATABASE ckan_default OWNER ckan_default;
+     GRANT ALL PRIVILEGES ON DATABASE ckan_default TO ckan_default;
 
-docker exec -u root -it  ckan-hijo-ckan-1 bash
+     CREATE USER datastore_default WITH PASSWORD 'car2986';
+     CREATE DATABASE datastore_default OWNER ckan_default ENCODING 'UTF8';
+
+Se abre el contenedor de la aplicacion cuando este arriba
+
+docker exec -u root -it ckan_docker-ckan-1 bash
+ckan db init
+ckan db upgrade
+python csvgeojson_migrated.py
+
+/*crear usuario admin de la aplicacion*/
+ckan -c /srv/app/ckan.ini sysadmin add opendata
+/*Generar Token
+ckan -c /srv/app/ckan.ini user token add opendata datapusher
+
+El Token creado lo agregas en el ckan.ini  
+etiqueta  ckan.datapusher.api_token
+exit
+
+configurar permisos datapusher
+
+docker exec -u root -it ckan_docker-ckan-1 ckan -c /srv/app/ckan.ini datastore set-permissions > ds.sql
+docker cp ds.sql ckan_docker-db-1:/ds.sql
+docker exec -it ckan_docker-db-1 psql -U ckan_default -d datastore_default -f /ds.sql
 
 ckan db upgrade ejecuta las migraciones de ckan creacion de las tablas basicas
 python  csvgeojson_migrated.py crea tablas necesarias para que funcione las nuevas modalidades
 
-/*Generar Token
-ckan -c /srv/app/ckan.ini user token add datosabiertos datapusher
+
 
 /*Generar Token
 

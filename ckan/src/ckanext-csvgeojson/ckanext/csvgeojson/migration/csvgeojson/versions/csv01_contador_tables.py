@@ -1,4 +1,4 @@
-"""create csvgeojson tables
+"""create contadores tables
 
 Revision ID: 3b4894672727
 Revises:

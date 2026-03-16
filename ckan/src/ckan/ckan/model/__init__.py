@@ -29,11 +29,6 @@ from ckan.model.system import (
     System,
 )
 
-from ckan.model.contador import Contadores
-
-from ckan.model.resourceRating import ResourceRating
-
-
 from ckan.model.package import (
     Package,
     PackageMember,
@@ -148,7 +143,7 @@ __all__ = [
     "get_system_info", "set_system_info", "delete_system_info",
     "DomainObjectOperation", "DomainObject", "Dashboard", "ApiToken",
     "init_model", "Repository",
-    "repo", "is_id", "parse_db_config","Contadores","ResourceRating"
+    "repo", "is_id", "parse_db_config"
 ]
 
 log = logging.getLogger(__name__)
