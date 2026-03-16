@@ -53,15 +53,15 @@ RUN git clone https://github.com/ckan/ckanext-scheming.git
 RUN git clone https://github.com/ckan/ckanext-spatial
 
 
-COPY ./ckan/src/ckanext-csvgeojson /srv/app/src/ckanext-csvgeojson
-COPY ./ckan/src/ckanext-csvgeojson/ckanext/csvgeojson /srv/app/src/ckan/ckanext/csvgeojson
+COPY ./ckan/src/ckanext-ckanplugin /srv/app/src/ckanext
+COPY ./ckan/src/ckanext-ckanplugin/ckanext/ckanplugin /srv/app/src/ckan/ckanext/ckanplugin
 #RUN git clone https://github.com/ckan/ckanext-envvars.git
 
 #RUN /srv/app/bin/pip install -r ckanext-harvest/requirements.txt
 RUN /srv/app/bin/pip install -r ckanext-envvars/dev-requirements.txt
 RUN /srv/app/bin/pip install -r ckanext-spatial/requirements.txt
 RUN /srv/app/bin/pip install -r ckanext-scheming/test-requirements.txt
-RUN /srv/app/bin/pip install -r ckanext-csvgeojson/requirements.txt
+RUN /srv/app/bin/pip install -r ckanext-ckanplugin/requirements.txt
 
 
 
@@ -72,7 +72,7 @@ RUN /srv/app/bin/pip install -e ckanext-envvars
 RUN /srv/app/bin/pip install -e ckanext-geoview
 RUN /srv/app/bin/pip install -e ckanext-spatial
 RUN /srv/app/bin/pip install -e ckanext-scheming
-RUN /srv/app/bin/pip install -e ckanext-csvgeojson
+RUN /srv/app/bin/pip install -e ckanext-ckanplugin
 
 # Permisos
 RUN chown -R ckan /srv/app

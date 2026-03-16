@@ -8,8 +8,8 @@ setup(
     include_package_data=True,
     zip_safe=False,
     entry_points='''
-        [ckan.plugins]        
-        CSVtoGeoJSON=ckanext.csvgeojson.plugin:CSVtoGeoJSON
+        [ckan.plugins]  
+        ckanplugin=ckanext.csvgeojson.Ckan:ckanplugin
         CsvGeoJsonApi=ckanext.csvgeojson.plugin:CSVtoGeoJSONApiPlugin
         CsvGeoJsonPlugin=ckanext.csvgeojson.CSVtoGeoJSON:CSVtoGeoJSONPlugin
         SelloExcelenciaView=ckanext.csvgeojson.sello:SelloExcelenciaView
@@ -17,6 +17,5 @@ setup(
         ShpGeoJsonPlugin=ckanext.csvgeojson.pluginZip_Shp:ApiZipShpToGeojsonView    
         FixDateFormatPlugin=ckanext.csvgeojson.pluginFixDateFormatPlugin:FixDateFormatPlugin
         DataJSon=ckanext.csvgeojson.pluginAPI:DataJson
-        Contador=ckanext.csvgeojson.plugin:ContadorPlugin
     ''',
 )
