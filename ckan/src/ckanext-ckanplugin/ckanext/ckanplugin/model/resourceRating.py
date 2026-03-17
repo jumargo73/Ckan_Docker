@@ -29,9 +29,9 @@ class ResourceRating(Base):
         self.ratings = ratings
        
 
-        log.warning("[Model][ResourceRating][__init__] package_Id %s",self.package_Id)
-        log.warning("[Model][ResourceRating][__init__] user_id %s",self.user_id)
-        log.warning("[Model][ResourceRating][__init__] ratings %s",self.ratings)
+        #log.warning("[Model][ResourceRating][__init__] package_Id %s",self.package_Id)
+        #log.warning("[Model][ResourceRating][__init__] user_id %s",self.user_id)
+        #log.warning("[Model][ResourceRating][__init__] ratings %s",self.ratings)
         
         # Garantizar valores por defecto si no vienen
         self.calificate = kwargs.get("calificate", 0)

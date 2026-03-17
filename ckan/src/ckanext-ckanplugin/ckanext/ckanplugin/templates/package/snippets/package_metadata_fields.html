@@ -1,7 +1,6 @@
 {% ckan_extends %}
 
-{% block package_metadata_fields %}
- {{ super() }}
+{% block package_metadata_fields_custom %}
     <div class="row">
         <div class="col">
          {{ form.input('update_frequency', label=_('Frecuencia'), id='update_frequency', placeholder=_('Freciencia'), value=data.update_frequency, error=update_frequency, classes=['control-medium']) }}  

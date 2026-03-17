@@ -74,7 +74,7 @@ this.ckan.module('resource-rating', function ($) {
             renderStars(self.$('#avg-stars'), result.average || 0);
             self.$('#avg-score').text((result.average || 0).toFixed(1));
 
-            currentUserRating = result.user-rating || 0;
+            currentUserRating = result['user-rating'] || 0;
             console.log(currentUserRating); 
             renderStars(self.$('#user-stars'), currentUserRating);
 
@@ -117,7 +117,6 @@ this.ckan.module('resource-rating', function ($) {
             user_id: userId
           }),
           success: function () {
-            currentUserRating = rating;
             fetchRatings();
           }
         });
@@ -129,6 +128,3 @@ this.ckan.module('resource-rating', function ($) {
 });
 
 
-$(document).ready(function () {
-  ckan.module.initialize();
-});

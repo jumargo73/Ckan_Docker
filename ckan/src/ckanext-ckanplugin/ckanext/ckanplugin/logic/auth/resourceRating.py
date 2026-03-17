@@ -3,7 +3,7 @@ from ckan import model
 from ckan.plugins import toolkit
 from sqlalchemy import func
 import ckan.model as model
-from ckanext.csvgeojson.model.resourceRating import ResourceRating
+from ckanext.ckanplugin.model.resourceRating import ResourceRating
 import json, logging,os,  mimetypes
 
 log = logging.getLogger(__name__)

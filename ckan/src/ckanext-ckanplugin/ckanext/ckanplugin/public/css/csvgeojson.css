@@ -114,17 +114,10 @@
 
 
 .row_tematica {
-  --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
   display: flex;
-  flex-wrap: wrap;
-  margin-top: calc(-1 * var(--bs-gutter-y));
-  margin-right: calc(-0.5 * var(--bs-gutter-x));
-  margin-left: calc(-0.5 * var(--bs-gutter-x));  
-  width: 100%;
-  height: 100%;
-
-
+  flex-wrap: wrap;        /* permite varias filas */
+  gap: 1rem;              /* espacio entre cards */
+  align-items: stretch;   /* hace que todas las columnas se estiren a la misma altura */
 }
 
 .row_tematica > * {
@@ -145,36 +138,74 @@
 }
 
 
-.card_tematica {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
- 
-}
-
-.box_Tematica {
-  display: block;
-  width: 100%h;
-  height: 100%;
+.section_tematica {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .module-heading_tematica {
   display: flex;
-  width: 100%h;
-  height: 100%;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  justify-items: center;
+  align-items: flex-start;       /* alinea arriba la imagen y el texto */
+  justify-content: flex-start;
+  gap: 0.5rem;                   /* espacio entre imagen y texto */
+  padding: 0.5rem;
+  
 }
 
-.module-image_tematica{
-  display: flex; 
-  width:25%;
-  height: 100%;
-
+.tematica-img {
+  flex: 0 0 60px;                /* ancho fijo */
+  height: 60px;                  /* alto fijo */
+  overflow: hidden;
 }
+
+.tematica-img img.img-tematica {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             /* mantiene proporción y rellena */
+  border-radius: 0.25rem;
+}
+
+
+.tematica-text {
+  flex: 1;                       /* ocupa todo el espacio restante */
+  display: flex;
+  align-items: flex-start;
+}
+
+.tematica-text .h3-Tematica {
+  font-size: 1rem;
+  line-height: 1.3;
+  letter-spacing: 0.3px;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;         /* máximo 3 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  text-align: left;
+  
+  min-height: 3rem;     
+}
+
+@media (max-width: 576px) {
+  .module-heading_tematica {
+    flex-direction: row;          /* mismo comportamiento, gap reducido */
+    gap: 0.3rem;
+  }
+  .tematica-img {
+    flex: 0 0 50px;
+    height: 50px;
+  }
+  .tematica-text .h3-Tematica {
+    font-size: 0.9rem;
+    line-height: 1.2;
+    min-height: 2.4rem;
+  }
+}
+
 
 .module-image_dataset-general{
   display: flex; 
@@ -183,11 +214,6 @@
 
 }
 
-
-.img-tematica{
-  width:3.5rem;
-  height:4rem;
-}
 
 
 .img-dataset-general{
@@ -199,26 +225,7 @@
 
 
 
-.h3-Tematica{
-  display: flex; 
-  width:75%; 
-  height: 100%;
-   
-}
 
-.h3-Tematica a {
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  justify-items: center;
-  font-size: 0.850rem;
-  text-wrap:wrap;
-  word-break: normal;
-  word-wrap: break-word; 
-  word-spacing: 0.1rem;
-  margin-left: -0.1rem;
-  margin-top:0.2rem
-}
 
 
 .h3-dataset-general{
@@ -1099,10 +1106,13 @@
 
 
 .section_tematica{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
   background-color: #1B3C70;
-  cursor:pointer;
 }
 
 

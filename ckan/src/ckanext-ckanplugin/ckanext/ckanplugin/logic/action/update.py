@@ -6,7 +6,7 @@ import ckan.model as model
 import json, logging,os,  mimetypes
 import logging
 from ckan.model import Session
-from ckanext.csvgeojson.model.contador import Contador
+from ckanext.ckanplugin.model.contador import Contador
 
 def guardar_contador(package_id, resource_id, tipo):
 

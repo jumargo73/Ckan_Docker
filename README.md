@@ -37,10 +37,18 @@ psql -U postgres
 
 Se abre el contenedor de la aplicacion cuando este arriba
 
+
+
 docker exec -u root -it ckan_docker-ckan-1 bash
 ckan db init
 ckan db upgrade
-python csvgeojson_migrated.py
+python ckanpluginmigrate.py
+
+si agregas plugines que tengan css y js debes reconstruir los assets
+rm -rf /srv/app/ckan/public/webassets/*
+ckan asset build
+chmod -R 775 /var/lib/ckan/webassets/
+chmod -R 775 /var/lib/ckan/storage/uploads/
 
 /*crear usuario admin de la aplicacion*/
 ckan -c /srv/app/ckan.ini sysadmin add opendata
@@ -57,30 +65,20 @@ docker exec -u root -it ckan_docker-ckan-1 ckan -c /srv/app/ckan.ini datastore s
 docker cp ds.sql ckan_docker-db-1:/ds.sql
 docker exec -it ckan_docker-db-1 psql -U ckan_default -d datastore_default -f /ds.sql
 
+/*Informacion Importante
 ckan db upgrade ejecuta las migraciones de ckan creacion de las tablas basicas
-python  csvgeojson_migrated.py crea tablas necesarias para que funcione las nuevas modalidades
-
-
-
-/*Generar Token
-
-con quit se sale del contenedor
-
-#configuracion de permisos datapusher
-
-- docker exec -it ckan_docker-ckan-1 ckan -c /srv/app/ckan.ini datastore set-permissions > ds.sql
-
-- docker cp ds.sql ckan_docker-db-1:/ds.sql
-
-- docker exec -it ckan_docker-db-1 psql -U ckan_default -d datastore_default -f /ds.sql
-
+python  ckanpluginmigrate.py crea tablas necesarias para que funcione las nuevas modalidades
 
 
 Validar que todo quedo ok
-docker exec -it ckan-hijo-db-1 bash  psql -U postgres
+docker exec -it ckan_docker-db-1  psql -U postgres
 comandos
 \l despliega las BD creadas
+\connect ckan_default
 \dt Despliega las Tablas creadas
+\q
+
+
 
 
 Validar Logs de los Contenedores  

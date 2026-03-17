@@ -1,4 +1,4 @@
-import ckanext.csvgeojson.helpers as helpers
+import ckanext.ckanplugin.helpers as helpers
 import ckan.plugins.toolkit as tk
 from ckan import model
 from ckan.plugins import toolkit

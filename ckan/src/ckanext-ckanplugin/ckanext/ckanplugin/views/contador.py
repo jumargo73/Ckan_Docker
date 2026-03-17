@@ -1,6 +1,6 @@
 import ckan.plugins.toolkit as tk
 from flask import Blueprint
-import ckanext.csvgeojson.helpers as helpers
+import ckanext.ckanplugin.helpers as helpers
 import logging
 
 log = logging.getLogger(__name__)

@@ -39,9 +39,9 @@ WORKDIR /srv/app/src
 
 # Asegurar setuptools en el virtualenv de CKAN (sin recrearlo)
 #RUN /srv/app/bin/pip install --upgrade pip wheel setuptools==65.5.1 Flask==2.3.3 Werkzeug==2.2.3
-RUN /srv/app/bin/pip install -r ckan/requirements.txt
 RUN /srv/app/bin/pip install --upgrade pip wheel setuptools==65.5.1 Werkzeug==2.2.3
 RUN /srv/app/bin/pip install Flask==2.3.3 
+RUN /srv/app/bin/pip install -r ckan/requirements.txt
 
 
 
@@ -53,7 +53,7 @@ RUN git clone https://github.com/ckan/ckanext-scheming.git
 RUN git clone https://github.com/ckan/ckanext-spatial
 
 
-COPY ./ckan/src/ckanext-ckanplugin /srv/app/src/ckanext
+COPY ./ckan/src/ckanext-ckanplugin /srv/app/src/ckanext-ckanplugin
 COPY ./ckan/src/ckanext-ckanplugin/ckanext/ckanplugin /srv/app/src/ckan/ckanext/ckanplugin
 #RUN git clone https://github.com/ckan/ckanext-envvars.git
 

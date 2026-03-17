@@ -1,4 +1,4 @@
-from ckanext.csvgeojson.model.contador import Contador
+from ckanext.ckanplugin.model.contador import Contador
 import ckan.model as model
 from typing import (
     Any, Callable, Match, NoReturn, cast, Dict,
@@ -180,16 +180,17 @@ def get_featured_dataset():
     noPaquetes=2
     
     
-    
-    for i in range(noPaquetes):        
-    
-        fecha_data=datasets[i]["metadata_modified"][:10].split('-')
-        año=fecha_data[0]
-        mes=fecha_data[1]
-        dia=fecha_data[2]
-        fecha=mes+'-'+dia+'-'+año
-        data={"name":datasets[i]["name"],"type":datasets[i]["type"],"display_name":datasets[i]["name"],"title":datasets[i]["title"],"description":datasets[i]["notes"],"metadata_modified":fecha,"packageId":datasets[i]["id"],"sourceId":None}
-        datasetList.append(data)
+    if datasets:
+        noPaquetes=len(datasets)
+        
+        for i in range(noPaquetes):     
+            fecha_data=datasets[i]["metadata_modified"][:10].split('-')
+            año=fecha_data[0] 
+            mes=fecha_data[1]
+            dia=fecha_data[2]
+            fecha=mes+'-'+dia+'-'+año
+            data={"name":datasets[i]["name"],"type":datasets[i]["type"],"display_name":datasets[i]["name"],"title":datasets[i]["title"],"description":datasets[i]["notes"],"metadata_modified":fecha,"packageId":datasets[i]["id"],"sourceId":None}
+            datasetList.append(data)
           
     return datasetList  
 

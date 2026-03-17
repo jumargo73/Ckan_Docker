@@ -7,12 +7,12 @@ from datetime import datetime, date
 import ckan.logic as logic
 import ckan.model as model
 from model import Session, Resource,Package,PackageExtra
-from ckanext.csvgeojson.model.contador import Contador
+from ckanext.ckanplugin.model.contador import Contador
 import fitz  
 from ckan.types import Context 
 from typing import Any
 import pprint, re                    
-from ckanext.csvgeojson.services.geojson_converter import GeoJSONConverter
+from ckanext.ckanplugin.services.geojson_converter import GeoJSONConverter
 import ckan.lib.helpers as h
 from ckan.common import request
 from sqlalchemy.orm import joinedload

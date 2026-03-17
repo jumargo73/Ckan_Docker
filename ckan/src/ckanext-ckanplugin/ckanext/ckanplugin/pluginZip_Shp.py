@@ -7,7 +7,7 @@ import requests
 from ckan.common import config
 import time
 import ckan.model as model
-from ckanext.csvgeojson.services.zip_shp_to_geojson import Zip_Shp_JSONConverter
+from ckanext.ckanplugin.services.zip_shp_to_geojson import Zip_Shp_JSONConverter
 import ckan.lib.helpers as h
 from flask import redirect
 
@@ -17,11 +17,7 @@ log = logging.getLogger(__name__)
 
 class ApiZipShpToGeojsonView(SingletonPlugin):
 
-    implements(IConfigurer)
     implements(IBlueprint)
-
-    def update_config(self, config):
-        log.info("[Api_Zip_Shp_To_GeojsonView][update_config]  ejecutado")
 
     
     def get_blueprint(self):
@@ -73,7 +69,7 @@ class ApiZipShpToGeojsonView(SingletonPlugin):
                 subprocess.Popen(
                     [
                         "/usr/lib/ckan/default/bin/python",
-                        "/usr/lib/ckan/default/src/ckan/ckanext/csvgeojson/convert_job.py",
+                        "/usr/lib/ckan/default/src/ckan/ckanext/ckanplugin/convert_job.py",
                         tmp_path,
                         package_id,
                         owner_org,

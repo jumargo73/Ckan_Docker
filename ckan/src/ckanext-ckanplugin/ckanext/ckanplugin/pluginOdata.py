@@ -16,7 +16,6 @@ CKAN_BASE_URL = "http://www.datosabiertos.valledelcauca.gov.co"
 
 class ApiODataPluginView(SingletonPlugin):
    
-    implements(IConfigurer)
     implements(IBlueprint)
     
     
@@ -25,9 +24,6 @@ class ApiODataPluginView(SingletonPlugin):
 
    
 
-    def update_config(self, config):
-        log.info("[ApiODataPluginView] update_config ejecutado")
-        
     
     def get_blueprint(self):
 

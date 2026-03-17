@@ -18,10 +18,6 @@ class DataJson(SingletonPlugin):
     implements(IBlueprint)
     log.info("[DataJson] DataJson Cargado con Exito")
 
-    def update_config(self, config):
-        log.info("[DataJson] update_config ejecutado")
-
-    
     def get_blueprint(self):
 
         bp = Blueprint('data_json', __name__)

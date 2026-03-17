@@ -3,7 +3,7 @@ from ckan import model
 from ckan.plugins import toolkit
 from sqlalchemy import func
 import ckan.model as model
-from ckanext.csvgeojson.model.resourceRating import ResourceRating
+from ckanext.ckanplugin.model.resourceRating import ResourceRating
 import json, logging,os,  mimetypes
 
 log = logging.getLogger(__name__)
@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 def resource_rating_set(context, data_dict):
 
     try:
-
+        log.warning("[action][resource_rating_set] ejecutado")
         tk.check_access('resource_rating_set', context, data_dict)
 
         resource_id = data_dict.get('resource_id')
@@ -43,18 +43,22 @@ def resource_rating_set(context, data_dict):
         ).first()
 
         if existing:
-            existing.rating = rating
+            existing.ratings = rating            
+            #log.warning("[action][resource_rating_set][existing] rating %s",existing.ratings)
+            #log.warning("[action][resource_rating_set][existing] package_Id %s",existing.package_Id)
+            #log.warning("[action][resource_rating_set][existing] user_id %s",existing.user_id)
         else:
             new_rating = ResourceRating(
                 package_Id=resource_id,
                 user_id=user_id,          
                 ratings=rating,
             )
+
+            #log.warning("[action][resource_rating_set][new_rating] %s",new_rating)
             
             model.Session.add(new_rating)
             
 
-        #log.warning("[action][resource_rating_set] existing %s",existing)
         resutl=model.Session.commit()
         #log.warning("[action][resource_rating_set] store resutl %s",resutl)
 
@@ -69,6 +73,8 @@ def resource_rating_set(context, data_dict):
 def resource_rating_get(context, data_dict):
 
     try:
+
+        log.warning("[action][resource_rating_get] ejecutado")
 
         tk.check_access('resource_rating_get', context, data_dict)
 

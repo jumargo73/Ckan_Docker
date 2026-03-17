@@ -85,9 +85,8 @@ services:
       - "5000:5000"
     volumes:
       - ./ckan/ckan.ini:/srv/app/ckan.ini
-      - ./ckan/src/ckanext-csvgeojson:/srv/app/src/ckanext-csvgeojson
-      - ./ckan/src/ckanext-csvgeojson/ckanext/csvgeojson:/srv/app/src/ckan/ckanext/csvgeojson
-      - ./ckan/setup/csvgeojson_migrated.py:/srv/app/csvgeojson_migrated.py
+      - ./ckan/src/ckanext-ckanplugin/ckanext/ckanplugin:/srv/app/src/ckan/ckanext/ckanplugin
+      - ./ckan/setup/ckanpluginmigrate.py:/srv/app/ckanpluginmigrate.py
       - ckan_storage:/var/lib/ckan
       - pip_cache:/root/.cache/pip
       - site_packages:/usr/lib/python3.10/site-packages
