@@ -167,6 +167,17 @@
   border-radius: 0.25rem;
 }
 
+.account-masthead .navbar .logo_tic img {
+  max-height: 60px;
+  min-height: 55px;
+}
+
+.account-masthead {
+  min-height: 30px;
+  color: #fff;
+  background: #3864cc url("../../../base/images/bg.png");
+}
+
 
 .tematica-text {
   flex: 1;                       /* ocupa todo el espacio restante */
@@ -2004,4 +2015,83 @@ font-family: 'poppins-bold', sans-serif !important;
   transform: perspective(500px) rotateX(3deg);
 }
 
+}
+
+.footer-bottom {
+  background-color: #3864cc;
+  /* Reducimos de 20px a 10px para que sea una franja delgada */
+  padding: 8px 0; 
+  font-family: 'Work Sans', sans-serif;
+}
+
+.container-footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px; /* Un poco más de aire a los lados */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icons-govco a {
+  display: flex;
+  align-items: center;
+}
+
+/* Logos un poco más pequeños para ganar sutileza */
+.footer-icon-co {
+  width: 24px; 
+  height: auto;
+}
+
+.footer-icon-govco {
+  width: 80px;
+  height: auto;
+}
+
+.divider-vertical {
+  width: 1px;
+  height: 20px; /* Altura reducida */
+  background-color: rgba(255, 255, 255, 0.4);
+  margin: 0 12px;
+}
+
+.copyright {
+  color: #FFFFFF;
+  margin: 0;
+  font-size: 13px; /* Fuente un punto más pequeña */
+  font-weight: 400;
+  opacity: 0.9; /* Suaviza el texto blanco */
+}
+
+/* Ajustes para móviles */
+@media (max-width: 600px) {
+  .container-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+.btn-link[aria-label="Log out"] {
+  color: #FFFFFF !important; /* Forzamos el color blanco */
+  font-size: 1.1rem;         /* Ajustamos el tamaño para que se vea claro */
+  opacity: 0.9;              /* Le damos un toque sutil como los otros iconos */
+  padding: 0 10px;
+  border: none;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Efecto al pasar el mouse */
+.btn-link[aria-label="Log out"]:hover {
+  color: #FFFFFF !important;
+  opacity: 1;                /* Brilla más al pasar el mouse */
+  text-decoration: none;
+}
+
+/* Si el icono se ve muy pequeño, ajustamos la fuente de FontAwesome */
+.btn-link[aria-label="Log out"] i.fa-sign-out {
+  vertical-align: middle; 
+  color:#1a5668
 }

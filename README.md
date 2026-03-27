@@ -53,7 +53,7 @@ chmod -R 775 /var/lib/ckan/storage/uploads/
 /*crear usuario admin de la aplicacion*/
 ckan -c /srv/app/ckan.ini sysadmin add opendata
 /*Generar Token
-ckan -c /srv/app/ckan.ini user token add opendata datapusher
+ckan -c /srv/app/ckan.ini user token add <name_user> datapusher
 
 El Token creado lo agregas en el ckan.ini  
 etiqueta  ckan.datapusher.api_token
